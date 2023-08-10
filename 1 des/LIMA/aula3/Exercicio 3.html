@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Formulário</h1>
+    <fieldset>
+        <legend>Dados Pessoais</legend>
+        <label>Nome:</label>
+        <input type="text" name="nome">
+        <br>
+        <label>Endereço: </label>
+        <input type="text" name="endereço">
+        <br>
+        <label>Cidade:</label>
+        <input type="text" name="cidade">
+        <br>
+        <label>Estado: </label>
+        <select id="Estado">
+            <option value="SP">São Paulo</option>
+            <option value="RJ">Rio de Janeiro</option>
+        </select>
+    </fieldset>
+    <br>
+    <fieldset>
+        <legend>Dados Profissionais</legend>
+        <p>Natureza do cargo</p>
+        <input type="radio" name="cargo" value="Gerência">Gerência
+        <input type="radio" name="cargo" value="Financeiro">Financeiro
+        <input type="radio" name="cargo" value="Recepção">Recepção
+        <input type="radio" name="cargo" value="Administrativo">Administrativo
+        <input type="radio" name="cargo" value="Juridico">Juridico
+        <br>
+        <p>Area de interesse</p>
+        <input type="checkbox" name="area" value="Computação">Computação
+        <input type="checkbox" name="area" value="Biologia">Biologia
+        <input type="checkbox" name="area" value="Meio Ambiente">Meio Ambiente
+        <input type="checkbox" name="area" value="Engenharia">Engenharia
+        <input type="checkbox" name="area" value="História">História
+        <br>
+        <label>Mini-curriculo</label>
+        <textarea name="Mini-curriculo" rows="5" cols="30"></textarea>
+    </fieldset>
+    <br>
+    <input type="submit" name="Enviar" value="Enviar">
+    <input type="reset" name="Enviar" value="Limpar">
+</body>
+</html>
