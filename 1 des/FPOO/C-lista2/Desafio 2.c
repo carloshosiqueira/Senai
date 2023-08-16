@@ -8,16 +8,16 @@ int main(){
 	scanf("%s",&funcionario);
 	printf("Qual o salario de %s?",funcionario);
 	scanf("%f",&salario);
-	printf("Ele tem filhos? Se sim, quantos? ");
+	printf("Quantos filhos ele tem? ");
 	scanf("%d",&filhos);
 	//Processamento
 	float remuneracao = salario + (filhos * 45);
 	//Saída
 	if(salario > 2000)
-		printf("O salario continua sendo o mesmo de %f",salario);
+		printf("O salario continua sendo o mesmo de %.2f",salario);
 	else {
-			if (salario < 2000 && filhos != 0)
-				printf("O salario de %s tem que ser aumentado para %f",funcionario, remuneracao);
+			if (salario <= 2000 && filhos != 0)
+				printf("O salario de %s tem que ser aumentado para %.2f reais",funcionario, remuneracao);
 			else
 				printf("O salario de %s nao precisa ser aumentado pois ele nao tem filhos",funcionario);
 	}
