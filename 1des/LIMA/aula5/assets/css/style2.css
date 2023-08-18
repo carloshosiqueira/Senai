@@ -1,0 +1,21 @@
+body{
+    background-color: aqua;
+}
+h1{
+    text-align: center;
+}
+table{
+    background-color: #fff;
+}
+th{
+    background-image: url(../img/ceu.jpg);
+    background-size: cover;
+    height: 150px;
+    width: 250px;
+}
+.max{
+    color:red;
+}
+.min{
+    color: blue;
+}
