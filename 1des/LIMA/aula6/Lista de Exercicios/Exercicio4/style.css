@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+}
+
+.container{
+    display: flex;
+    height: 100vh;
+    border: 5px solid black;
+}
+
+.red{
+    width: 33.33vw;
+    background-color: red;
+}
+
+.green{
+    width: 33.33vw;
+    background-color: green;
+}
+
+.blue{
+    width: 33.33vw;
+    background-color: blue;
+}

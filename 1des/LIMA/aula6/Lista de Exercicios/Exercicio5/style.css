@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+}
+.container{
+    height: 100vh;
+}
+.vertical{
+    margin: 50px;
+}
+.horizontal{
+    display: flex;
+    margin: 50px;
+}
+.red{
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    margin: 20px;
+}
+
+.green{
+    background-color: green;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    margin: 20px;
+}
+
+.blue{
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    margin: 20px;
+}

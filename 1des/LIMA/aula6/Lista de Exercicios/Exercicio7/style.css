@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+}
+.container{
+    display: flex;
+    height: 100vh;
+    
+}
+.vermelho{
+    height: 10vh;
+    background-color: red;
+}
+.laranja{
+    width:30vw;
+    background-color: orange;
+}
+.marromescuro{
+    width: 70vw;
+    background-color: brown;
+}
+.vermelhoescuro{
+    height: 10vh;
+    background-color: darkred;
+}

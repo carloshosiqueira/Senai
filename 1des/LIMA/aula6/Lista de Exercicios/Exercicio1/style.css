@@ -1,0 +1,21 @@
+/* *{
+    margin: 0;
+    padding: 0;
+} */
+.a{
+    margin-bottom: 50px;
+}
+
+.b{
+
+    display: flex;
+}
+
+.c{
+    display: flex;
+    list-style: none;
+}
+.margem{
+    margin-right: 30px;
+    margin-bottom: 50px;
+}

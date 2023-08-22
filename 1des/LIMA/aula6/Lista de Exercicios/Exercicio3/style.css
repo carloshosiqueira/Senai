@@ -1,0 +1,19 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+}
+
+.red{
+    height: 33.33vh;
+    background-color: red;
+}
+
+.green{
+    height: 33.33vh;
+    background-color: green;
+}
+
+.blue{
+    height: 33.33vh;
+    background-color: blue;
+}

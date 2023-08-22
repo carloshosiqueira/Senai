@@ -1,0 +1,20 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
+    border: 1px
+}
+.linha{
+    width: 50vw;
+    height: 20vh;
+}
+table{
+    height: 50vh;
+    width: 50vw;
+}
+th{
+    text-align: left;
+}

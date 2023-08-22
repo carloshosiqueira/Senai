@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+}
+
+.container{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 10px solid black;
+    height: 80vh;
+}
+
+.red{
+    height: 100px;
+    width: 100px;
+    background-color: red;
+}
+
+.green{
+    height: 100px;
+    width: 100px;
+    background-color: green;
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.blue{
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+}
+
+/* header{
+    background-color: red;
+    height: 33.33%;
+}
+main{
+    background-color: green;
+    height: 33.33%;
+}
+footer{
+    background-color: blue;
+    height: 33.33%;
+}  */
