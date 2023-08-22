@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+}
+main{
+    display: flex;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+}
+header{
+    height: 5vh;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.marromescuro{
+    width: 100vw;
+    height: 90vh;
+    background-color: brown;
+}
+footer{
+    height: 5vh;
+    background-color: darkred;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+p{
+    color: white;
+    font-size:50px;
+    margin: 50px;
+}
+.panda{
+    width: 30%;
+    border-radius: 20px;
+}
+.bagulhobranco{
+    background-color: white;
+    height: 30px;
+    width: 300px;
+    margin-right: 50px;
+    border-radius: 20px;
+}

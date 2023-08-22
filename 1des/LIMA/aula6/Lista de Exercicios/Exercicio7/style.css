@@ -5,24 +5,25 @@
 body{
     height: 100vh;
 }
-.container{
+main{
     display: flex;
-    height: 100vh;
-    
+    height: 80vh;
 }
-.vermelho{
+header{
     height: 10vh;
     background-color: red;
 }
 .laranja{
     width:30vw;
+    height: 80vh;
     background-color: orange;
 }
 .marromescuro{
     width: 70vw;
+    height: 80vh;
     background-color: brown;
 }
-.vermelhoescuro{
+footer{
     height: 10vh;
     background-color: darkred;
 }

@@ -9,7 +9,6 @@ body{
 .container{
     display: flex;
     height: 100vh;
-    border: 5px solid black;
 }
 
 .red{

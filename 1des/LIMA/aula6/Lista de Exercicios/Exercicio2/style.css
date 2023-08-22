@@ -12,9 +12,13 @@
     height: 20vh;
 }
 table{
-    height: 50vh;
-    width: 50vw;
+    height: 20vh;
+    width: 30vw;
+    border-collapse: collapse;
 }
 th{
     text-align: left;
+}
+.borda{
+    border-top:2px solid black;
 }
