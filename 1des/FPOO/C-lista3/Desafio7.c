@@ -8,9 +8,8 @@ int main(){
 	for(i = 0; i <= 100; i++){
 		printf("Numero %d\n", i);
 		n += i;
-		printf("Pós conta %d\n", n);
+		printf("Depois da soma %d\n", n);
 	}
-	printf("%d",n);
 		
 	return 0;
 }
