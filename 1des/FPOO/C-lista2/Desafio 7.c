@@ -9,7 +9,7 @@ int main(){
 	
 	//Essa divisão, decide o n5
 	if(n1 > n2){
-		temp = n1; //se 1 > 2 || o temp fica com o maior número, e eu faço com que o n1 vire o n2 pois ele é o menor número
+		temp = n1; //se 1 > 2 || o temp fica com o maior número, num5 eu faço com que o n1 vire o n2 pois ele é o menor número
 		n1 = n2;
 		n2 = temp; //n2 agora é o maior número
 	}
@@ -62,7 +62,7 @@ int main(){
 	n2 = temp; //maior número
 	}
 
-	printf("\n Números em ordem crescente:\n");
+	printf("\n numeros em ordem crescente:\n");
 	printf("%d %d %d %d %d",n1, n2, n3, n4, n5);
 	
 	return 0;
