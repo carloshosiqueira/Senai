@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <locale.h>
+//Código Muito incompleto
 int main(){
 	setlocale(LC_ALL,"");
 	char cidade[30], nome[30];
@@ -43,65 +44,3 @@ int main(){
 		return 0;
 		
 	}
-	
-	
-	
-//Tentativa chat GPT pra ter uma ideia (DEPOIS DE EU TER TENTANDO FAZER O MEU)
-//#include <stdio.h>
-//#include <locale.h>
-//int main(){
-//	setlocale(LC_ALL,"");
-//	char cidade[50];
-//	float numcandidatos;
-//	int i, continuar;
-//	
-//	do{
-//		
-//		printf("Escreva o nome da cidade: ");
-//		scanf("%s",&cidade);
-//		printf("Escreva a quantidade de candidatos a prefeito: ");
-//		scanf("%d",&numcandidatos);
-//		
-//		char candidatos[numcandidatos];
-//		int votos[numcandidatos];
-//		int votosbrancos, votosnulos;
-//		
-//		for(i = 0; i < numcandidatos; i++){
-//			printf("Escreva o nome do %d° candidato",i + 1);
-//			scanf("%s",&candidatos[i]);
-//			printf("Digite o total de votos para %s",candidatos[i]);
-//			scanf("%d",&votos[i]);
-//		}
-//		
-//		printf("Escreva a quantidade de votos brancos: ");
-//		scanf("%d",&votosbrancos);
-//		printf("Escreva a quantidade de votos nulos: ");
-//		scanf("%d",votosnulos);
-//		
-//		int votosvalidos;
-//		
-//		for(i = 0; i < numcandidatos; i++){
-//			votosvalidos += votosbrancos;
-//		}
-//		
-//		int votosinvalidos = votosnulos;
-//		
-//		if(votosvalidos > votosinvalidos){
-//			float porcentagem[numcandidatos];
-//			for(i = 0; i < numcandidatos; i++){
-//				porcentagem[i] = votos[i] / votosvalidos * 100;
-//				printf("O candidato %s tem uma quantidade equivalente a %d%% dos votos",candidatos[i], porcentagem[i]);
-//				if(porcentagem > 50){
-//					printf("O candidato %s foi eleito no primeiro turno!\n",candidatos[i]);
-//					return 0;
-//				}
-//			}
-//			
-//			if(votosvalidos > 200000){
-//				printf("Terá um segundo turno entre os candidatos mais votados\n");
-//			}
-//		}
-//		else{
-//			printf("A eleição foi inválida pois há menos votos válidos do que votos");
-//		}
-//		

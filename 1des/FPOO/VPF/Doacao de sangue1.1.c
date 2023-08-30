@@ -30,34 +30,30 @@ int main(){
 					genero = 'F';
 				break;
 				default:
-					printf("Escreva 1 ou 2 para o sexo por favor\n");
-					continue;
+					printf("Sexo inválido, não foi possivel determinar ser é apto ou inapto\n");
+					continue ;
 				}
 					
 				if(genero == 'M'){
 				
 					if(idade[i] < 16 || idade[i] > 69 || dias[i] < 60){
-						printf("\nInformações\n");
-						printf("Nome: %s\nIdade: %d\nSexo: %c\nDias desde a última doação: %d\n",nome[i], idade[i], genero, dias[i]);
-						printf("INAPTO!!\n");
+						printf("Nome\tStatus\n");
+						printf("%s\tINAPTO\n", nome[i]);
 					}
 					else{
-						printf("\nInformações\n");
-						printf("Nome: %s\nIdade: %d\nSexo: %c\nDias desde a última doação: %d\n",nome[i], idade[i], genero, dias[i]);
-						printf("APTO!!\n");
+						printf("Nome\tStatus\n");
+						printf("%s\tAPTO\n", nome[i]);
 					}
 				}
 				if(genero == 'F'){
 					
 					if(idade[i] < 16 || idade[i] > 69 || dias[i] < 90){
-						printf("\nInformações\n");
-						printf("Nome: %s\nIdade: %d\nSexo: %c\nDias desde a última doação: %d\n",nome[i], idade[i], genero, dias[i]);
-						printf("INAPTA!!\n");
+						printf("Nome\tStatus\n");
+						printf("%s\tINAPTA\n", nome[i]);
 					}
 					else{
-						printf("\nInformações\n");
-						printf("Nome: %s\nIdade: %d\nSexo: %c\nDias desde a última doação: %d\n",nome[i], idade[i], genero, dias[i]);
-						printf("APTA!!\n");
+						printf("Nome\tStatus\n");
+						printf("%s\tAPTA\n", nome[i]);
 					}
 				}
 	
