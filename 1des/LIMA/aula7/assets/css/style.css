@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+}
+.container{
+    height: 100%;
+    width: 100%;
+}
+header{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    background-color: red;
+    justify-content: space-between;
+}
+.esquerda{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    border:1px solid black;
+    width: 33%;
+    height: 100%;
+    padding: 40px;
+}
+.meio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:1px solid black;
+    width: 33%;
+    height: 100%;
+}
+.direita{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    border:1px solid black;
+    width: 33%;
+    height: 100%;
+    padding: 40px;
+    
+}
+.pesquisa{
+    width: 60%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: white;
+}
+.meio > .pesquisa > input{
+    height: 50%;
+    width: 70%;
+    background-color: none;
+    border:none
+}
+.meio > .pesquisa > img{
+    width: 5%;
+}
+.direita img{
+    width: 10%;
+    margin-left:50px
+}
+.esquerda img {
+    width: 13%;
+}
+main{
+    width: 100%;
+    height: 70%;
+}
+.opcoes{
+    background-color: grey;
+    color: white;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.categorias{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+}
+.grid{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+}
+.cima{
+    margin: 30px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.baixo{
+    margin: 30px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.filtro{
+    border:1px solid black;
+    border-radius: 20px;
+    width: 20%;
+    padding: 10px;
+}
+.produto{
+    width: 10%;
+    height: 100%;
+    background-color: gray;
+}
+.vazio{
+    width: 20%;
+}
+footer{
+    width: 100%;
+    height: 20%;
+    background-color: gray;
+    color: white;
+}
