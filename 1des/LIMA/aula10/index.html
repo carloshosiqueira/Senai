@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 10</title>
+</head>
+
+<body>
+    <div class="ex1">
+        <h2>1- Desenvolva um programa que leia três variáveis (a, b, c) e resolva a expressão: ( a + b ) / c.</h2>
+        <input type="number" id="a" placeholder="Digite o valor de  A">
+        <input type="number" id="b" placeholder="Digite o valor de  B">
+        <input type="number" id="c" placeholder="Digite o valor de  C">
+        <input type="submit" onclick="calcular()">
+        <h3 id="resultado1"></h3>
+    </div>
+    <div class="ex2">
+        <h2>2- Desenvolva um programa que leia a velocidade de um carro (km/h) e a distância a ser percorrida (km) por ele.
+            Calcule e apresente na tela, quanto tempo (horas) será necessário para o carro percorrer a distância informada.</h2>
+        <input type="number" id="velocidade" placeholder="Digite a velocidade em km/h">
+        <input type="number" id="distancia" placeholder="Digite a distância do destino">
+        <input type="submit" onclick="calcularTempo1()">
+        <h3 id="resultado2"></h3>
+    </div>
+    <div class="ex3">
+        <h2>3- Desenvolva um programa que leia o nome e o salário de uma pessoa, depois leia o valor do índice percentual (%) de 
+            reajuste do salário. Calcule e apresente na tela, o valor do novo salário e o nome da pessoa.</h2>
+        <input type="text" id="nome" placeholder="Digite o nome do funcionário">
+        <input type="text" id="salario" placeholder="Digite o salário do funcionário">
+        <input type="text" id="reajuste" placeholder="Digite a % de reajuste">
+        <input type="submit" onclick="calcularReajuste()">
+        <h3 id="resultado3"></h3>
+    </div>
+    <div class="ex4">
+        <h2>4- Desenvolva um programa que leia o nome de um time de futebol, o número de vitórias e o número de empates. O programa 
+            deverá calcular e apresentar na tela, o nome do time e o total de pontos. Lembrando que a vitória vale 3 pontos e o empate vale 1 ponto.</h2>
+        <input type="text" id="time" placeholder="Digite o nome do time">
+        <input type="text" id="vitorias" placeholder="Digite quantas vitorias o time tem">
+        <input type="text" id="empates" placeholder="Digite quantos empates o time tem">
+        <input type="submit" onclick="calcularPontos()">
+        <h3 id="resultado4"></h3>
+    </div>
+    <div class="ex5">
+        <h2>5- Desenvolva um programa que leia um número ”n” inteiro, positivo e diferente de zero e apresente na tela: n - 1, e também n + 1.</h2>
+        <input type="text" id="n" placeholder="Digite o valor de n">
+        <input type="submit" onclick="calcularSequencia()">
+        <h3 id="resultado5"></h3>
+    </div>
+    <div class="ex6">
+        <h2>6- Sabendo-se que a velocidade de cruzeiro de um avião 747-300 é de 900 km/h, faça um programa que leia uma distância (km), calcule e apresente
+            na tela, quanto tempo (horas) será necessário para um 747-300 sobrevoar a distância informada.</h2>
+        <input type="text" id="distancia2" placeholder="Digite a distância">
+        <input type="submit" onclick="calcularTempo2()">
+        <h3 id="resultado6"></h3>
+    </div>
+    <div class="ex7">
+        <h2>7- Um caminhão consegue transportar 18 toneladas de laranjas em uma viagem que faz entre a fazenda e a fábrica de suco de laranja. Um alqueire de
+            terra produz em média 250 toneladas de laranjas. Faça um programa que leia quantos caminhões e quantos alqueires uma fazenda produtora de laranjas
+            possui, calcule e apresente na tela quantas viagens de caminhão serão necessárias para transportar toda a colheita de laranjas.</h2>
+        <input type="text" id="caminhao" placeholder="Digite a quantidade de caminhões">
+        <input type="text" id="alqueire" placeholder="Digite quantos alqueires tem o produtor">
+        <input type="submit" onclick="viagens()">
+        <h3 id="resultado7"></h3>
+    </div>
+    <div class="ex8">
+        <h2>8- Desenvolva um programa que leia o raio (cm) e a altura (cm) de um cilindro. Calcule e mostre a área (cm2) e o volume (cm3) do cilindro</h2>
+        <input type="text" id="raio" placeholder="Digite o raio do cilindro">
+        <input type="text" id="altura" placeholder="Digite a altura do cilindro">
+        <input type="submit" onclick="calcularAumento()">
+        <h3 id="resultado8"></h3>
+    </div>
+    <div class="ex9">
+        <h2>9- Desenvolva um programa que leia o nome e o preço de uma mercadoria. O programa deverá calcular um aumento de 5% no preço da mercadoria e mostrar
+            o nome da mercadoria e o seu novo preço.</h2>
+        <input type="text" id="nome2" placeholder="Digite o nome do produto">
+        <input type="text" id="preco" placeholder="Digite o preço do produto">
+        <input type="submit" onclick="calcularArea(),calcularVolume()">
+        <h3 id="resultado9"></h3>
+    </div>
+    <div class="ex10">
+        <h2>10- Desenvolva um programa que leia o nome de uma cidade, o número total de eleitores e o número total de votos apurados na última eleição.
+            O programa deverá calcular e exibir a porcentagem de participação dos eleitores desta cidade na última eleição.</h2>
+        <input type="text" id="cidade" placeholder="Digite o nome da cidade">
+        <input type="text" id="eleitores" placeholder="Digite o total de eleitores da cidade">
+        <input type="text" id="votos" placeholder="Digite o total votos da eleição">
+        <input type="submit" onclick="calcularPorcentagem()">
+        <h3 id="resultado10"></h3>
+    </div>
+
+</body>
+<script src="script.js"></script>
+
+</html>
