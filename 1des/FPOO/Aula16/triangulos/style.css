@@ -1,0 +1,37 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header{
+    text-align: center;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main > div{
+    width: 50%;
+    display: grid;
+    margin: 50px;
+    grid-template-columns: repeat(8, 12.5%);
+    border-bottom: 1px solid #000;
+}
+
+main > div > label{
+    margin:10px;
+    font-weight: bold;
+    font-size: 20px;
+}

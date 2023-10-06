@@ -128,85 +128,73 @@ int main(){
 	setlocale(LC_ALL,"");
 	
 	int continuar, dado, decidir, opcao, index;
+	do{
 	
-	printf("De qual forma deseja mexer? 1.Pilha 2.Fila 3.Lista: ");
-	scanf("%d",&opcao);
-	if(opcao == 1){
-		do{
-			printf("Deseja adicionar ou remover algo da pilha? 1. Adicionar 2. Remover: ");
-			scanf("%d",&decidir);
-			if(decidir == 1){
-				printf("Escreva o número que deseja inserir na pilha: ");
-				scanf("%d",&dado);
-				pushpilha(dado);
-				mostrapilha();
+		printf("De qual forma deseja mexer? 1.Pilha 2.Fila 3.Lista: ");
+		scanf("%d",&opcao);
+		if(opcao == 1){
+				printf("Deseja adicionar ou remover algo da pilha? 1. Adicionar 2. Remover: ");
+				scanf("%d",&decidir);
+				if(decidir == 1){
+					printf("Escreva o número que deseja inserir na pilha: ");
+					scanf("%d",&dado);
+					pushpilha(dado);
+					mostrapilha();
+				}
+				if(decidir == 2){
+					poppilha();
+					mostrapilha();
 			}
-			if(decidir == 2){
-				poppilha();
-				mostrapilha();
+				if(decidir > 2 || decidir <= 0){
+					printf("Por favor, insira o número corretamente\n");
+			}
 		}
-			if(decidir > 2 || decidir <= 0){
-				printf("Por favor, insira o número corretamente\n");
-		}
-		
-		
-			printf("\nDeseja fazer mais alterações? 1.Sim 2.Não: ");
-			scanf("%d",&continuar);
-			printf("\n");
+		if(opcao == 2){
+				printf("Deseja adicionar ou remover algo da fila? 1. Adicionar 2. Remover: ");
+				scanf("%d",&decidir);
+				if(decidir == 1){
+					printf("Escreva o número que deseja inserir na fila: ");
+					scanf("%d",&dado);
+					pushfila(dado);
+					mostrafila();
+			}
+				if(decidir == 2){
+					popfila();
+					mostrafila();
+			}
+				if(decidir > 2 || decidir <= 0){
+					printf("Por favor, insira o número corretamente\n");
+			}
 			
-		}while(continuar == 1);
-	}
-	if(opcao == 2){
-		do{
-			printf("Deseja adicionar ou remover algo da fila? 1. Adicionar 2. Remover: ");
-			scanf("%d",&decidir);
-			if(decidir == 1){
-				printf("Escreva o número que deseja inserir na fila: ");
-				scanf("%d",&dado);
-				pushfila(dado);
-				mostrafila();
-		}
-			if(decidir == 2){
-				popfila();
-				mostrafila();
-		}
-			if(decidir > 2 || decidir <= 0){
-				printf("Por favor, insira o número corretamente\n");
+				printf("\nDeseja fazer mais alterações? 1.Sim 2.Não: ");
+				scanf("%d",&continuar);
+				printf("\n");
 		}
 		
-			printf("\nDeseja fazer mais alterações? 1.Sim 2.Não: ");
-			scanf("%d",&continuar);
-			printf("\n");
-		}while(continuar == 1);
-	}
-	
-	if(opcao == 3){
-		do{
-			printf("Deseja adicionar ou remover algo da lista? 1. Adicionar 2. Remover: ");
-			scanf("%d",&decidir);
-			if(decidir == 1){
-				printf("Escreva o número que deseja inserir na lista: ");
-				scanf("%d",&dado);
-				push(dado);
-				mostraLista();
+		if(opcao == 3){
+				printf("Deseja adicionar ou remover algo da lista? 1. Adicionar 2. Remover: ");
+				scanf("%d",&decidir);
+				if(decidir == 1){
+					printf("Escreva o número que deseja inserir na lista: ");
+					scanf("%d",&dado);
+					push(dado);
+					mostraLista();
+			}
+				if(decidir == 2){
+					printf("Qual parte da lista deseja remover? ");
+					scanf("%d",&index);
+					slice(index);
+					mostraLista();
+			}
+				if(decidir > 2 || decidir <= 0){
+					printf("Por favor, insira o número corretamente\n");
+			}
+			
+				printf("\nDeseja fazer mais alterações? 1.Sim 2.Não: ");
+				scanf("%d",&continuar);
+				printf("\n");
 		}
-			if(decidir == 2){
-				printf("Qual parte da lista deseja remover? ");
-				scanf("%d",&index);
-				slice(index);
-				mostraLista();
-		}
-			if(decidir > 2 || decidir <= 0){
-				printf("Por favor, insira o número corretamente\n");
-		}
-		
-			printf("\nDeseja fazer mais alterações? 1.Sim 2.Não: ");
-			scanf("%d",&continuar);
-			printf("\n");
-		
-		}while(continuar == 1);
-	}
-	
+	}while(1);
 	if(opcao <=0 || opcao > 3){
 		printf("Por favor, escolha uma das opções");
 	}
