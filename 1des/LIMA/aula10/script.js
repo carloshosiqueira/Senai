@@ -11,7 +11,7 @@
 
     
 
-    var resultado1 = document.getElementById('resultado')
+    var resultado1 = document.getElementById('resultado1')
 
     function calcular(){
         let  a = Number.parseFloat(document.getElementById('a').value);
@@ -27,7 +27,7 @@
 //2- Desenvolva um programa que leia a velocidade de um carro (km/h) e a distância a ser percorrida (km) por ele.
 //Calcule e apresente na tela, quanto tempo (horas) será necessário para o carro percorrer a distância informada.
 
-    var resultado2 = document.getElementById('resultado')
+    var resultado2 = document.getElementById('resultado2')
 
     function calcularTempo1(){
         let velocidade = Number.parseFloat(document.getElementById('velocidade').value)
@@ -52,7 +52,7 @@
         let novoSalario = salario + (salario * reajuste / 100)
         console.log(nome, salario, novoSalario)
 
-        resultado3.innerHTML = nome + ' tem um salário de ' + novoSalario + ' após o reajuste de ' + reajuste + '%' 
+        resultado3.innerHTML = nome + ' tem um salário de R$ ' + novoSalario.toFixed(2) + ' após o reajuste de ' + reajuste + '%' 
     }
 
     //4- Desenvolva um programa que leia o nome de um time de futebol, o número de vitórias e o número de empates. O programa 
@@ -127,22 +127,28 @@
 
         //Desenvolva um programa que leia o raio (cm) e a altura (cm) de um cilindro. Calcule e mostre a área (cm2) e o volume (cm3) do cilindro.
 
-        var resultado8 = document.getElementById('resultado8')
+        var resultado81 = document.getElementById('resultado81')
+        var resultado82 = document.getElementById('resultado82')
+
         var raio = Number.parseFloat(document.getElementById('raio').value)
-        var altura = Number.parseFloat(document.getElement('altura').value)
+        var altura = Number.parseFloat(document.getElementById('altura').value)
         var pi = 3.1415
 
         function calcularArea(){
-            var area = 2*pi*raio*(raio + altura)
-            console.log(raio,altura,area)
+           
+            var area = 2 * pi * raio * (raio + altura);
+
+            resultado81.innerHMTL = `O cilindro tem uma área de ${area}`
         }
 
         function calcularVolume(){
-            var volume = pi*raio*raio*altura
-            console.log(volume)
+            let volume = pi*raio*raio*altura
+            console.log(raio,volume)
+
+            resultado82.innerHTML = `O cilindro tem um volume de ${volume}`
         }
 
-        resultado8.innerHTML = `O cilindro tem uma área de ${area} e um volume de ${volume}`
+        
 
         //9- Desenvolva um programa que leia o nome e o preço de uma mercadoria. O programa deverá calcular um aumento de 5% no preço da mercadoria e mostrar
         //o nome da mercadoria e o seu novo preço.
