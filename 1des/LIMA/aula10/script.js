@@ -33,10 +33,10 @@
         let velocidade = Number.parseFloat(document.getElementById('velocidade').value)
         let distancia = Number.parseFloat(document.getElementById('distancia').value)
 
-        let conta2 = distancia / velocidade + ' Horas'
+        let conta2 = distancia / velocidade
         console.log(conta2)
 
-        resultado2.innerHTML = conta2
+        resultado2.innerHTML =`${conta2.toFixed(2)} horas`
     }
 
     //3- Desenvolva um programa que leia o nome e o salário de uma pessoa, depois leia o valor do índice percentual (%) 
@@ -127,29 +127,20 @@
 
         //Desenvolva um programa que leia o raio (cm) e a altura (cm) de um cilindro. Calcule e mostre a área (cm2) e o volume (cm3) do cilindro.
 
-        var resultado81 = document.getElementById('resultado81')
-        var resultado82 = document.getElementById('resultado82')
-
-        var raio = Number.parseFloat(document.getElementById('raio').value)
-        var altura = Number.parseFloat(document.getElementById('altura').value)
-        var pi = 3.1415
-
-        function calcularArea(){
-           
-            var area = 2 * pi * raio * (raio + altura);
-
-            resultado81.innerHMTL = `O cilindro tem uma área de ${area}`
-        }
-
-        function calcularVolume(){
-            let volume = pi*raio*raio*altura
-            console.log(raio,volume)
-
-            resultado82.innerHTML = `O cilindro tem um volume de ${volume}`
-        }
+        var resultado8 = document.getElementById('resultado8')
 
         
 
+        function calcularCilindro(){
+            let raio = Number.parseFloat(document.getElementById('raio').value)
+            let altura = Number.parseFloat(document.getElementById('altura').value)
+            let pi = 3.1415
+            let area = 2 * pi * raio * (raio + altura);
+            let volume = pi*raio*raio*altura
+
+            resultado8.innerHTML = `O cilindro tem uma área de ${area.toFixed(2)}cm³ e um volume de ${volume.toFixed(2)}cm³`
+        }
+        
         //9- Desenvolva um programa que leia o nome e o preço de uma mercadoria. O programa deverá calcular um aumento de 5% no preço da mercadoria e mostrar
         //o nome da mercadoria e o seu novo preço.
 
@@ -175,7 +166,7 @@
             let eleitores = Number.parseInt(document.getElementById('eleitores').value)
             let votos = Number.parseInt(document.getElementById('votos').value)
 
-            let participacao = eleitores / votos * 100
+            let participacao = votos / eleitores * 100
             console.log(cidade,eleitores,votos,participacao)
 
             resultado10.innerHTML = 'A cidade ' + cidade + ' teve uma participação de ' + participacao.toFixed(2) + '% dos votos'

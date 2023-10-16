@@ -40,30 +40,33 @@ int main() {
     char comandos[1000];
 
     FILE *entrada = fopen("esquerda.in", "r");
-    if (entrada == NULL) {
+    FILE *saida = fopen("esquerda.out", "w");
+     
+     
+    if(entrada == NULL) {
         printf("Erro ao abrir o arquivo de entrada");
         return 1;
     }
-        fscanf(entrada, "%d", &quantidade);//ler a primeira linha(quantidade)
+    else{
+    	do{
+		
+	        fscanf(entrada, "%d", &quantidade);//ler a primeira linha(quantidade)
+	
+	        fscanf(entrada, "%s", &comandos); //ler a string de comandos
+	
+	        char direcaoFinal = direcao(comandos, quantidade);
+	        
+	       	fprintf(saida, "%c\n", direcaoFinal);
+	       	
+	       	
+    	}while(quantidade != 0);
 
-        fscanf(entrada, "%s", &comandos); //ler a string de comandos
-
-        char direcaoFinal = direcao(comandos, quantidade);
-
-        
-        FILE *saida = fopen("esquerda.out", "w");
-        if (saida == NULL) {
-            printf("Erro ao abrir o arquivo de saída");
-            return 1;
-        }
-		else{
-        	fprintf(saida, "%c\n", direcaoFinal);
-        }
-
+		fclose(entrada);
         fclose(saida);
-        
-   		fclose(entrada);
+           		
+}
 
     return 0;
+    
 }
 
