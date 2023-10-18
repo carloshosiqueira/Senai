@@ -1,10 +1,10 @@
-class Pagamento{
-    //Método construtor (toda classe precisa)
+class Pagamento {
+    //Método construtor
     constructor(nome, salario){
         this.nome = nome;
         this.salario = salario;
-        this.salarioBase = (this.salario - this.inss().toFixed(2));
-        this.salarioLiquido; (this.salarioBase - this.irrf().toFixed(2));
+        this.salarioBase = (this.salario - this.inss()).toFixed(2);
+        this.salarioLiquido = (this.salarioBase - this.irrf()).toFixed(2);
     }
 
     //Métodos de cálculo
@@ -35,5 +35,5 @@ class Pagamento{
     }
 }
 
-const pgto1 = new Pagamento('João', 2689)
-console.log(pgto1)
+const pgto1 = new Pagamento("João", 2689);
+// console.log(pgto1);

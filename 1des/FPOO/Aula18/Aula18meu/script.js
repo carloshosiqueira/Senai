@@ -46,21 +46,8 @@ class pessoa {
 
 }
 
-// function adicionar(){
-//     document.getElementById('nome').value
-//     document.getElementById('salario').value
-//     let nome
-//     let salario
-//     lista.push(new pessoa(nome, salario))
-// }
-
 const lista = [];
-lista.push(new pessoa('Carlos', 2900));
-lista.push(new pessoa('João', 2500));
-lista.push(new pessoa('Fernando', 4630));
-lista.push(new pessoa('Bruno', 1300));
-lista.push(new pessoa('Maria', 2000));
-lista.push(new pessoa('Joana', 2150));
+lista.push(new pessoa('Carlos',2000))
 
 console.table(lista)
 
@@ -71,3 +58,21 @@ lista.forEach(funcionario => {
     main.appendChild(card)
     console.log(pessoa)
 })
+
+const form = document.getElementById("novaPessoa");
+const corpo = document.getElementById("dados");
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    let Pessoa = new pessoa(form.nome.value,form.salario.value);
+    lista.push(Pessoa);
+    form.reset();
+    atualizaTabela();
+});
+
+function atualizaTabela() {
+    corpo.innerHTML = "";
+    lista.forEach((pessoa) => {
+        corpo.innerHTML += pessoa.showHTML();
+    });
+}
