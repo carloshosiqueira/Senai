@@ -15,11 +15,16 @@ body{
     text-align: center;
 }
 
-.model{
+/* .model{
     display:none;
-}
+} */
 
 #excluir{
     align-self: right;
     margin:0;
+}
+
+.botoes{
+    display: flex;
+    justify-content: space-between;
 }

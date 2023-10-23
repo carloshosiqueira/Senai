@@ -10,7 +10,8 @@ formPessoa.addEventListener('submit', (e) => {
 function criarCard(){
     const cards = document.querySelector('.cards');
     let card = document.querySelector('.card');
-    cards.innerHTML = '';
+    cards.innerHTML = ''
+    cards.appendChild(card)
     
     pessoas.forEach(pessoa => {
         let cardNew = card.cloneNode(true);
@@ -23,12 +24,7 @@ function criarCard(){
     })
 }
 
-   function apagarCard(){
-    document.querySelector('.card').remove()
-
-    
-//     var node = document.querySelector(".card");
-//     if (node.parentNode) {
-//   node.parentNode.removeChild(node);
-// }
+function deleteCard(e){
+    e.parentNode.remove();
+    pessoas.splice(e, 1);
 }
