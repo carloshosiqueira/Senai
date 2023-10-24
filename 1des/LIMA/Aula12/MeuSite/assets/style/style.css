@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header{
+    display: flex;
+    height: 15vh;
+    width: 95%;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 5px solid gray;
+}
+
+.cotacao{
+    display: flex;
+    width: 33%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.vermelho{
+    color:red;
+}
+
+.verde{
+    color:green;
+}
+
+.ciano{
+    color: cyan;
+}
+
+.logo{
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+.logo > img{
+    width: 20%;
+}
+
+.buscar{
+    width: 15%;
+    height: 30%;
+    background-color: gray;
+    display: flex;
+    border-radius:20px;
+    margin-left: 320px;
+    border:3px inset black;
+}
+
+.buscar > input{
+    border:none;
+    background-color: gray;
+    width: 100%;
+    border-radius:20px;
+}
+
+.buscar > input:focus{
+    outline:none
+}
+
+
+.buscar > img{
+    width: 15%;
+    padding:5px
+}
+
+main{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.reportagens{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.reportagens > div > img{
+    width: 35%;
+}
+
+.biden,.vacina,.india{
+    display: flex;
+    width: 80%;
+}
+
+.comentario{
+    margin:20px 0px 0px 70px;
+    width:400px
+}
+
+.comentario > p{
+    color:gray;
+    font-size: 12px;
+}
+
+.emalta{
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    height: 450px;
+}
+
+.emalta > p{
+    border-bottom:1px solid gray;
+}
+
+.emalta > .centralizado{
+    text-align: left;
+    margin:0px 20px;
+    padding:20px;
+}
