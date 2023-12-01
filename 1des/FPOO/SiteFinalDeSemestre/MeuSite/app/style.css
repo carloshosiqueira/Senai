@@ -1,0 +1,295 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.ocultar{
+    display: none;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    background: #eee;
+}
+
+header{
+    background: #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: fit-content;
+    width: 100%;
+    padding: 0 0 10px 0;
+}
+
+header .principal{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+
+header .principal h1{
+    font-size: 2rem;
+    color: white;
+}
+
+header div img{
+    width: 175px;
+    height: 100px;;
+}
+
+header .principal .logo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 45%;
+    height: 10vh;
+}
+
+header .principal .botoes{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+}
+
+header .principal .botoes button{
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+    border:none;
+    border-radius: 10%;
+    margin: 0 10px;
+    color:white;
+    font-size:18px;
+}
+
+.salvar,.login{
+    background: rgba(0,0,255,0.4);
+}
+
+.salvar:hover,.login:hover{
+    background: lightblue
+}
+
+.sair{
+    background: gray;
+}
+
+.sair:hover{
+    background:rgba(255,0,0,0.6)
+}
+
+header .logado{
+    width: 85%;
+    height:fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nome{
+    font-size: 1.75rem;
+    color:white
+}
+
+.botoes2{
+    width: 30%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botoes2 button{
+    width: 150px;
+    height: 40px;
+    border-radius: 10%;
+    border:none;
+    background: rgba(80, 130, 0, 1);
+    margin: 0 10px;
+    color:white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.addItens:hover, .listVendas:hover{
+    background:rgba(80, 130, 0, 0.6) ;
+}
+
+.servicos{
+    display: flex;
+    justify-content: space-between;
+    padding:10px;
+}
+
+.filtros{
+    
+    width: 14%;
+    height: fit-content;
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+    border:1px solid black
+}
+
+.filtros p{
+    font-size: 2rem;
+}
+
+.filtros div{
+    margin:5px 0 5px 0;
+}
+
+.filtros input[type="submit"]{
+    width: 50%;
+    height: 40px;
+    background:rgba(0,255,0,1);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    align-self: flex-end;
+    color:white;
+    font-size: 18px;
+}
+
+.filtros input[type="submit"]:hover{
+    background:rgba(0,255,0,0.5);
+}
+
+.produtos{
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* justify-content: space-evenly; */
+    border:1px solid blue;
+}
+
+.modelo0{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 500px;
+    width: 275px;
+    border:1px solid black;
+    justify-content: space-between;
+    padding:10px;
+    margin:10px;
+}
+
+.modelo0 .tipo{
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    height: 75px;
+    width: 100%;
+}
+
+.modelo0 img{
+    width: 250px;
+    height: 250px;
+}
+
+.btn-produto{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top:0.5px solid gray
+}
+
+.btn-produto button{
+    margin:10px 0 0 0;
+    width: 100%;
+    height: 40px;
+    border:none;
+    border-radius:10px;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+}
+
+.excluir{
+    background: red;
+}
+
+.excluir:hover{
+    background: rgba(255,0,0,0.7);
+}
+
+.vender{
+    background: blue;
+}
+
+.vender:hover{
+    background:rgba(0,0,200,0.7)
+}
+
+.modelo0 .preco{
+    font-size: 1.5rem;    
+}
+
+@media(max-width:1250px){
+    header .principal .logo{
+        width: 60%;
+    }
+}
+
+@media(max-width:1100px){
+    header .principal .botoes button{
+        font-size:14px;
+    }
+
+    .botoes2 button{
+        font-size: 14px;
+    }
+
+    .filtros{
+        width: 20%;
+    }
+
+    .produtos{
+        width: 79%;
+    }
+
+    .filtros input[type="submit"]{
+        font-size: 14px;
+    }
+}
+
+@media(max-width:930px){
+    header .principal h1{
+        font-size: 1.75rem;
+    }
+
+    .botoes2{
+        width: 35%  
+    }
+
+    .nome{
+        font-size: 1.25rem;
+    }
+
+
+}
+
+@media(max-width:860px){
+    header .principal .logo{
+        width: 80%;
+        justify-content: space-evenly;
+    }
+}
+
+@media(max-width:770px){
+    .filtros{
+        width: 25%;
+    }
+
+    .produtos{
+        width: 70%;
+    }
+}
