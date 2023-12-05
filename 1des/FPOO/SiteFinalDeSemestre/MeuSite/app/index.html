@@ -17,17 +17,17 @@
                 <h1>Já vai Manutenções</h1>
             </div>
             <div class="botoes">
-                <input type="file" accept=".json" class="ocultar">
-                <button class="login ocultar">Login</button>
-                <button class="sair  ">Sair</button>
-                <button class="salvar ">Salvar</button>
+                <input type="file" id="abrir" accept=".json">
+                <button class="login ocultar" id="login">Login</button>
+                <button class="sair ocultar" id="sair">Sair</button>
+                <button class="salvar ocultar" id="salvar">Salvar</button>
             </div>
         </div>
-        <div class="logado">
+        <div class="logado ocultar">
             <h3 id="nome" class="nome ">Usuário(a): Ana Souza Silva</h3>
             <div class="botoes2">
-                <button class="addItens ">Adicionar Itens</button>
-                <button class="listVendas">Listar Vendas</button>
+                <button id="item" class="addItens">Adicionar Itens</button>
+                <button class="listVendas ">Listar Vendas</button>
             </div>
         </div>
     </header>
@@ -46,76 +46,20 @@
                 </div>
                 <input type="submit" value="Aplicar">
             </div>
-            <div class="produtos" id="produtos">
-                <div class="modelo0">
+            <div class="produtos" id="container" >
+                <div class="modelo0" id="model0">
                     <div class="tipo">
-                        <h4>Encanador</h4>
+                        <h4 class="titulo">Encanador</h4>
                         <p class="descricao">Enviaremos um encanador capacitado para arrumar quaisquer problemas
                             relacionados à profissão</p>
                     </div>
                     <img src="../assets/encanador.webp" alt="imagem do serviço">
                     <div class="btn-produto">
-                        <button class="vender">Vender</button>
-                        <button class="excluir">Excluir</button>
+                        <button class="btn vender">Vender</button>
+                        <button class="btn excluir">Excluir</button>
                     </div>
-                    <button class="ocultar">Agendar</button>
                     <p class="preco">A negociar</p>
                 </div>
-                <div class="modelo0">
-                    <div class="tipo">
-                        <h4>Faxineira</h4>
-                        <p class="descricao">Enviaremos uma faxineira para realizar a limpeza do que deseja</p>
-                    </div>
-                    <img src="../assets/faxineira.jpg" alt="imagem do serviço">
-                    <div class="btn-produto">
-                        <button class="vender">Vender</button>
-                        <button class="excluir">Excluir</button>
-                    </div>
-                    <button class="ocultar">Agendar</button>
-                    <p class="preco">R$ <span>29,99</span></p>
-                </div>
-                <div class="modelo0">
-                    <div class="tipo">
-                        <h4>Pedreiro</h4>
-                        <p class="descricao">Enviaremos um pedreiro para realizar qualquer reforma que deseja fazer</p>
-                    </div>
-                    <img src="../assets/pedreiro.webp" alt="imagem do serviço">
-                    <div class="btn-produto">
-                        <button class="vender">Vender</button>
-                        <button class="excluir">Excluir</button>
-                    </div>
-                    <button class="ocultar">Agendar</button>
-                    <p class="preco">R$ <span>29,99</span></p>
-                </div>
-                <div class="modelo0">
-                    <div class="tipo">
-                        <h4>Babá</h4>
-                        <p class="descricao">Enviaremos uma babá para cuidar da sua criança enquanto você está fora de casa</p>
-                    </div>
-                    <img src="../assets/baba.webp" alt="imagem do serviço">
-                    <div class="btn-produto">
-                        <button class="vender">Vender</button>
-                        <button class="excluir">Excluir</button>
-                    </div>
-                    <button class="ocultar">Agendar</button>
-                    <p class="preco">R$ <span>29,99</span></p>
-                </div>
-                <div class="modelo0">
-                    <div class="tipo">
-                        <h4>Encanador</h4>
-                        <p class="descricao">Enviaremos um encanador capacitado para arrumar quaisquer problemas
-                            relacionados à profissão</p>
-                    </div>
-                    <img src="../assets/encanador.webp" alt="imagem do serviço">
-                    <div class="btn-produto">
-                        <button class="vender">Vender</button>
-                        <button class="excluir">Excluir</button>
-                    </div>
-                    <button class="ocultar">Agendar</button>
-                    <p class="preco">A negociar</p>
-                </div>
-                
-
             </div>
         </section>
     </main>
@@ -123,6 +67,5 @@
 
     </footer>
 </body>
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </html>
