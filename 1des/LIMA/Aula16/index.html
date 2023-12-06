@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal e Cards</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Exemplo de Modal e Cards</h1>
+        <button id="novo" onclick="modalNovo.classList.remove('oculto')">Novo</button>
+    </header>
+    <main class="container">
+
+    </main>
+    <footer></footer>
+
+    <!-- Modal para criar um novo card -->
+    <div class="overlay-modal oculto" id="modalNovo">
+        <div class="modal">
+            <h1>Novo Card</h1>
+            <form id="formNovo">
+                <input type="text" name="titulo" placeholder="Titulo" required>
+                <textarea name="descricao" placeholder="Descrição" required></textarea>
+                <button onclick="modalNovo.classList.add('oculto')">Cancelar</button>
+                <button type="submit">Criar</button>
+            </form>
+        </div>
+    </div>
+</body>
+    <script src="script.js"></script>
+</html>
