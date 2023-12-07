@@ -30,10 +30,6 @@ header {
     width: 80%;
 }
 
-/* header .oculto{
-    display: none;
-} */
-
 header .principal h1 {
     font-size: 2rem;
     color: white;
@@ -139,50 +135,16 @@ main {
 .servicos {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 10px;
-}
-
-.filtros {
-    width: 14%;
-    height: fit-content;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    background-color: whitesmoke;
-    border-radius: 5px;
-}
-
-.filtros p {
-    font-size: 2rem;
-}
-
-.filtros div {
-    margin: 5px 0 5px 0;
-}
-
-.filtros input[type="submit"] {
-    width: 50%;
-    height: 40px;
-    background: rgba(0, 255, 0, 1);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    align-self: flex-end;
-    color: white;
-    font-size: 18px;
-}
-
-.filtros input[type="submit"]:hover {
-    background: rgba(0, 255, 0, 0.5);
 }
 
 .produtos {
-    width: 85%;
+    width: 75%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    border:1px solid black;
 }
 
 .modelo0 {
@@ -252,9 +214,84 @@ main {
     font-size: 1.5rem;
 }
 
+.overlay-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s ease-in-out;
+    backdrop-filter: blur(5px);
+}
+
+.modalLogin{
+    min-width: 30vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,.5);
+    padding: 10px;
+}
+
+.modalLogin form{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalLogin form input{
+    border:none;
+    background-color: silver;
+    border-radius: 10px;
+    padding:10px;
+    height: 50px;
+    margin:10px 0;
+}
+
+.modalLoginBtn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.modalLoginBtn button{
+    width: 40%;
+    height: 40px;
+    border-radius: 20px;
+    border:none;
+    cursor: pointer;
+}
+
+.entrarLogin{
+    background-color: rgba(83, 202, 97, 1);
+    font-size: 20px;
+}
+
+.entrarLogin:hover{
+    background-color: rgba(83, 202, 97, 0.7)
+}
+
+.cancelarLogin{
+    background-color: red;
+    font-size: 20px;
+}
+
+.cancelarLogin:hover{
+    background-color: rgba(255, 0, 0, 0.7);
+}
+
 .ocultar {
     display: none;
 }
+
+
 
 @media(max-width:1250px) {
     header .principal .logo {
@@ -271,16 +308,8 @@ main {
         font-size: 14px;
     }
 
-    .filtros {
-        width: 20%;
-    }
-
     .produtos {
         width: 79%;
-    }
-
-    .filtros input[type="submit"] {
-        font-size: 14px;
     }
 }
 
@@ -311,10 +340,6 @@ main {
 }
 
 @media(max-width:770px) {
-    .filtros {
-        width: 25%;
-    }
-
     .produtos {
         width: 70%;
     }
@@ -385,10 +410,6 @@ main {
     .servicos{
         flex-direction: column;
         align-items: center;
-    }
-
-    .filtros{
-        width: 50%;
     }
 
     .produtos{

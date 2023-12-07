@@ -33,32 +33,19 @@
     </header>
     <main>
         <section class="servicos">
-            <div class="filtros">
-                <p>Filtros</p>
-                <div>
-                    <input type="radio" value="todos" name="filtro" checked><label> Todos</label>
-                </div>
-                <div>
-                    <input type="radio" value="marido" name="filtro"><label> Marido</label>
-                </div>
-                <div>
-                    <input type="radio" value="esposa" name="filtro"><label> Esposa</label>
-                </div>
-                <input type="submit" value="Aplicar">
-            </div>
-            <div class="produtos" id="container" >
+            <div class="produtos">
                 <div class="modelo0" id="model0">
                     <div class="tipo">
-                        <h4 class="titulo">Encanador</h4>
+                        <h4 class="tituloCard">Encanador</h4>
                         <p class="descricao">Enviaremos um encanador capacitado para arrumar quaisquer problemas
                             relacionados à profissão</p>
                     </div>
-                    <img src="../assets/encanador.webp" alt="imagem do serviço">
+                    <img src="../assets/encanador.webp" alt="imagem do serviço" class="img">
                     <div class="btn-produto">
-                        <button class="btn vender">Vender</button>
-                        <button class="btn excluir">Excluir</button>
+                        <button class="vender">Vender</button>
+                        <button class="excluir">Excluir</button>
                     </div>
-                    <p class="preco">A negociar</p>
+                    <p class="preco">Preço: Negociável</p>
                 </div>
             </div>
         </section>
@@ -66,6 +53,38 @@
     <footer>
 
     </footer>
+
+
+    <!--Modal para criar um novo card-->
+    <div class="overlay-modal ocultar" id="modalNovo">
+        <div class="modalCard">
+            <h2>Novo Serviço</h2>
+            <form id="formNovo">
+                <input type="text" name="tituloCard" placeholder="Título" required>
+                <textarea name="descricao" placeholder="Descrição" required></textarea>
+                <textarea name="img" placeholder="Coloque o link da imagem do serviço"></textarea>
+                <button type="button" onclick="modalNovo.classList.add('ocultar')">Cancelar</button>
+                <button type="submit">Criar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de login -->
+    <div class="overlay-modal" id="modalLogin">
+        <div class="modalLogin">
+            <h2>Login</h2>
+            <form id="formLogin">
+                <input type="text" name="user" placeholder="Usuário ou Email">
+                <input type="password" name="password" placeholder="Senha">
+                <div class="modalLoginBtn">
+                    <button type="button" class="cancelarLogin" onclick="modalLogin.classList.add('ocultar')">Cancelar</button>
+                    <button type="submit"class="entrarLogin">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </body>
-    <script src="script.js"></script>
+<script src="script.js"></script>
+
 </html>
