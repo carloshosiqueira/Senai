@@ -228,7 +228,8 @@ main {
     backdrop-filter: blur(5px);
 }
 
-.modalLogin{
+/* Modal de login */
+.modalLogin, .modalCard, .modalVenda{
     min-width: 30vw;
     display: flex;
     flex-direction: column;
@@ -254,14 +255,14 @@ main {
     margin:10px 0;
 }
 
-.modalLoginBtn{
+.modalLoginBtn, .modalCardBtn,.modalVendaBtn{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.modalLoginBtn button{
+.modalLoginBtn button, .modalCardBtn button,.modalVenda button{
     width: 40%;
     height: 40px;
     border-radius: 20px;
@@ -269,24 +270,63 @@ main {
     cursor: pointer;
 }
 
-.entrarLogin{
+.entrarLogin, .criarNovo,.concluirVenda{
     background-color: rgba(83, 202, 97, 1);
     font-size: 20px;
 }
 
-.entrarLogin:hover{
+.entrarLogin:hover,.criarNovo:hover,.concluirVenda:hover{
     background-color: rgba(83, 202, 97, 0.7)
 }
 
-.cancelarLogin{
+.cancelarLogin, .cancelarNovo,.cancelarVenda{
     background-color: red;
     font-size: 20px;
 }
 
-.cancelarLogin:hover{
+.cancelarLogin:hover, .cancelarNovo:hover,.cancelarVenda:hover{
     background-color: rgba(255, 0, 0, 0.7);
 }
 
+/* Modal de novo serviço */
+.modalCard form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.modalCard form input{
+    margin: 10px 0;
+    border:none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: silver;
+}
+
+.modalCard form textarea{
+    padding:10px;
+    margin:10px 0   ;
+    border:none;
+    border-radius: 10px;
+    background-color: silver;
+}
+
+/* Modal de criação de venda */
+.modalVenda form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.modalVenda form input{
+    padding:10px;
+    margin:10px 0;
+    border:none;
+    border-radius: 10px;
+    background-color: silver;
+}
+
+/* Classe para a ocultação de coisas */
 .ocultar {
     display: none;
 }

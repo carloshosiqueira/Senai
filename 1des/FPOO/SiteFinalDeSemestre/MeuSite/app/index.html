@@ -18,15 +18,15 @@
             </div>
             <div class="botoes">
                 <input type="file" id="abrir" accept=".json">
-                <button class="login ocultar" id="login">Login</button>
-                <button class="sair ocultar" id="sair">Sair</button>
+                <button class="login ocultar" id="login" onclick="modalLogin.classList.remove('ocultar')">Login</button>
+                <button class="sair ocultar" id="sair" onclick="logout()">Sair</button>
                 <button class="salvar ocultar" id="salvar">Salvar</button>
             </div>
         </div>
-        <div class="logado ocultar">
+        <div class="logado ocultar" id="logado">
             <h3 id="nome" class="nome ">Usuário(a): Ana Souza Silva</h3>
             <div class="botoes2">
-                <button id="item" class="addItens">Adicionar Itens</button>
+                <button id="item" class="addItens" onclick="modalNovo.classList.remove('ocultar')">Adicionar Itens</button>
                 <button class="listVendas ">Listar Vendas</button>
             </div>
         </div>
@@ -42,8 +42,8 @@
                     </div>
                     <img src="../assets/encanador.webp" alt="imagem do serviço" class="img">
                     <div class="btn-produto">
-                        <button class="vender">Vender</button>
-                        <button class="excluir">Excluir</button>
+                        <button class="vender " id="btnVender">Vender</button>
+                        <button class="excluir" id="btnExcluir" onclick="excluirItem()">Excluir</button>
                     </div>
                     <p class="preco">Preço: Negociável</p>
                 </div>
@@ -63,22 +63,45 @@
                 <input type="text" name="tituloCard" placeholder="Título" required>
                 <textarea name="descricao" placeholder="Descrição" required></textarea>
                 <textarea name="img" placeholder="Coloque o link da imagem do serviço"></textarea>
-                <button type="button" onclick="modalNovo.classList.add('ocultar')">Cancelar</button>
-                <button type="submit">Criar</button>
+                <div class="modalCardBtn">
+                    <button type="button" onclick="modalNovo.classList.add('ocultar')" class="cancelarNovo">Cancelar</button>
+                    <button type="submit" class="criarNovo">Criar</button>
+                </div>
             </form>
         </div>
     </div>
 
     <!-- Modal de login -->
-    <div class="overlay-modal" id="modalLogin">
+    <div class="overlay-modal ocultar" id="modalLogin">
         <div class="modalLogin">
             <h2>Login</h2>
             <form id="formLogin">
-                <input type="text" name="user" placeholder="Usuário ou Email">
-                <input type="password" name="password" placeholder="Senha">
+                <input type="text" name="email" placeholder="Email" required>
+                <input type="password" name="senha" placeholder="Senha" required>
                 <div class="modalLoginBtn">
-                    <button type="button" class="cancelarLogin" onclick="modalLogin.classList.add('ocultar')">Cancelar</button>
-                    <button type="submit"class="entrarLogin">Entrar</button>
+                    <button type="button" class="cancelarLogin"
+                        onclick="modalLogin.classList.add('ocultar')">Cancelar</button>
+                    <button type="submit" class="entrarLogin">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Venda -->
+    <div class="overlay-modal ocultar" id="modalVenda">
+        <div class="modalVenda">
+            <h2>Registrar Venda</h2>
+            <form id="formVenda">
+                <label>Quantidade:</label>
+                <input type="number" placeholder="Quantidade" name="quantidade" min="0" required>
+                <label>Preço R$:</label>
+                <input type="number" placeholder="Preço (R$)" name="preco" step="0.1" min="0" required>
+                <label>Total:</label>
+                <input type="number" placeholder="Total" name="total" disabled>
+                <div class="modalVendaBtn">
+                    <button type="button" class="cancelarVenda"
+                        onclick="modalVenda.classList.add('ocultar')">Cancelar</button>
+                    <button type="submit" class="concluirVenda">Concluir Venda</button>
                 </div>
             </form>
         </div>

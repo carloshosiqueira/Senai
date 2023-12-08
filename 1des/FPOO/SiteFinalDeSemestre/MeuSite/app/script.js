@@ -8,8 +8,14 @@ const nome = document.getElementById("nome");
 const item = document.getElementById("item");
 const container = document.querySelector(".produtos");
 const formLogin = document.getElementById("formLogin");
-const formVender = document.getElementById("formVender");
+const formVenda = document.getElementById("formVenda");
 const formItem = document.getElementById("formItem");
+const formNovo = document.getElementById("formNovo");
+const modalLogin = document.getElementById("modalLogin");
+const modalNovo = document.getElementById("modalNovo");
+const modalVenda = document.getElementById("modalVenda");
+const btnVender = document.querySelector('#btnVender');
+const btnExcluir = document.querySelector('#btnExcluir');
 
 
 var dados = {
@@ -84,87 +90,100 @@ function preencherCards() {
     document.getElementById('model0').remove();
 }
 
+//Entrar no sistema
+formLogin.addEventListener('submit', e => {
+    e.preventDefault();
+    let encontrado = false;
+    dados.usuarios.forEach(user => {
+        if (user.email == formLogin.email.value && user.senha == formLogin.senha.value) {
+            usuario = user;
+            login.classList.add("ocultar");
+            salvar.classList.remove("ocultar");
+            sair.classList.remove("ocultar");
+            formLogin.email.value = "";
+            formLogin.senha.value = "";
+            if (usuario.tipo == "admin") {
+                item.classList.remove("ocultar");
+                modalLogin.classList.add("ocultar");
+                btnVender.classList.remove("ocultar");
+                btnExcluir.classList.remove("ocultar");
+            }else{
+                item.classList.remove("ocultar");
+                modalLogin.classList.add("ocultar");
+                btnExcluir.classList.add("ocultar");
+                btnVender.classList.remove("ocultar");
+            }
 
-// Função de excluir os cards
-// function excluirCard(indice) {
-//     if (confirm(`Confirma a exclusão do card ${indice}?`)) {
-//         cards.splice(indice, 1);
-//         criarCrards();
-//         toast(`Card ${indice} excluído com sucesso!`);
-//     }
+            preencherCards();
+            bemVindo();
+            encontrado = true;
+        }
+    })
+    if (!encontrado) {
+        alert('Login ou senha inválidos!');
+        formLogin.senha.value = ""
+    }
+})
+
+// Mensagem de bem vindo ao usario no header da tela
+function bemVindo() {
+    if (usuario.email == undefined) logado.classList.add("ocultar");
+    else {
+        nome.innerHTML = `Usuário(a): ${usuario.nome}`;
+        logado.classList.remove("ocultar");
+    }
+}
+
+// Sair da conta
+function logout() {
+    usuario = {};
+    login.classList.remove("ocultar");
+    salvar.classList.add("ocultar");
+    item.classList.add("ocultar");
+    sair.classList.add("ocultar");
+    preencherCards();
+    bemVindo();
+}
+
+//Abrir o modal de venda
+
+btnVender.addEventListener("click", e =>{
+    e.preventDefault();
+    modalVenda.classList.remove("ocultar");
+})
+
+
+
+// cRud - READ
+// function preencherTotal(indice){
+//     formVenda.id.value = dados.itens[indice].id;
+//     formVenda.preco.value = dados.itens[indice].preco;
+//     let quantidade = parseInt(formVenda.quantidade.value);
+//     let preco = parseFloat(formVenda.preco.value);
+//     formVenda.total.value = (quantidade * preco).toFixed(2);
 // }
 
-
-//Entrar no sistema
- formLogin.addEventListener('submit', e => {
-     e.preventDefault();
-     let encontrado = false;
-     dados.usuarios.forEach(user => {
-         if (user.email == formLogin.email.value && user.senha == formLogin.senha.value) {
-             usuario = user;
-             login.classList.add("ocultar");
-             salvar.classList.remove("ocultar");
-             sair.classList.remove("ocultar");
-             if (usuario.tipo == "admin") item.classList.remove("ocultar");
-             $('#modalLogin').modal('hide');
-             preencherCards();
-             bemVindo();
-             encontrado = true;
-         }
-     })
-     if (!encontrado) alert('Login ou senha inválidos!');
+ formVenda.addEventListener("change", () => {
+     let quantidade = parseInt(formVenda.quantidade.value);
+     let preco = parseFloat(formVenda.preco.value);
+     formVenda.total.value = (quantidade * preco).toFixed(2);
  })
 
-// //Mensagem de bem vindo ao usario no header da tela
-// function bemVindo(){
-//     if (usuario.email == undefined) logado.classList.add("ocultar");
-//     else {
-//         nome.innerHTML = `Usuário(a): ${usuario.nome}`;
-//         logado.classList.remove("ocultar");
-//     }
-// }
-
-// //Sair da conta
-// function logout(){
-//     usuario = {};
-//     login.classList.remove("ocultar");
-//     salvar.classList.add("oculto");
-//     item.classList.add("oculto");
-//     sair.classList.add("oculto");
-//     preencherCards();
-//     bemVindo();
-// }
-
-// //cRud - READ
-// function preencherTotal(indice){
-//     formVender.id.value = dados.itens[indice].id;
-//     formVender.preco.value = dados.itens[indice].preco;
-//     let quantidade = parseInt(formVender.quantidade.value);
-//     let preco = parseFloat(formVender.preco.value);
-//     formVender.total.value = (quantidade * preco).toFixed(2);
-// }
-
-// formVender.addEventListener("change", () => {
-//     let quantidade = parseInt(formVender.quantidade.value);
-//     let preco = parseFloat(formVender.preco.value);
-//     formVender.total.value = (quantidade * preco).toFixed(2);
-// })
-
-// //Crud - CREATE venda
-// formVender.addEventListener("submit", e => {
-//     e.preventDefault();
-//     const venda = {
-//         id: dados.vendas[dados.vendas.lenght - 1].id + 1,
-//         data: (new Date()).toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"}),
-//         usuario: usuario.id,
-//         item: parseInt(formVender.id.value),
-//         quantidade: parseInt(formVender.quantidade.value),
-//         valorUnitario: parseFloat(formVender.preco.value),
-//     }
-//     dados.vendas.push(venda);
-//     $('#modalVender').modal('hide');
-//     alert("Venda registrada com sucesso, não se esqueça de salvar os dados.");
-// })
+// Crud - CREATE venda
+ formVenda.addEventListener("submit", e => {
+     e.preventDefault();
+     const venda = {
+         id: dados.vendas[dados.vendas.lenght - 1].id + 1,
+         data: (new Date()).toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"}),
+         usuario: usuario.id,
+         item: parseInt(formVenda.id.value),
+         quantidade: parseInt(formVenda.quantidade.value),
+         valorUnitario: parseFloat(formVenda.preco.value),
+     }
+     dados.vendas.push(venda);
+     modalVenda.classlist.add('ocultar')
+     alert("Venda registrada com sucesso, não se esqueça de salvar os dados.");
+ })
 
 // //cRud - READALL Vendas
 // function preencherVendas() {
@@ -195,30 +214,29 @@ function preencherCards() {
 //     vendas.appendChild(document.createElement('tr')).innerHTML = `<td colspan="5">Total</td><td><h4>R$ ${total.toFixed(2)}</h4></td>`;
 // }
 
-// //Crud - CREATE Item
-// formItem.addEventListener("submit", e => {
-//     e.preventDefault();
-//     const item = {
-//         id: dados.itens[dados.itens.length - 1].id + 1,
-//         nome: formItem.nome.value,
-//         descricao: formItem.descricao.value,
-//         tipo: formItem.tipo.value,
-//         preco: parseFloat(formItem.preco.value),
-//         img: formItem.img.value,
-//     }
-//     dados.itens.push(item);
-//     $('#modalItem').modal('hide');
-//     alert("Ítem criado com sucesso, não se esqueça de salvar os dados.");
-//     preencherCards();
-// })
+// Crud - CREATE Item
+ formNovo.addEventListener("submit", e => {
+     e.preventDefault();
+     const item = {
+         id: dados.itens[dados.itens.length - 1].id + 1,
+         nome: formNovo.tituloCard.value,
+         descricao: formNovo.descricao.value,
+         preco: "Preço: Negociável",
+         img: formNovo.img.value
+     }
+     dados.itens.push(item);
+     modalNovo.classList.add("ocultar");
+     alert("Ítem criado com sucesso, não se esqueça de salvar os dados.");
+     preencherCards();
+ })
 
-// //CRUD - DELETE Item
-// function excluirItem(indice) {
-//     if (confirm("Deseja realmente excluir este item?")) {
-//         dados.itens.splice(indice, 1);
-//         preencherCards();
-//     }
-// }
+// CRUD - DELETE Item
+ function excluirItem(indice) {
+     if (confirm("Deseja realmente excluir este item?")) {
+         dados.itens.splice(indice, 1);
+         preencherCards();
+     }
+ }
 
 // //CRUD - DELETE Venda
 // function excluirVenda(id) {
@@ -246,60 +264,3 @@ function preencherCards() {
 //     });
 //     return nome;
 // }
-
-// //JavaScript pro modal
-//     const container = document.querySelector(".container");
-//     const novo = document.querySelector("#novo");
-//     const formNovo = document.querySelector("#formNovo");
-//     const formDetalhes = document.querySelector("#formDetalhes");
-
-//     var cards = [{
-//             titulo: "Card1",
-//             descricao: "Texto do Card de exemplo"
-//         },
-//         {
-//             titulo: "Card2",
-//             descricao: "Texto do Card de exemplo"
-//         },
-//     ];
-
-//     criarCrards();
-
-//     formNovo.addEventListener("submit", e => {
-//         e.preventDefault();
-//         cards.push({
-//             titulo: formNovo.titulo.value,
-//             descricao: formNovo.descricao.value
-//         });
-//         formNovo.titulo.value = '';
-//         formNovo.descricao.value = '';
-//         modalNovo.classList.add("oculto");
-//         criarCrards();
-//         toast(`Novo Card criado!`);
-//     });
-
-//     function detalhes(indice) {
-//         document.querySelector("#modalDetalhes").classList.remove("oculto");
-//         formDetalhes.indice.value = indice;
-//         formDetalhes.titulo.value = cards[indice].titulo;
-//         formDetalhes.descricao.value = cards[indice].descricao;
-//     }
-
-//     formDetalhes.addEventListener("submit", e => {
-//         e.preventDefault();
-//         cards[formDetalhes.indice.value] = {
-//             titulo: formDetalhes.titulo.value,
-//             descricao: formDetalhes.descricao.value
-//         }
-//         modalDetalhes.classList.add("oculto");
-//         criarCrards();
-//         toast(`Card atualizado com sucesso!`);
-//     });
-
-//     function excluir(indice) {
-//         if (confirm(`Confirma a exclusão do card ${indice}?`)) {
-//             cards.splice(indice, 1);
-//             criarCrards();
-//             toast(`Card ${indice} excluído com sucesso!`);
-//         }
-//     }
