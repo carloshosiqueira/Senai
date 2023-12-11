@@ -68,7 +68,7 @@ function preencherCards() {
                 <button class="vender">Vender</button>
                 <button class="excluir">Excluir</button>
             </div>
-                <p class="preco">A negociar</p>
+                <p class="preco">Preço</p>
             </div>`
     dados.itens.forEach((item, i) => {
         const model = document.getElementById("model0").cloneNode(true);
@@ -76,8 +76,8 @@ function preencherCards() {
         model.querySelector('.tituloCard').innerHTML = item.nome;
         model.querySelector('.descricao').innerHTML = item.descricao;
         model.querySelector('.img').src = item.img == "" ? "../assets/noimage.jpg" : item.img;
-        model.querySelector('.preco').innerHTML = `${(item.preco)}`;
-        model.querySelector('.vender').setAttribute("onclick", `preencherTotal(${i})`);
+        model.querySelector('.preco').innerHTML = `Minimo: R$ ${(item.preco).toFixed(2)}`;
+        model.querySelector('.vender').setAttribute("onclick", `preencherTotal(${i}),modalVenda.classList.remove('ocultar')`);
         model.querySelector('.excluir').setAttribute("onclick", `excluirItem(${i})`);
         if (usuario.email == undefined) {
             model.querySelector('.vender').classList.add("ocultar");
@@ -105,13 +105,13 @@ formLogin.addEventListener('submit', e => {
             if (usuario.tipo == "admin") {
                 item.classList.remove("ocultar");
                 modalLogin.classList.add("ocultar");
-                btnVender.classList.remove("ocultar");
-                btnExcluir.classList.remove("ocultar");
-            }else{
+                // btnVender.classList.remove("ocultar"); Não está ocultando os botoes
+                // btnExcluir.classList.remove("ocultar");
+            } else {
                 item.classList.remove("ocultar");
                 modalLogin.classList.add("ocultar");
-                btnExcluir.classList.add("ocultar");
-                btnVender.classList.remove("ocultar");
+                // btnExcluir.classList.add("ocultar"); 
+                // btnVender.classList.remove("ocultar");
             }
 
             preencherCards();
@@ -145,98 +145,98 @@ function logout() {
     bemVindo();
 }
 
-//Abrir o modal de venda
+// //Abrir o modal de venda (Não está funcionando)
 
-btnVender.addEventListener("click", e =>{
-    e.preventDefault();
-    modalVenda.classList.remove("ocultar");
-})
+// btnVender.addEventListener("click", e =>{
+//     e.preventDefault();
+//     modalVenda.classList.remove("ocultar");
+// })
 
 
 
 // cRud - READ
-// function preencherTotal(indice){
-//     formVenda.id.value = dados.itens[indice].id;
-//     formVenda.preco.value = dados.itens[indice].preco;
-//     let quantidade = parseInt(formVenda.quantidade.value);
-//     let preco = parseFloat(formVenda.preco.value);
-//     formVenda.total.value = (quantidade * preco).toFixed(2);
-// }
+function preencherTotal(indice) {
+    formVenda.id.value = dados.itens[indice].id;
+    formVenda.preco.value = dados.itens[indice].preco;
+    let quantidade = parseInt(formVenda.quantidade.value);
+    let preco = parseFloat(formVenda.preco.value);
+    formVenda.total.value = (quantidade * preco).toFixed(2);
+}
 
- formVenda.addEventListener("change", () => {
-     let quantidade = parseInt(formVenda.quantidade.value);
-     let preco = parseFloat(formVenda.preco.value);
-     formVenda.total.value = (quantidade * preco).toFixed(2);
- })
+formVenda.addEventListener("change", () => {
+    let quantidade = parseInt(formVenda.quantidade.value);
+    let preco = parseFloat(formVenda.preco.value);
+    formVenda.total.value = (quantidade * preco).toFixed(2);
+})
 
 // Crud - CREATE venda
- formVenda.addEventListener("submit", e => {
-     e.preventDefault();
-     const venda = {
-         id: dados.vendas[dados.vendas.lenght - 1].id + 1,
-         data: (new Date()).toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"}),
-         usuario: usuario.id,
-         item: parseInt(formVenda.id.value),
-         quantidade: parseInt(formVenda.quantidade.value),
-         valorUnitario: parseFloat(formVenda.preco.value),
-     }
-     dados.vendas.push(venda);
-     modalVenda.classlist.add('ocultar')
-     alert("Venda registrada com sucesso, não se esqueça de salvar os dados.");
- })
+formVenda.addEventListener("submit", e => {
+    e.preventDefault();
+    const venda = {
+        id: dados.vendas[dados.vendas.length - 1].id + 1,
+        data: (new Date()).toISOString(),
+        usuario: usuario.id,
+        item: parseInt(formVenda.id.value),
+        quantidade: parseInt(formVenda.quantidade.value),
+        valorUnitario: parseFloat(formVenda.preco.value),
+    }
+    dados.vendas.push(venda);
+    modalVenda.classList.add("ocultar")
+    alert("Venda registrada com sucesso, não se esqueça de salvar os dados.");
+})
 
-// //cRud - READALL Vendas
-// function preencherVendas() {
-//     vendas.innerHTML = "";
-//     //Listar vendas de hoje
-//     const hoje = new Date().toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"});
-//     const dia = hoje.getDate()
-//     const mes = mes.getMonth()
-//     const ano = ano.getFullYear()
-//     const data = `${ano}-${mes < 10 ? "0" + mes : mes}-${dia < 10 ? "0" + dia : dia}`;
-//     let total = 0;
-//     dados.vendas.forEach(venda => {
-//         if (venda.data.slice(0,10) == data){
-//             const linha = document.createElement('tr');
-//             const data_e_hora = `${venda.data.slice(0, 16)}`;
-//             linha.innerHTML = `
-//             <td><input type="datetime-local" value="${data_e_hora}" disabled/></td>
-//             <td>${getNomeUsuario(venda.usuario)}</td>
-//             <td>${getNomeItem(venda.item)}</td>
-//             <td>${venda.quantidade}</td>
-//             <td>${venda.valorUnitario}</td>
-//             <td>${venda.quantidade * venda.valorUnitario}</td>
-//             ${usuario.tipo == "admin" ? "<td><button class='excluir' onclick='excluirVenda(" + venda.id + ")'>-</button></td>" : ""}`;
-//             vendas.appendChild(linha);
-//             total += venda.quantidade * venda.valorUnitario;
-//         }
-//     })
-//     vendas.appendChild(document.createElement('tr')).innerHTML = `<td colspan="5">Total</td><td><h4>R$ ${total.toFixed(2)}</h4></td>`;
-// }
+// cRud - READALL Vendas
+function preencherVendas() {
+    vendas.innerHTML = "";
+    //Listar vendas de hoje
+    const hoje = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+    const dia = hoje.getDate()
+    const mes = mes.getMonth()
+    const ano = ano.getFullYear()
+    const data = `${ano}-${mes < 10 ? "0" + mes : mes}-${dia < 10 ? "0" + dia : dia}`;
+    let total = 0;
+    dados.vendas.forEach(venda => {
+        if (venda.data.slice(0, 10) == data) {
+            const linha = document.createElement('tr');
+            const data_e_hora = `${venda.data.slice(0, 16)}`;
+            linha.innerHTML = `
+             <td><input type="datetime-local" value="${data_e_hora}" disabled/></td>
+             <td>${getNomeUsuario(venda.usuario)}</td>
+             <td>${getNomeItem(venda.item)}</td>
+             <td>${venda.quantidade}</td>
+             <td>${venda.valorUnitario}</td>
+             <td>${venda.quantidade * venda.valorUnitario}</td>
+             ${usuario.tipo == "admin" ? "<td><button class='excluir' onclick='excluirVenda(" + venda.id + ")'>-</button></td>" : ""}`;
+            vendas.appendChild(linha);
+            total += venda.quantidade * venda.valorUnitario;
+        }
+    })
+    vendas.appendChild(document.createElement('tr')).innerHTML = `<td colspan="5">Total</td><td><h4>R$ ${total.toFixed(2)}</h4></td>`;
+}
 
 // Crud - CREATE Item
- formNovo.addEventListener("submit", e => {
-     e.preventDefault();
-     const item = {
-         id: dados.itens[dados.itens.length - 1].id + 1,
-         nome: formNovo.tituloCard.value,
-         descricao: formNovo.descricao.value,
-         preco: "Preço: Negociável",
-         img: formNovo.img.value
-     }
-     dados.itens.push(item);
-     modalNovo.classList.add("ocultar");
-     alert("Ítem criado com sucesso, não se esqueça de salvar os dados.");
-     preencherCards();
- })
+formNovo.addEventListener("submit", e => {
+    e.preventDefault();
+    const item = {
+        id: dados.itens[dados.itens.length - 1].id + 1,
+        nome: formNovo.tituloCard.value,
+        descricao: formNovo.descricao.value,
+        preco: parseFloat(formNovo.preco.value),
+        img: formNovo.img.value
+    }
+    dados.itens.push(item);
+    modalNovo.classList.add("ocultar");
+    alert("Ítem criado com sucesso, não se esqueça de salvar os dados.");
+    preencherCards();
+})
 
 // CRUD - DELETE Item
- function excluirItem(indice) {
-     if (confirm("Deseja realmente excluir este item?")) {
-         dados.itens.splice(indice, 1);
-         preencherCards();
-     }
- }
+function excluirItem(indice) {
+    if (confirm("Deseja realmente excluir este item?")) {
+        dados.itens.splice(indice, 1);
+        preencherCards();
+    }
+}
 
 // //CRUD - DELETE Venda
 // function excluirVenda(id) {

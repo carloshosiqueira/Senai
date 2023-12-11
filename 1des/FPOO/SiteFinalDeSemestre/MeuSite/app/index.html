@@ -20,14 +20,14 @@
                 <input type="file" id="abrir" accept=".json">
                 <button class="login ocultar" id="login" onclick="modalLogin.classList.remove('ocultar')">Login</button>
                 <button class="sair ocultar" id="sair" onclick="logout()">Sair</button>
-                <button class="salvar ocultar" id="salvar">Salvar</button>
+                <button class="salvar ocultar" id="salvar" onclick="download()">Salvar</button>
             </div>
         </div>
         <div class="logado ocultar" id="logado">
-            <h3 id="nome" class="nome ">Usuário(a): Ana Souza Silva</h3>
+            <h3 id="nome" class="nome "></h3>
             <div class="botoes2">
                 <button id="item" class="addItens" onclick="modalNovo.classList.remove('ocultar')">Adicionar Itens</button>
-                <button class="listVendas ">Listar Vendas</button>
+                <button class="listVendas" onclick="preencherVendas()">Listar Vendas</button>
             </div>
         </div>
     </header>
@@ -42,7 +42,7 @@
                     </div>
                     <img src="../assets/encanador.webp" alt="imagem do serviço" class="img">
                     <div class="btn-produto">
-                        <button class="vender " id="btnVender">Vender</button>
+                        <button class="vender " id="btnVender" onclick="modalVenda.classList.remove('ocultar')">Vender</button>
                         <button class="excluir" id="btnExcluir" onclick="excluirItem()">Excluir</button>
                     </div>
                     <p class="preco">Preço: Negociável</p>
@@ -62,6 +62,7 @@
             <form id="formNovo">
                 <input type="text" name="tituloCard" placeholder="Título" required>
                 <textarea name="descricao" placeholder="Descrição" required></textarea>
+                <input type="number" name="preco" placeholder="Preço" step="0.1">
                 <textarea name="img" placeholder="Coloque o link da imagem do serviço"></textarea>
                 <div class="modalCardBtn">
                     <button type="button" onclick="modalNovo.classList.add('ocultar')" class="cancelarNovo">Cancelar</button>
@@ -104,6 +105,14 @@
                     <button type="submit" class="concluirVenda">Concluir Venda</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Modal de lista de vendas -->
+    <div class="overlay-modal" id="listaVendas">
+        <div class="listaVendas">
+            <h2>Registro de Vendas</h2>
+            <form id="listaVendas"></form>
         </div>
     </div>
 

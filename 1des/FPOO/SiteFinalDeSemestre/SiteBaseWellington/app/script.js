@@ -173,7 +173,7 @@ function preencherVendas() {
             vendas.appendChild(linha);
             total += venda.quantidade * venda.valorUnitario;
         }
-    });
+    }); 
     vendas.appendChild(document.createElement('tr')).innerHTML = `<td colspan="5">Total</td><td><h4>R$ ${total.toFixed(2)}</h4></td>`;
 }
 
@@ -185,7 +185,7 @@ formItem.addEventListener("submit", e => {
         nome: formItem.nome.value,
         descricao: formItem.descricao.value,
         tipo: formItem.tipo.value,
-        preco: parseFloat(formItem.preco.value),
+        preco: parseFloat(formItem.preco.value).toFixed(2),
         img: formItem.img.value,
     }
     dados.itens.push(item);
