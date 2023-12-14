@@ -27,7 +27,7 @@
             <h3 id="nome" class="nome "></h3>
             <div class="botoes2">
                 <button id="item" class="addItens" onclick="modalNovo.classList.remove('ocultar')">Adicionar Itens</button>
-                <button class="listVendas" onclick="preencherVendas()">Listar Vendas</button>
+                <button class="listVendas" onclick="listaVendas.classList.remove('ocultar');preencherVendas()">Listar Vendas</button>
             </div>
         </div>
     </header>
@@ -108,13 +108,27 @@
         </div>
     </div>
 
-    <!-- Modal de lista de vendas
-    <div class="overlay-modal" id="listaVendas">
-        <div class="listaVendas">
+    <!-- Modal de lista de vendas -->
+    <div class="overlay-modal ocultar" id="listaVendas">
+        <div class="modalListaVendas">
             <h2>Registro de Vendas</h2>
-            <form id="listaVendas"></form>
-        </div>
-    </div> -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Usuário</th>
+                        <th>Item</th>
+                        <th>Quantidade</th>
+                        <th>Valor unitário</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="vendas">
+                </tbody>
+            </table>
+            <button type="button" onclick="listaVendas.classList.add('ocultar')">Fechar</button>
+        </div> 
+    </div> 
 
 </body>
 <script src="script.js"></script>

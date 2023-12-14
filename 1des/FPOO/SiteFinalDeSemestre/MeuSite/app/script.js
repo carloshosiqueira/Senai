@@ -105,13 +105,9 @@ formLogin.addEventListener('submit', e => {
             if (usuario.tipo == "admin") {
                 item.classList.remove("ocultar");
                 modalLogin.classList.add("ocultar");
-                // btnVender.classList.remove("ocultar"); Não está ocultando os botoes
-                // btnExcluir.classList.remove("ocultar");
             } else {
                 item.classList.remove("ocultar");
                 modalLogin.classList.add("ocultar");
-                // btnExcluir.classList.add("ocultar"); 
-                // btnVender.classList.remove("ocultar");
             }
 
             preencherCards();
@@ -144,15 +140,6 @@ function logout() {
     preencherCards();
     bemVindo();
 }
-
-// //Abrir o modal de venda (Não está funcionando)
-
-// btnVender.addEventListener("click", e =>{
-//     e.preventDefault();
-//     modalVenda.classList.remove("ocultar");
-// })
-
-
 
 // cRud - READ
 function preencherTotal(indice) {
@@ -188,30 +175,32 @@ formVenda.addEventListener("submit", e => {
 // cRud - READALL Vendas
 function preencherVendas() {
     vendas.innerHTML = "";
+    console.table(dados.vendas)
     //Listar vendas de hoje
-    const hoje = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+    const hoje = new Date();
     const dia = hoje.getDate()
-    const mes = mes.getMonth()
-    const ano = ano.getFullYear()
+    const mes = hoje.getMonth()
+    const ano = hoje.getFullYear()
     const data = `${ano}-${mes < 10 ? "0" + mes : mes}-${dia < 10 ? "0" + dia : dia}`;
     let total = 0;
     dados.vendas.forEach(venda => {
-        if (venda.data.slice(0, 10) == data) {
+        // if (venda.data.slice(0, 10) == data) {
             const linha = document.createElement('tr');
             const data_e_hora = `${venda.data.slice(0, 16)}`;
-            linha.innerHTML = `
-             <td><input type="datetime-local" value="${data_e_hora}" disabled/></td>
-             <td>${getNomeUsuario(venda.usuario)}</td>
-             <td>${getNomeItem(venda.item)}</td>
-             <td>${venda.quantidade}</td>
-             <td>${venda.valorUnitario}</td>
-             <td>${venda.quantidade * venda.valorUnitario}</td>
-             ${usuario.tipo == "admin" ? "<td><button class='excluir' onclick='excluirVenda(" + venda.id + ")'>-</button></td>" : ""}`;
+            vendas.innerHTML += `
+              <td><input type="datetime-local" value="${data_e_hora}" disabled/></td>
+              <td>${getNomeUsuario(venda.usuario)}</td>
+              <td>${getNomeItem(venda.item)}</td>
+              <td>${venda.quantidade}</td>
+              <td>${venda.valorUnitario}</td>
+              <td>${(venda.quantidade * venda.valorUnitario).toFixed(2)}</td>
+              ${usuario.tipo == "admin" ? "<td><button class='excluir' onclick='excluirVenda(" + venda.id + ")'>-</button></td>" : ""}`;
             vendas.appendChild(linha);
             total += venda.quantidade * venda.valorUnitario;
-        }
+        // }
     })
     vendas.appendChild(document.createElement('tr')).innerHTML = `<td colspan="5">Total</td><td><h4>R$ ${total.toFixed(2)}</h4></td>`;
+
 }
 
 // Crud - CREATE Item
@@ -238,29 +227,27 @@ function excluirItem(indice) {
     }
 }
 
-// //CRUD - DELETE Venda
-// function excluirVenda(id) {
-//     if (confirm("Deseja realmente excluir esta venda?")) {
-//         dados.vendas.forEach((venda, indice) => {
-//             if (venda.id == id) dados.vendas.splice(indice, 1);
-//         });
-//         preencherVendas();
-//     }
-// }
-
-// //Funções úteis
-// function getNomeUsuario(id) {
-//     let nome = "";
-//     dados.usuarios.forEach(user => {
-//         if (user.id == id) nome = user.nome;
-//     });
-//     return nome;
-// }
-
-// function getNomeItem(id) {
-//     let nome = "";
-//     dados.itens.forEach(item => {
-//         if (item.id == id) nome = item.nome;
-//     });
-//     return nome;
-// }
+//CRUD - DELETE Venda
+function excluirVenda(id) {
+    if (confirm("Deseja realmente excluir esta venda?")) {
+        dados.vendas.forEach((venda, indice) => {
+            if (venda.id == id) dados.vendas.splice(indice, 1);
+        });
+        preencherVendas();
+    }
+}
+//Funções úteis
+function getNomeUsuario(id) {
+    let nome = "";
+    dados.usuarios.forEach(user => {
+        if (user.id == id) nome = user.nome;
+    });
+    return nome;
+}
+function getNomeItem(id) {
+    let nome = "";
+    dados.itens.forEach(item => {
+        if (item.id == id) nome = item.nome;
+    });
+    return nome;
+}

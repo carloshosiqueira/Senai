@@ -79,123 +79,19 @@
         },
         {
             "id": 2,
-            "data": "2023-11-05T09:35:00.000Z",
-            "usuario": 2,
-            "item": 2,
-            "quantidade": 1,
-            "valorUnitario": 49.90
-        },
-        {
-            "id": 3,
-            "data": "2023-11-05T12:00:00.000Z",
-            "usuario": 2,
-            "item": 3,
-            "quantidade": 1,
-            "valorUnitario": 49.90
-        },
-        {
-            "id": 4,
             "data": "2023-11-05T08:50:00.000Z",
             "usuario": 2,
             "item": 6,
-            "quantidade": 1,
+            "quantidade": 3,
             "valorUnitario": 159.90
         },
         {
-            "id": 5,
-            "data": "2023-11-06T08:20:00.000Z",
-            "usuario": 3,
-            "item": 5,
-            "quantidade": 2,
-            "valorUnitario": 24.90
-        },
-        {
-            "id": 6,
-            "data": "2023-11-06T10:40:00.000Z",
-            "usuario": 3,
-            "item": 4,
-            "quantidade": 1,
-            "valorUnitario": 19.90
-        },
-        {
-            "id": 7,
-            "data": "2023-11-06T11:50:00.000Z",
-            "usuario": 3,
-            "item": 4,
-            "quantidade": 2,
-            "valorUnitario": 19.90
-        },
-        {
-            "id": 8,
-            "data": "2023-11-06T12:50:00.000Z",
-            "usuario": 2,
-            "item": 6,
-            "quantidade": 1,
-            "valorUnitario": 159.90
-        },
-        {
-            "id": 9,
-            "data": "2023-11-07T08:50:00.000Z",
-            "usuario": 2,
-            "item": 7,
-            "quantidade": 1,
-            "valorUnitario": 59.90
-        },
-        {
-            "id": 10,
-            "data": "2023-11-07T10:20:00.000Z",
-            "usuario": 2,
-            "item": 2,
-            "quantidade": 1,
-            "valorUnitario": 49.90
-        },
-        {
-            "id": 11,
-            "data": "2023-11-07T10:45:00.000Z",
-            "usuario": 3,
-            "item": 1,
-            "quantidade": 2,
-            "valorUnitario": 29.90
-        },
-        {
-            "id": 12,
-            "data": "2023-11-07T11:05:00.000Z",
+            "id": 3,
+            "data": "2023-11-05T08:50:00.000Z",
             "usuario": 1,
-            "item": 3,
-            "quantidade": 1,
-            "valorUnitario": 49.90
-        },
-        {
-            "id": 13,
-            "data": "2023-11-07T13:50:00.000Z",
-            "usuario": 1,
-            "item": 4,
-            "quantidade": 1,
-            "valorUnitario": 19.90
-        },
-        {
-            "id": 14,
-            "data": "2023-11-07T08:14:00.000Z",
-            "usuario": 2,
-            "item": 5,
-            "quantidade": 1,
-            "valorUnitario": 24.90
-        },
-        {
-            "id": 15,
-            "data": "2023-11-07T15:50:00.000Z",
-            "usuario": 1,
-            "item": 6,
-            "quantidade": 1,
-            "valorUnitario": 159.90
-        },
-        {
-            "id": 16,
-            "data": "2023-11-07T16:20:00.000Z",
-            "usuario": 1,
-            "item": 7,
-            "quantidade": 1,
-            "valorUnitario": 59.90
+            "item": 2   ,
+            "quantidade": 3,
+            "valorUnitario": 39.90
         }
     ]
 }

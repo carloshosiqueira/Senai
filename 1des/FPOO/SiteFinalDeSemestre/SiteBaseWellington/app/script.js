@@ -151,6 +151,7 @@ formVender.addEventListener("submit", e => {
 //CRUD - READALL Vendas
 function preencherVendas() {
     vendas.innerHTML = "";
+    console.table(dados.vendas)
     //Listar vendas de hoje
     const hoje = new Date();
     const dia = hoje.getDate();
