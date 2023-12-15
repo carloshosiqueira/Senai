@@ -9,14 +9,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<!-- Erros que estão acontecendo para eu lembrar de corrigir
-
-1- Botão de excluir nos cards para vender estão aparecendo em ambas as contas, admin e comum
-2- Quando uma venda é adicionada o id do item não é enviado para o javascript, causando erro ao mostrar o nome do item
-na tabela de lista de vendas
-3- Arrumar o horario de venda mostrado no modal da tabela de lista de vendas 
--->
-
 <!-- Css do site 
 
 1- Dar mais espaçamento para o nome de quem vendeu e o nome do item na tabela de vendas
@@ -110,6 +102,7 @@ na tabela de lista de vendas
         <div class="modalVenda">
             <h2>Registrar Venda</h2>
             <form id="formVenda">
+                <input type="hidden" name="id">
                 <label>Quantidade:</label>
                 <input type="number" placeholder="Quantidade" name="quantidade" min="0" required>
                 <label>Preço R$:</label>

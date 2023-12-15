@@ -82,8 +82,12 @@ function preencherCards() {
         if (usuario.email == undefined) {
             model.querySelector('.vender').classList.add("ocultar");
             model.querySelector('.excluir').classList.add("ocultar");
-        } else if (usuario.tipo == "admin") {
+        }else if (usuario.tipo == "admin") {
+            model.querySelector('.vender').classList.remove("ocultar");
             model.querySelector('.excluir').classList.remove("ocultar");
+        }else if (usuario.tipo == "comum"){
+            model.querySelector('.vender').classList.remove("ocultar");
+            model.querySelector('.excluir').classList.add("ocultar");
         }
         container.appendChild(model);
     })
@@ -109,7 +113,7 @@ formLogin.addEventListener('submit', e => {
                 item.classList.remove("ocultar");
                 modalLogin.classList.add("ocultar");
             }
-
+            console.log(user.tipo, user.email);
             preencherCards();
             bemVindo();
             encontrado = true;
@@ -167,6 +171,7 @@ formVenda.addEventListener("submit", e => {
         quantidade: parseInt(formVenda.quantidade.value),
         valorUnitario: parseFloat(formVenda.preco.value),
     }
+    console.log(formVenda.id.value)
     dados.vendas.push(venda);
     modalVenda.classList.add("ocultar")
     alert("Venda registrada com sucesso, não se esqueça de salvar os dados.");

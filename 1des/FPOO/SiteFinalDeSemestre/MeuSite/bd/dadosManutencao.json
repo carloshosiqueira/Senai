@@ -88,7 +88,7 @@
         {
             "id": 3,
             "data": "2023-11-05T08:50:00.000Z",
-            "usuario": 1,
+            "usuario": 1,   
             "item": 3   ,
             "quantidade": 1,
             "valorUnitario": 39.90
