@@ -175,7 +175,6 @@ formVenda.addEventListener("submit", e => {
 // cRud - READALL Vendas
 function preencherVendas() {
     vendas.innerHTML = "";
-    console.table(dados.vendas)
     //Listar vendas de hoje
     const hoje = new Date();
     const dia = hoje.getDate()
@@ -187,14 +186,15 @@ function preencherVendas() {
         // if (venda.data.slice(0, 10) == data) {
             const linha = document.createElement('tr');
             const data_e_hora = `${venda.data.slice(0, 16)}`;
+            console.table([venda.usuario, venda.item, venda.quantidade, venda.valorUnitario])
             vendas.innerHTML += `
-              <td><input type="datetime-local" value="${data_e_hora}" disabled/></td>
+              <td><input type="datetime-local" value="${data_e_hora}" disabled></td>
               <td>${getNomeUsuario(venda.usuario)}</td>
               <td>${getNomeItem(venda.item)}</td>
               <td>${venda.quantidade}</td>
               <td>${venda.valorUnitario}</td>
               <td>${(venda.quantidade * venda.valorUnitario).toFixed(2)}</td>
-              ${usuario.tipo == "admin" ? "<td><button class='excluir' onclick='excluirVenda(" + venda.id + ")'>-</button></td>" : ""}`;
+              ${usuario.tipo == "admin" ? "<td style='width:3%'><button class='excluir' onclick='excluirVenda(" + venda.id + ")'>-</button></td>" : ""}`;
             vendas.appendChild(linha);
             total += venda.quantidade * venda.valorUnitario;
         // }

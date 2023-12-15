@@ -9,6 +9,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+<!-- Erros que estão acontecendo para eu lembrar de corrigir
+
+1- Botão de excluir nos cards para vender estão aparecendo em ambas as contas, admin e comum
+2- Quando uma venda é adicionada o id do item não é enviado para o javascript, causando erro ao mostrar o nome do item
+na tabela de lista de vendas
+3- Arrumar o horario de venda mostrado no modal da tabela de lista de vendas 
+-->
+
+<!-- Css do site 
+
+1- Dar mais espaçamento para o nome de quem vendeu e o nome do item na tabela de vendas
+2- Achar uma paleta de cores melhor
+3- Trocar as fontes
+
+-->
 <body>
     <header>
         <div class="principal">
@@ -26,26 +41,27 @@
         <div class="logado ocultar" id="logado">
             <h3 id="nome" class="nome "></h3>
             <div class="botoes2">
-                <button id="item" class="addItens" onclick="modalNovo.classList.remove('ocultar')">Adicionar Itens</button>
-                <button class="listVendas" onclick="listaVendas.classList.remove('ocultar');preencherVendas()">Listar Vendas</button>
+                <button id="item" class="addItens" onclick="modalNovo.classList.remove('ocultar')">Adicionar
+                    Itens</button>
+                <button class="listVendas" onclick="listaVendas.classList.remove('ocultar');preencherVendas()">Listar
+                    Vendas</button>
             </div>
         </div>
     </header>
     <main>
+
         <section class="servicos">
             <div class="produtos">
-                <div class="modelo0" id="model0">
-                    <div class="tipo">
-                        <h4 class="tituloCard">Encanador</h4>
-                        <p class="descricao">Enviaremos um encanador capacitado para arrumar quaisquer problemas
-                            relacionados à profissão</p>
+                <div class="textoInicial">
+                    <div>
+                        <h2>Trabalhando com dados locais</h2>
+                        <p>Sistema de exemplo para aulas de Web Design, com HTML e JavaScript</p>
+                        <p>Para executar o sistema faça upload do arquivo JSON com dados iniciais de teste, seguindo o
+                            modelo a
+                            seguir: <a download href="../bd/dadosManutencao.json">dadosManutencao.json</a>
+                        </p>
+                        <p>Faça download do modelo e carrege o sistema com ele clicando em <b>Escolher arquivo</b></p>
                     </div>
-                    <img src="../assets/encanador.webp" alt="imagem do serviço" class="img">
-                    <div class="btn-produto">
-                        <button class="vender " id="btnVender" onclick="modalVenda.classList.remove('ocultar')">Vender</button>
-                        <button class="excluir" id="btnExcluir" onclick="excluirItem()">Excluir</button>
-                    </div>
-                    <p class="preco">Preço: Negociável</p>
                 </div>
             </div>
         </section>
@@ -65,7 +81,8 @@
                 <input type="number" name="preco" placeholder="Preço" step="0.1">
                 <textarea name="img" placeholder="Coloque o link da imagem do serviço"></textarea>
                 <div class="modalCardBtn">
-                    <button type="button" onclick="modalNovo.classList.add('ocultar')" class="cancelarNovo">Cancelar</button>
+                    <button type="button" onclick="modalNovo.classList.add('ocultar')"
+                        class="cancelarNovo">Cancelar</button>
                     <button type="submit" class="criarNovo">Criar</button>
                 </div>
             </form>
@@ -127,8 +144,8 @@
                 </tbody>
             </table>
             <button type="button" onclick="listaVendas.classList.add('ocultar')">Fechar</button>
-        </div> 
-    </div> 
+        </div>
+    </div>
 
 </body>
 <script src="script.js"></script>
