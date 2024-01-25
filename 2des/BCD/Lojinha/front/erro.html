@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" href="tabela.css">
+</head>
+
+<body>
+    <header>
+        <h1>Lista dos Clientes</h1>
+    </header>
+    <nav>
+        <a href="./index.html">Listar Todos</a>
+        <a href="./form.html">Cadastrar Cliente</a>
+    </nav>
+    <main>
+        <h2 id=erro></h2>
+    </main>
+    <footer>
+        <h2>By Carlos Henrique</h2>
+    </footer>
+</body>
+
+<script>
+    // const erro = document.getElementById("erro")
+    // erro.innerHTML = "Erro, CPF provavelmente já está cadastrado"
+    let msg = document.querySelector('#erro');
+    const url = window.location.search
+    const params = new URLSearchParams(url)
+    const err = params.get('erro');
+    const cod = params.get('err');
+    msg.innerHTML = err + "<br> Código do erro: " + cod;
+</script>
+
+</html>
