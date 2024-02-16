@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista</title>
+</head>
+<body>
+    <header>
+        <h1>Lista de pessoas</h1>
+    </header>
+    <nav>
+        <a href="./lista.html">Lista de pessoas</a>
+        <a href="./index.html">Fazer cadastro</a>
+    </nav>
+    <main>
+       <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>CPF</th>
+                    <th>Nome Completo</th>
+                    <th>Idade</th>
+                    <th>Gênero</th>
+                </tr>
+            </thead>
+            <tbody id="dados">
+
+            </tbody>
+       </table>
+    </main>
+    <footer>
+        <h2>By Carlos Henrique em casa</h2>
+    </footer>
+</body>
+<script>
+    const dados = document.getElementById("dados");
+    fetch('http://localhost:3000/pessoas')
+    .then(res => res.json())
+    .then(res => {
+        res.forEach(pessoa =>{
+            dados.innerHTML += `
+            <tr>
+                <td>${pessoa.id}</td>
+                <td>${pessoa.cpf}</td>
+                <td>${pessoa.nome} ${pessoa.sobrenome}</td>
+                <td>${pessoa.idade}</td>
+                <td>${pessoa.genero}</td>
+            </tr>
+            `
+        })
+    })
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PapelTudo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="carregarProdutos()">
+    <header>
+        <h1>PapelTudo</h1>
+        <nav>
+            <button onclick="cadastro.classList.remove('oculto')">Novo</button>
+        </nav>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody id="dados">
+
+            </tbody>
+        </table>
+    </main>
+    <footer>
+    </footer>
+    <!--Modal de cadastro de novos produtos da papelaria-->
+    <div class="tela oculto" id="cadastro">
+        <div class="modalCadastro">
+            <h2>Cadastrar novo produto</h2>
+            <form id="criar">
+                <div class="info">
+                    <input type="text" name="nome" placeholder="Nome do produto" required>
+                    <input type="text" name="descricao" placeholder="Descrição" required>
+                    <input type="text" name="valor" placeholder="Valor" required>
+                </div>
+                <div class="botoes">
+                    <input type="submit" value="Enviar">
+                    <input type="reset" value="Cancelar" onclick="cadastro.classList.add('oculto')">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--Modal de mensagens de erro-->
+    <div class="tela oculto" id="msgs">
+        <div class="modalErro">
+            <h2 id="errCod"></h2>
+            <br>
+            <h3 id="msg"> </h3>
+            <br>
+            <div>
+                <button onclick="window.location.href='./'">Fechar</button>
+                <button id="confirma" class="oculto">Confirma</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
