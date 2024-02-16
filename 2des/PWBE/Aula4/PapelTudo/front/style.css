@@ -1,10 +1,10 @@
-/* :root{
+:root{
     --preto: #000000;
     --branco: #FFFFFF;
     --laranja: #F38F00;
     --vermelho: #7F0000
 
-}; */
+}
 
 * {
     margin: 0;
@@ -80,7 +80,7 @@ nav button{
 }
 
 table {
-    max-width: 800px;
+    max-width: 900px;
     display: block;
     border-collapse: collapse;
     overflow-y: auto;
@@ -90,7 +90,6 @@ thead {
     width: 100%;
     display: block;
     background: #000;
-    color: #fff;
 }
 
 thead tr {
@@ -105,7 +104,11 @@ tbody {
 }
 
 tr:nth-child(even) {
-    background: #dddddd;
+    background: var(--laranja);
+}
+
+tr:nth-child(odd) {
+    background: var(--branco);
 }
 
 tr {
