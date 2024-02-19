@@ -1,10 +1,9 @@
 //Variáveis e constantes
-const msgs = document.getElementById('msgs');
+const msg = document.getElementById('msg');
 const criar = document.getElementById('criar');
 const dados = document.getElementById('dados');
 const uri = "http://localhost:3000/item";
 const produtos = [];
-const cadastro = document.getElementById('cadastro');
 
 //"Pegando" dados do back-end
 function carregarProdutos() {
@@ -18,6 +17,7 @@ function carregarProdutos() {
 
 //Mostrando os dados do back-end
 function preencherTabela() {
+    const msg = document.getElementById('msg');
     produtos.forEach(prod => {
         dados.innerHTML += `
             <tr>
@@ -31,20 +31,23 @@ function preencherTabela() {
                 </td>
             </tr>
         `;
+        console.log(prod.id, prod.nome, prod.descricao, prod.valor);
     });
+    msg.value= `Tabela preenchida com sucesso`;
 }
 
 criar.addEventListener('submit', e => {
     e.preventDefault();
     const data= {
+        id: criar.id.value,
         nome: criar.nome.value,
         descricao: criar.descricao.value,
         valor: criar.valor.value
     };
-    fetch(uri, {
+    fetch("http://localhost:3000/item", {
         method: "POST",
         headers: {
-            'Content-Type': 'application.json'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     })
@@ -54,12 +57,12 @@ criar.addEventListener('submit', e => {
             produtos.push(res);
             dados.innerHTML = "";
             preencherTabela();
-            cadastro.classList.add("oculto");
             criar.reset();
+            msg.value = "Item registrado com sucesso"
         }
         else{
-            cadastro.classList.add("oculto");
-            mensagens(res.sqlMessage, "erro ao cadastrar cliente!")
+            console.log(data.id, data.nome, data.descricao, data.valor)
+            msg.value = "Erro ao cadastrar o produto";
         }
     });
 });
@@ -68,39 +71,72 @@ criar.addEventListener('submit', e => {
 function atualizar(btn){
     let linha = btn.parentNode.parentNode;
     let celulas = linha.cells;
-    let id = celulas[0];
-    let data = {
+    let id = celulas[0].innerHMTL;
+    let data = {    
+        id: celulas[0].innerHTML,
         nome: celulas[1].innerHTML,
         descricao: celulas[2].innerHTML,
         valor: celulas[3].innerHTML
     };
-    fetch(uri + '/' + id, {
+    fetch(uri + '/' + data.id , {
         method: "PUT",
         headers: {
-            'Content-Type': 'Application/json'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     })
     .then(res => res.json())
     .then(res => {
         if(res.sqlMessage == undefined){
-           celulas[1].removeAttribute("contenteditable")
-           celulas[2].removeAttribute("contenteditable")
-           celulas[3].removeAttribute("contenteditable")
+            celulas[0].removeAttribute("contenteditable")
+            celulas[1].removeAttribute("contenteditable")
+            celulas[2].removeAttribute("contenteditable")
+            celulas[3].removeAttribute("contenteditable")
            btn.innerHTML = "*";
            btn.setAttribute('onclick', "edit(this)")
         }
         else{
-            cadastro.classList.add("oculto");
-            mensagens(res.sqlMessage, "Erro ao cadastrar produto!");
+            msg.value = "Erro ao editar o produto";
+            console.log("erro ao editar o produto")
         }
     });
 }
 
-function del(id){
-    mensagens("Realmente deseja excluir este produto?" + '?', 'Excluir produto', id)
+function del(id) {
+    mostrarItem(id);
 }
 
+function mostrarItem(id) {
+    // Encontrar o produto na lista pelo ID
+    const produto = produtos.find(prod => prod.id === id);
+    if (produto) {
+        // Exibir os detalhes do produto no modal
+        document.getElementById('item').innerHTML = `Detalhes do Produto: <br>
+            ID: ${produto.id}<br>
+            Nome: ${produto.nome}<br>
+            Descrição: ${produto.descricao}<br>
+            Valor: ${produto.valor}<br>`;
+        
+        // Exibir o modal
+        const modal = document.querySelector('.modal');
+        modal.classList.remove('oculto');
+
+        // Adicionar evento de click no botão de confirmar
+        modal.querySelector('button.confirmar').addEventListener('click', function() {
+            confirmar(id);
+            modal.classList.add('oculto'); // Esconder o modal após a confirmação
+        });
+
+        // Adicionar evento de click no botão de cancelar
+        modal.querySelector('button.cancelar').addEventListener('click', function() {
+            modal.classList.add('oculto'); // Esconder o modal se o usuário cancelar
+        });
+    } else {
+        console.log("Produto não encontrado.");
+    }
+}
+
+    
 //Confirmação da exclusão
 function confirmar(id) {
     fetch(uri + '/' + id, {
@@ -116,19 +152,9 @@ function confirmar(id) {
 function edit (btn) {
     let linha = btn.parentNode.parentNode;
     let celulas = linha.cells;
-    for(let i = 1; i < celulas.lenght - 2; i++){
+    for(let i = 0; i < celulas.length - 1; i++){
         celulas[i].setAttribute("contenteditable", 'true')
     }
     btn.innerHTML = "✔";
-    btn.setAttribute('onclick', 'update(this)');
-}
-
-function mensagens(msg, titulo, confirma){
-    msgs.classList.remove("oculto");
-    document.querySelector('#errCod').innerHTML = titulo;
-    document.querySelector('#msg').innerHTML = msg
-    if(confirma != undefined){
-        document.querySelector("#confirma").classList.remove('oculto');
-        document.querySelector("#confirma").setAttribute('onclick', `confirmar(${confirma})`);
-    }
+    btn.setAttribute('onclick', 'atualizar(this)');
 }

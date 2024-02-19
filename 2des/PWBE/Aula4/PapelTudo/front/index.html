@@ -11,7 +11,7 @@
 <body onload="carregarProdutos()">
     <header>
         <h1>Inventario da papelaria PapelTudo</h1>
-        <form id="cadastrar">
+        <form id="criar" method="POST">
             <div>
                 <label for="id">Id</label>
                 <input type="text" id="id">
@@ -35,30 +35,42 @@
         </form>
     </header>
     <main>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Valor</th>
-                    <th>Ação</th>
-                </tr>
-            </thead>
-            <tbody id="dados">
-            </tbody>
-        </table>
+        <div class="container-tabela">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="dados">
+                </tbody>
+            </table>
+        </div>
     </main>
     <footer>
         <div class="sistema">
             <h3>Mensagens do sistema: </h3>
-            <input type="text" disabled>
+            <input type="text" disabled id="msg">
         </div>
         <div class="total">
             <h3>Patrimônio total:</h3>
-            <input type="text" disabled>
+            <input type="text" disabled id="total">
         </div>
     </footer>
+
+    <!--Modal para confirmar a exclusão do item-->
+    <div class="janela-modal">
+        <div class="modal oculto">
+            <h2>Confirme que realmente deseja excluir o seguinte item:</h2>
+            <h3 id="item"></h3>
+            <button class="confirmar">Confirmar</button>
+            <button class="cancelar">Cancelar</button>
+        </div>
+    </div>
 </body>
 <script src="script.js"></script>
 

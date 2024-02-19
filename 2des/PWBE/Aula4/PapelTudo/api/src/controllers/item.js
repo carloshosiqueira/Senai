@@ -7,18 +7,17 @@ const create = (req, res) => {
     let nome = req.body.nome;
     let descricao = req.body.descricao;
     let valor = req.body.valor;
-    let query = `INSERT INTO item(id, nome, descricao, valor) VALUE`;
+    let query = `INSERT INTO item(id, nome, descricao, valor) VALUES`;
     query += `('${id}', '${nome}', '${descricao}','${valor}');`;
-    con.query(query, (err,result) =>{
-        if(err)
+    con.query(query, (err, result) => {
+        if (err) {
             res.status(400).json(err).end();
-        else{
-            const novo = req.body;
-            novo.id = result.insertId;
-            res.status(201).json(novo).end();
+        } else {
+            res.status(201).json(req.body).end();
         }
     });
 }
+
 
 //Mostra os itens
 const read = (req, res) => {
@@ -32,31 +31,34 @@ const read = (req, res) => {
 
 //Atualiza um item
 const update = (req, res) => {
-    let id = req.params.id;
+    let id = req.body.id;
     let nome = req.body.nome;
     let descricao = req.body.descricao;
     let valor = req.body.valor;
-    let query = `UPDATE item SET id = '${id}', nome = '${nome}', descricao = '${descricao}', valor = '${valor}' WHERE id = ${id}`;
+    let query = `UPDATE item SET nome = '${nome}', descricao = '${descricao}', valor = '${valor}' WHERE id = '${id}'`;
     con.query(query, (err, result) => {
-        if(err)
+        if(err) {
             res.status(400).json(err).end();
-        else{
-            if(result.affectedrows > 0)
+        } else {
+            if(result.affectedRows > 0) {
                 res.status(204).json(result).end();
-            else
+            } else {
                 res.status(404).json("Produto Não Encontrado").end();
+            }
         }
     })
 }
 
+
+
 //Deleta um produto
 const del = (req, res) =>{
-    let id = req.params.id;
-    con.query(`DELETE FROM item WHERE id = ${id}`,(err, result) => {
+    let id = req.body.id;
+    con.query(`DELETE FROM item WHERE id = '${id}'`,(err, result) => {
         if(err)
             res.status(400).json(err).end();
         else{
-            if(result.affectedrows > 0)
+            if(result.affectedRows > 0)
                 res.status(204).json(result).end();
             else
                 res.status(404).json("Produto não encontrado").end();
