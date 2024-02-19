@@ -25,7 +25,7 @@ function preencherTabela() {
                 <td>${prod.nome}</td>
                 <td>${prod.descricao}</td>
                 <td>${prod.valor}</td>
-                <td>
+                <td class="botoes">
                 <button onclick="del(${prod.id})"> - </button>
                 <button onclick="edit(this)"> * </button>
                 </td>

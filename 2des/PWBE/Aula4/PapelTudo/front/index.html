@@ -10,13 +10,32 @@
 
 <body onload="carregarProdutos()">
     <header>
-        <h1>PapelTudo</h1>
-        <nav>
-            <button onclick="cadastro.classList.remove('oculto')">Novo</button>
-        </nav>
+        <h1>Inventario da papelaria PapelTudo</h1>
+        <form id="cadastrar">
+            <div>
+                <label for="id">Id</label>
+                <input type="text" id="id">
+            </div>
+            <div>
+                <label for="nome">Nome</label>
+                <input type="text" id="nome">
+            </div>
+            <div>
+                <label for="descricao">Descrição</label>
+                <input type="text" id="descricao">
+            </div>
+            <div>
+                <label for="valor">Valor</label>
+                <input type="text" id="valor">
+            </div>
+            <div class="acao">
+                <label for="">Ação</label>
+                <input type="submit" value="Cadastrar">
+            </div>
+        </form>
     </header>
     <main>
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -27,43 +46,19 @@
                 </tr>
             </thead>
             <tbody id="dados">
-
             </tbody>
         </table>
     </main>
     <footer>
+        <div class="sistema">
+            <h3>Mensagens do sistema: </h3>
+            <input type="text" disabled>
+        </div>
+        <div class="total">
+            <h3>Patrimônio total:</h3>
+            <input type="text" disabled>
+        </div>
     </footer>
-    <!--Modal de cadastro de novos produtos da papelaria-->
-    <div class="tela oculto" id="cadastro">
-        <div class="modalCadastro">
-            <h2>Cadastrar novo produto</h2>
-            <form id="criar">
-                <div class="info">
-                    <input type="text" name="nome" placeholder="Nome do produto" required>
-                    <input type="text" name="descricao" placeholder="Descrição" required>
-                    <input type="text" name="valor" placeholder="Valor" required>
-                </div>
-                <div class="botoes">
-                    <input type="submit" value="Enviar">
-                    <input type="reset" value="Cancelar" onclick="cadastro.classList.add('oculto')">
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!--Modal de mensagens de erro-->
-    <div class="tela oculto" id="msgs">
-        <div class="modalErro">
-            <h2 id="errCod"></h2>
-            <br>
-            <h3 id="msg"> </h3>
-            <br>
-            <div>
-                <button onclick="window.location.href='./'">Fechar</button>
-                <button id="confirma" class="oculto">Confirma</button>
-            </div>
-        </div>
-    </div>
 </body>
 <script src="script.js"></script>
 
