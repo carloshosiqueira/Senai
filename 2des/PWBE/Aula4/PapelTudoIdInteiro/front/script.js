@@ -1,6 +1,7 @@
 //Variáveis e constantes
 const criar = document.getElementById('criar');
 const msg = document.getElementById('msg');
+const msgs = document.getElementById('msgs');
 const dados = document.getElementById('dados');
 const uri = "http://localhost:3000/item";
 const produtos = [];
@@ -39,7 +40,6 @@ function preencherTabela() {
 criar.addEventListener('submit', e => {
     e.preventDefault();
     const data= {
-        id: criar.id.value,
         nome: criar.nome.value,
         descricao: criar.descricao.value,
         valor: criar.valor.value
@@ -63,6 +63,7 @@ criar.addEventListener('submit', e => {
         }
         else{
             msg.value = "Erro ao cadastrar o produto";
+            mensagens(res.sqlMessage, 'Erro ao cadastrar produto!');
         }
     });
 });
@@ -71,7 +72,7 @@ criar.addEventListener('submit', e => {
 function update(btn){
     let linha = btn.parentNode.parentNode;
     let celulas = linha.cells;
-    let id = celulas[0].innerHMTL;
+    let id = celulas[0].innerHTML;
     let data = {    
         nome: celulas[1].innerHTML,
         descricao: celulas[2].innerHTML,
@@ -96,6 +97,7 @@ function update(btn){
         }
         else{
             msg.value = "Erro ao editar o produto";
+            mensagens(res.sqlMessage, 'Erro ao atualizar produto!');
         }
     });
 }

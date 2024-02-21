@@ -3,21 +3,21 @@ const con = require("../connect/connect").con;
 
 //Cria um novo item
 const create = (req, res) => {
-    let id = req.body.id;
     let nome = req.body.nome;
     let descricao = req.body.descricao;
     let valor = req.body.valor;
-    let query = `INSERT INTO item(id, nome, descricao, valor) VALUE`;
-    query += `('${id}', '${nome}', '${descricao}','${valor}');`;
+    let query = `INSERT INTO item(nome, descricao, valor) VALUE`;
+    query += `('${nome}', '${descricao}','${valor}');`;
     con.query(query, (err, result) => {
         if (err) {
             res.status(400).json(err).end();
         } else {
-            res.status(201).json(req.body).end();
+            const novo = req.body;
+            novo.id = result.insertId;
+            res.status(201).json(novo).end();
         }
     });
 }
-
 
 //Mostra os itens
 const read = (req, res) => {
@@ -31,11 +31,11 @@ const read = (req, res) => {
 
 //Atualiza um item
 const update = (req, res) => {
-    let id = req.body.id;
+    let id = req.params.id;
     let nome = req.body.nome;
     let descricao = req.body.descricao;
     let valor = req.body.valor;
-    let query = `UPDATE item SET nome = '${nome}', descricao = '${descricao}', valor = '${valor}' WHERE id = '${id}'`;
+    let query = `UPDATE item SET nome = '${nome}', descricao = '${descricao}', valor = '${valor}' WHERE id = ${id}`;
     con.query(query, (err, result) => {
         if(err) {
             res.status(400).json(err).end();
