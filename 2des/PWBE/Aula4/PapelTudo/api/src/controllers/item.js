@@ -7,7 +7,7 @@ const create = (req, res) => {
     let nome = req.body.nome;
     let descricao = req.body.descricao;
     let valor = req.body.valor;
-    let query = `INSERT INTO item(id, nome, descricao, valor) VALUES`;
+    let query = `INSERT INTO item(id, nome, descricao, valor) VALUE`;
     query += `('${id}', '${nome}', '${descricao}','${valor}');`;
     con.query(query, (err, result) => {
         if (err) {
@@ -53,7 +53,7 @@ const update = (req, res) => {
 
 //Deleta um produto
 const del = (req, res) =>{
-    let id = req.body.id;
+    let id = req.params.id;
     con.query(`DELETE FROM item WHERE id = '${id}'`,(err, result) => {
         if(err)
             res.status(400).json(err).end();

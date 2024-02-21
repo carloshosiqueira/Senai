@@ -18,6 +18,7 @@ function carregarProdutos() {
 //Mostrando os dados do back-end
 function preencherTabela() {
     const msg = document.getElementById('msg');
+    const total = document.getElementById('total');
     produtos.forEach(prod => {
         dados.innerHTML += `
             <tr>
@@ -33,7 +34,8 @@ function preencherTabela() {
         `;
         console.log(prod.id, prod.nome, prod.descricao, prod.valor);
     });
-    msg.value= `Tabela preenchida com sucesso`;
+    msg.value = `Tabela preenchida com sucesso`;
+    calcular()
 }
 
 criar.addEventListener('submit', e => {
@@ -73,12 +75,11 @@ function atualizar(btn){
     let celulas = linha.cells;
     let id = celulas[0].innerHMTL;
     let data = {    
-        id: celulas[0].innerHTML,
         nome: celulas[1].innerHTML,
         descricao: celulas[2].innerHTML,
         valor: celulas[3].innerHTML
     };
-    fetch(uri + '/' + data.id , {
+    fetch(uri + '/' + id , {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json'
@@ -88,7 +89,6 @@ function atualizar(btn){
     .then(res => res.json())
     .then(res => {
         if(res.sqlMessage == undefined){
-            celulas[0].removeAttribute("contenteditable")
             celulas[1].removeAttribute("contenteditable")
             celulas[2].removeAttribute("contenteditable")
             celulas[3].removeAttribute("contenteditable")
@@ -152,9 +152,28 @@ function confirmar(id) {
 function edit (btn) {
     let linha = btn.parentNode.parentNode;
     let celulas = linha.cells;
-    for(let i = 0; i < celulas.length - 1; i++){
+    for(let i = 1; i < celulas.length - 1; i++){
         celulas[i].setAttribute("contenteditable", 'true')
     }
     btn.innerHTML = "✔";
     btn.setAttribute('onclick', 'atualizar(this)');
 }
+
+function calcular(){
+    const total = document.getElementById("total");
+    let patrimonio
+    patrimonio = 0;
+    produtos.forEach(prod =>{
+        patrimonio += prod.valor;
+    })
+    total.value = "R$   " + patrimonio.toFixed(2);
+}
+
+dados.addEventListener('change', e =>{
+    e.preventDefault();
+    calcular()
+})
+dados.addEventListener('load', e =>{
+    e.preventDefault();
+    calcular()
+})
