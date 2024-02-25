@@ -8,14 +8,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body onload="carregarProdutos()">
+<body onload="carregarProdutos(true)">
     <header>
         <h1>Inventario da papelaria PapelTudo</h1>
         <form id="criar" method="POST">
-            <div>
-                <label for="id">Id</label>
-                <input type="text" id="id" name="id"  required>
-            </div>
             <div>
                 <label for="nome">Nome</label>
                 <input type="text" id="nome" name="nome" required>

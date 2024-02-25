@@ -43,8 +43,11 @@ header form div{
     width: 20%;
     display: flex;
     flex-direction: column;
-    text-align: center;
     padding:10px;
+}
+
+header > form >  div > label{
+    margin:0 0 5px 10px;
 }
 
 .acao{

@@ -1,22 +1,21 @@
 //Variáveis e constantes
 const criar = document.getElementById('criar');
 const msg = document.getElementById('msg');
+const msgs = document.getElementById('msgs');
 const dados = document.getElementById('dados');
 const uri = "http://localhost:3000/item";
-const produtos = [];
+let produtos;
 
 //"Pegando" dados do back-end
-function carregarProdutos() {
-    fetch(uri)
-        .then(res => res.json())
-        .then(res => {
-            produtos.push(...res);
-            preencherTabela();
-        });
+async function carregarProdutos(mens) {
+    let f = await fetch(uri);
+    produtos = await f.json();
+    preencherTabela(mens);
 }
 
 //Mostrando os dados do back-end
-function preencherTabela() {
+function preencherTabela(mens) {
+    dados.innerHTML = "";
     const msg = document.getElementById('msg');
     produtos.forEach(prod => {
         dados.innerHTML += `
@@ -32,72 +31,75 @@ function preencherTabela() {
             </tr>
         `;
     });
-    msg.value = `Tabela preenchida com sucesso`;
+    if (mens) At(true, `Tabela preenchida com sucesso`);
     calcular()
 }
 
-criar.addEventListener('submit', e => {
+criar.addEventListener('submit', async function (e) {
     e.preventDefault();
-    const data= {
-        id: criar.id.value,
+    const data = {
         nome: criar.nome.value,
         descricao: criar.descricao.value,
         valor: criar.valor.value
     };
-    fetch("http://localhost:3000/item", {
+    let f = await fetch(uri, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     })
-    .then(res => res.json())
-    .then(res => {
-        if(res.sqlMessage == undefined){
-            produtos.push(res);
-            dados.innerHTML = "";
-            preencherTabela();
-            criar.reset();
-            msg.value = "Item registrado com sucesso"
-            calcular();
-        }
-        else{
-            msg.value = "Erro ao cadastrar o produto";
-        }
-    });
+    if (f.status == 201) {
+        carregarProdutos();
+        At(true, "Item registrado com sucesso");
+    }
+    else {
+        At(false, "Erro ao cadastrar o produto");
+    }
 });
 
 //Atualizar um produto
-function update(btn){
+async function update(btn) {
     let linha = btn.parentNode.parentNode;
+
     let celulas = linha.cells;
-    let id = celulas[0].innerHMTL;
-    let data = {    
+    let id = celulas[0].innerHTML;
+    let data = {
         nome: celulas[1].innerHTML,
         descricao: celulas[2].innerHTML,
         valor: celulas[3].innerHTML
     };
-    fetch(uri + '/' + id , {
-        method: "PUT",
+    let f = await fetch(`${uri}/${id}`, {
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     })
-    .then(res => res.json())
-    .then(res => {
-        if(res.sqlMessage == undefined){
-            celulas[1].removeAttribute("contenteditable")
-            celulas[2].removeAttribute("contenteditable")
-            celulas[3].removeAttribute("contenteditable")
-           btn.innerHTML = "*";
-           btn.setAttribute('onclick', "edit(this)")
-           msg.value = "Produto editado"
-        }
-        else{
-            msg.value = "Erro ao editar o produto";
-        }
-    });
+    if (f.status == 202) {
+        celulas[1].removeAttribute("contenteditable");
+        celulas[2].removeAttribute("contenteditable");
+        celulas[3].removeAttribute("contenteditable");
+        btn.innerHTML = "*";
+        btn.setAttribute('onclick', "edit(this)");
+        At(true, "Produto editado com sucesso");
+        carregarProdutos();
+        calcular();
+    }
+    else {
+        At(false, "Erro ao editar o produto");
+    }
+}
+
+//Transformar as celulas da tabela em celulas editaveis
+function edit(btn) {
+    let linha = btn.parentNode.parentNode;
+    let celulas = linha.cells;
+    for (let i = 1; i < celulas.length - 1; i++) {
+        celulas[i].setAttribute("contenteditable", 'true')
+    }
+    btn.innerHTML = "✔";
+    btn.setAttribute('onclick', 'update(this)');
 }
 
 function del(id) {
@@ -105,14 +107,15 @@ function del(id) {
 }
 
 //Confirma exclusão
-function confirmar(id) {
-    fetch(uri + '/' + id, {
+async function confirmar(id) {
+    let f = await fetch(`${uri}/${id}`, {
         method: 'DELETE'
-    })
-        .then(res => res.json())
-        .then(res => {
-            window.location.reload();
-        });
+    });
+    if (f.status == 204) {
+        window.location.reload();
+    } else {
+       At(false, "Erro ao excluir o item");
+    }
 }
 
 function mensagens(msg, titulo, confirma) {
@@ -125,23 +128,20 @@ function mensagens(msg, titulo, confirma) {
     }
 }
 
-//Transformar as celulas da tabela em celulas editaveis
-function edit (btn) {
-    let linha = btn.parentNode.parentNode;
-    let celulas = linha.cells;
-    for(let i = 1; i < celulas.length - 2; i++){
-        celulas[i].setAttribute("contenteditable", 'true')
-    }
-    btn.innerHTML = "✔";
-    btn.setAttribute('onclick', 'update(this)');
+function calcular() {
+    const total = document.getElementById("total");
+    let patrimonio = 0;
+    produtos.forEach(prod => {
+        patrimonio += Number(prod.valor);
+    })
+    total.value = "R$: " + patrimonio.toFixed(2);
 }
 
-function calcular(){
-    const total = document.getElementById("total");
-    let patrimonio
-    patrimonio = 0;
-    produtos.forEach(prod =>{
-        patrimonio += prod.valor;
-    })
-    total.value = "R$   " + patrimonio;
+function At(sucesso, mens) {
+    if (sucesso) {
+        msg.style.color = 'green';
+    } else {
+        msg.style.color = 'red';
+    }
+    msg.value = mens;
 }
