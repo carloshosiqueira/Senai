@@ -3,8 +3,8 @@
     --branco: #FFFFFF;
     --laranja: #F38F00;
     --laranjaclaro: #ffbc5e;
-    --vermelho: #7F0000
-
+    --vermelho: #7F0000;
+    --botoes: #c8c8c8;
 }
 
 *{
@@ -57,10 +57,14 @@ header > form >  div > label{
 .acao input{
     padding:0;
     cursor: pointer;
+    border:none;
+    background-color: var(--botoes);
+    cursor: pointer;
+    font-weight: bold;
 }
 
 header form div input{
-    height: 25px;
+    height: 30px;
     border-radius:10px;
     border: 0.5px solid var(--laranja);
     width: 100%;
@@ -114,6 +118,7 @@ table button{
     border:none;
     font-size:18px;
     cursor: pointer;
+    background-color: var(--botoes);
 }
 
 tr:nth-child(odd){
@@ -146,7 +151,6 @@ footer{
     border: 0.5px solid var(--laranja);
     border-radius: 5px;
     background-color: silver;
-    color: green;
     font-weight: 800;
     padding:5px
 }
@@ -180,6 +184,14 @@ footer{
     z-index: 10;
 }
 
+.modal button{
+    border-radius: 10px;
+    border:1px solid var(--laranja);
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+}
+
 .janela{
     width: 100%;
     max-width: 500px;
@@ -190,6 +202,24 @@ footer{
     border-radius: 5px;
     padding: 20px;
     position: relative;
+}
+
+#confirma{
+    background-color: rgb(255, 0, 0);
+    color:white;
+}
+
+#confirma:hover{
+    background-color: rgba(255,0,0,0.8);
+}
+
+.fechar{
+    background-color: gray;
+    color:white
+}
+
+.fechar:hover{
+    background-color: rgba(128,128,128,0.8);
 }
 
 .oculto {

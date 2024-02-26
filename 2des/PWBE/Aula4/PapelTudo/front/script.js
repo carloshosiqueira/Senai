@@ -23,10 +23,10 @@ function preencherTabela(mens) {
                 <td>${prod.id}</td>
                 <td>${prod.nome}</td>
                 <td>${prod.descricao}</td>
-                <td>${prod.valor}</td>
+                <td>${prod.valor.toFixed(2)}</td>
                 <td class="botoes">
                 <button onclick="del(${prod.id})"> - </button>
-                <button onclick="edit(this)"> * </button>
+                <button onclick="edit(this)"> ✎ </button>
                 </td>
             </tr>
         `;
@@ -80,7 +80,7 @@ async function update(btn) {
         celulas[1].removeAttribute("contenteditable");
         celulas[2].removeAttribute("contenteditable");
         celulas[3].removeAttribute("contenteditable");
-        btn.innerHTML = "*";
+        btn.innerHTML = "✎";
         btn.setAttribute('onclick', "edit(this)");
         At(true, "Produto editado com sucesso");
         carregarProdutos();
@@ -103,14 +103,14 @@ function edit(btn) {
 }
 
 function del(id) {
-    mensagens('Deseja realmente excluir o cliente id = ' + id + '?', 'Excluir cliente', id);
+    mensagens('Deseja realmente excluir o Produto? id = ' + id + '?', 'Excluir Produto', id);
 }
 
 //Confirma exclusão
 async function confirmar(id) {
     let f = await fetch(`${uri}/${id}`, {
         method: 'DELETE'
-    });
+    });     
     if (f.status == 204) {
         window.location.reload();
     } else {
