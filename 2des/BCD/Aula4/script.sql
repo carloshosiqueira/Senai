@@ -1,124 +1,130 @@
--- cliente(IdCliente [chave primaria], nome, endereco, telefone, email);
--- funcionario (IdFuncionario [chave primaria], nome, cargo, salario);
--- veiculo (IdVeiculo [chave primaria], placa, modelo, capacidade);
--- rota (IdRota [chave primaria], origem, destino, distancia);
--- Entrega (IdEntrega [chave primaria], inicio, fim, status (em andamento, concluida, atrasada), IdRota [Chave estrangeira] referencia Rota(IdRota), 
--- IdVeiculo [Chave estrangeira] referencia (IdVeiculo), Motorista [chave estrangeira] referencia funcionario(IdFuncionario))
--- Pedido (IdPedido [chave primaria], dataPedido, valor, idcliente [chave estrangeira] referencia Cliente(IdCliente), IdEntrega [chave estrangeira] referencia Entrega(IdEntrega))
-
---DDL Criar tabelas e ralacionamentos
-
 drop database if exists transportadora;
-create database transportadora;
+create database transportadora CHARSET=UTF8 COLLATE utf8_general_ci;
 use transportadora;
 
+-- DDL - CREATE
 create table Cliente(
-    IdCliente integer primary key auto_increment,
-    Nome varchar(100) not null,
-    Endereco varchar(50) not null,
-    Telefone varchar(12) not null,
-    Email varchar(100) not null
+    idCliente int not null primary key auto_increment,
+    nome varchar(100) not null,
+    endereco varchar(100) not null,
+    telefone varchar(15) not null,
+    email varchar(100) not null
 );
-
 create table Funcionario(
-    IdFuncionario integer primary key auto_increment,
-    Nome varchar(100) not null,
-    Cargo varchar(30) not null, 
-    Salario decimal(5,2) not null
+    idFuncionario int not null primary key auto_increment,
+    nome varchar(100) not null default("Motorista"),
+    cargo varchar(30) not null,
+    salario float(10,2) not null
 );
-
-create table Veiculo(
-    IdVeiculo integer primary key auto_increment,
-    Placa varchar(10) not null,
-    Modelo varchar(20) not null,
-    Capacidade varchar(10) not null
-);
-
 create table Rota(
-    IdRota integer primary key auto_increment,
-    Origem varchar(30) not null,
-    Destino varchar(30) not null,
-    Distancia varchar(10)
+    idRota int not null primary key auto_increment,
+    origem varchar(100) not null,
+    destino varchar(100) not null,
+    distancia float(10,2)
+);
+create table Veiculo(
+    placa varchar(10) not null primary key,
+    modelo varchar(20) not null,
+    capacidade float(10,2)
 );
 
 create table Entrega(
-    IdEntrega integer primary key auto_increment,
-    Inicio varchar(20) not null,
-    Fim varchar(20) not null,
-    Estatus varchar(12) not null,
-    IdRota integer not null,
-    IdVeiculo integer not null,
-    Motorista integer not null,
-    foreign key (IdRota) references Rota(IdRota),
-    foreign key (IdVeiculo) references Veiculo(IdVeiculo),
-    foreign key (Motorista) references Funcionario(IdFuncionario)
+    idEntrega int not null primary key auto_increment,
+    placa varchar(10) not null,
+    motorista int not null,
+    idRota int not null,
+    inicio datetime,
+    fim datetime,
+    status varchar(20)
 );
 
-create table Pedido(
-    IdPedido integer primary key auto_increment,
-    DataPedido date not null,
-    Valor decimal(5,2),
-    IdCliente integer not null,
-    IdEntrega integer not null,
-    foreign key (Idcliente) references Cliente(IdCliente),
-    foreign key (IdEntrega) references Entrega(IdEntrega)
+create table pedido(
+    idPedido int not null primary key auto_increment,
+    idCliente int not null,
+    idEntrega int not null,
+    dataPedido timestamp not null,
+    valor float(50,2) not null
 );
+-- DDL - ALTER
+alter table Pedido add foreign key (idCliente) references Cliente(idCliente);
+alter table Pedido add foreign key (idEntrega) references Entrega(idEntrega);
 
--------------------------------
-INSERT INTO Cliente (Nome, Endereco, Telefone, Email) VALUES
-('João Silva', 'Rua A, 123', '(11) 91234-5678', 'joao@example.com'),
-('Maria Oliveira', 'Av. B, 456', '(11) 92345-6789', 'maria@example.com'),
-('Pedro Santos', 'Travessa C, 789', '(11) 93456-7890', 'pedro@example.com'),
-('Ana Pereira', 'Rua D, 321', '(11) 94567-8901', 'ana@example.com'),
-('Carlos Souza', 'Av. E, 654', '(11) 95678-9012', 'carlos@example.com');
+alter table Entrega add foreign key (placa) references Veiculo(placa);
+alter table Entrega add foreign key (motorista) references Funcionario(idFuncionario);
+alter table Entrega add foreign key (idRota) references Rota(idRota);
 
-INSERT INTO Funcionario (Nome, Cargo, Salario) VALUES
-('Fernanda Lima', 'Motorista', 3000.00),
-('José Oliveira', 'Gerente', 5000.00),
-('Mariana Costa', 'Assistente', 2500.00);
+describe Cliente;
+describe Funcionario;
+describe Rota;
+describe Veiculo;
+describe Entrega;
+describe Pedido;
+show tables;
 
-INSERT INTO Veiculo (Placa, Modelo, Capacidade) VALUES
-('ABC1234', 'Caminhão', '1000kg'),
-('DEF5678', 'Van', '500kg'),
-('GHI9012', 'Caminhonete', '800kg');
+-- DML - População do banco de dados com dados de teste
+insert into cliente(nome, endereco, telefone, email) values
+("Jacinto Mello Aquino Rego", "Rua Alfredo Bueno, 25, Centro, Jaguariúna, SP","19 90567-8847","jacintomello@gmail.com"),
+("Osmar Motta","Rua Julia Bueno, 31, Centro, Jaguariúna, SP","19 99999-8847","osmarmotta@gmail.com"),
+("Osmar Manjo","Rua Joaquim Bueno, 31, Santa Maria, Jaguariúna, SP","19 98888-8847","osmarmanjo@gmail.com"),
+("Osmar Dito","Av. Papa João XXIII, 190, Pedreira - SP","19 94444-8847","osmardito@gmail.com"),
+("Osmar Educado","Rua Joaquim Bueno, 131, Santa Maria, Jaguariúna, SP","19 95555-8847","osmareducado@gmail.com"),
+("Humberto garcia","R. Panini, 108 - Vila Sao Jose, Jaguariúna - SP","19 96666-8847","humbertogarcia@gmail.com"),
+("Dagoberto Teixeira","Rua Joaquim Bueno, 331, Santa Maria, Jaguariúna, SP","19 97777-8847","dagobertoteixeira@gmail.com");
 
-INSERT INTO Rota (Origem, Destino, Distancia) VALUES
-('São Paulo', 'Rio de Janeiro', '400km'),
-('Rio de Janeiro', 'Belo Horizonte', '500km'),
-('Belo Horizonte', 'Curitiba', '600km');
+insert into Funcionario(nome, cargo, salario) values
+("Passos Dias Aguiar","Motorista",4980.9),
+("Suzi Rego Grande","Motorista",9980.9),
+("Bino Nomuro","Motorista",6750);
 
+insert into rota(origem, destino, distancia) values
+("Rua Anèsia Venturi Zani, 62, Centro, Jaguariúna, SP","Av. Pacífico Moneda, 2925, Vargeão Jaguariúna, SP", null),
+("Rua Anèsia Venturi Zani, 62, Centro, Jaguariúna, SP","R. Marion, 780 - Chácaras Santo Antonio Bom Jardim, Santo Antônio de Posse - SP",8.8),
+("Rua Anèsia Venturi Zani, 62, Centro, Jaguariúna, SP","Av. Papa João XXIII, 190, Pedreira - SP",15.2),
+("Rua Anèsia Venturi Zani, 62, Centro, Jaguariúna, SP","R. Olindo Peron, 94, Pedreira - SP",18),
+("Rua Anèsia Venturi Zani, 62, Centro, Jaguariúna, SP","R. Panini, 108 - Vila Sao Jose, Jaguariúna - SP",4.2);
 
-INSERT INTO Entrega (Inicio, Fim, Estatus, IdRota, IdVeiculo, Motorista) VALUES
-('2024-02-27', '2024-02-28', 'Pendente', 1, 1, 1),
-('2024-02-28', '2024-03-01', 'Pendente', 2, 2, 1),
-('2024-02-29', '2024-03-01', 'Pendente', 3, 3, 2),
-('2024-03-01', '2024-03-02', 'Pendente', 1, 1, 1),
-('2024-03-02', '2024-03-03', 'Pendente', 2, 2, 1),
-('2024-03-03', '2024-03-04', 'Pendente', 3, 3, 2),
-('2024-03-04', '2024-03-05', 'Pendente', 1, 1, 1),
-('2024-03-05', '2024-03-06', 'Pendente', 2, 2, 1),
-('2024-03-06', '2024-03-07', 'Pendente', 3, 3, 2),
-('2024-03-07', '2024-03-08', 'Pendente', 1, 1, 1);
+insert into veiculo(placa, modelo, capacidade) values
+("AAA-1A11","VW Kombi",1),
+("BBB-1B11","Fiat Toro",2),
+("CCC-1C11","Ford F250",2.5);
 
+insert into entrega(placa, motorista, idRota, inicio, fim, status) values
+("AAA-1A11",1,1,date_sub(now(),interval 200 hour),date_sub(now(),interval 196 hour),"Finalizada"),
+("BBB-1B11",2,1,date_sub(now(),interval 180 hour),date_sub(now(),interval 172 hour),"Finalizada"),
+("CCC-1C11",3,1,date_sub(now(),interval 160 hour),date_sub(now(),interval 159 hour),"Finalizada"),
+("AAA-1A11",1,1,date_sub(now(),interval 155 hour),date_sub(now(),interval 151 hour),"Finalizada"),
+("BBB-1B11",3,1,date_sub(now(),interval 100 hour),date_sub(now(),interval 97 hour),"Finalizada"),
+("CCC-1C11",2,1,date_sub(now(),interval 90 hour),date_sub(now(),interval 88 hour),"Finalizada"),
+("BBB-1B11",1,1,date_sub(now(),interval 80 hour),date_sub(now(),interval 79 hour),"Finalizada"),
+("AAA-1A11",2,1,date_sub(now(),interval 20 hour),date_sub(now(),interval 18 hour),"Finalizada"),
+("CCC-1C11",3,1,date_sub(now(),interval 2 hour),null,"Em andamento"),
+("BBB-1B11",1,1,null,null,"Agendada");
 
-INSERT INTO Pedido (DataPedido, Valor, IdCliente, IdEntrega) VALUES
-('2024-02-27', 100.00, 1, 1),
-('2024-02-27', 50.00, 2, 1),
-('2024-02-28', 120.00, 3, 2),
-('2024-02-28', 70.00, 4, 2),
-('2024-02-29', 80.00, 5, 3),
-('2024-02-29', 90.00, 1, 3),
-('2024-02-29', 60.00, 2, 3),
-('2024-02-29', 110.00, 3, 3),
-('2024-02-29', 40.00, 4, 3),
-('2024-02-29', 75.00, 5, 3),
-('2024-03-01', 95.00, 1, 4),
-('2024-03-01', 55.00, 2, 4),
-('2024-03-01', 130.00, 3, 5),
-('2024-03-01', 80.00, 4, 5),
-('2024-03-02', 85.00, 5, 6),
-('2024-03-02', 100.00, 1, 6),
-('2024-03-02', 70.00, 2, 7),
-('2024-03-02', 120.00, 3, 7),
-('2024-03-02', 50.00, 4, 8),
-('2024-03-02', 65.00, 5, 8);
+insert into pedido(idCliente, idEntrega, dataPedido, valor) values
+(1,1,date_sub(now(),interval 203 hour),500),
+(2,1,date_sub(now(),interval 201 hour),499.9),
+(1,2,date_sub(now(),interval 182 hour),399.9),
+(3,2,date_sub(now(),interval 181 hour),200),
+(2,3,date_sub(now(),interval 161 hour),1200),
+(5,3,date_sub(now(),interval 161 hour),59.9),
+(4,4,date_sub(now(),interval 156 hour),550.9),
+(6,4,date_sub(now(),interval 155 hour),120),
+(5,5,date_sub(now(),interval 101 hour),12.5),
+(7,5,date_sub(now(),interval 100 hour),200),
+(6,6,date_sub(now(),interval 91 hour),12.5),
+(7,6,date_sub(now(),interval 91 hour),200),
+(1,7,date_sub(now(),interval 81 hour),150),
+(4,7,date_sub(now(),interval 81 hour),180),
+(1,8,date_sub(now(),interval 20 hour),150),
+(4,8,date_sub(now(),interval 20 hour),180),
+(1,9,date_sub(now(),interval 3 hour),150),
+(4,9,date_sub(now(),interval 2 hour),180),
+(6,10,date_sub(now(),interval 1 hour),180),
+(7,10,now(),180);
+
+select * from cliente;
+select * from funcionario;
+select * from rota;
+select * from veiculo;
+ select * from entrega;
+ select * from pedido;
