@@ -126,5 +126,5 @@ select * from cliente;
 select * from funcionario;
 select * from rota;
 select * from veiculo;
- select * from entrega;
- select * from pedido;
+select * from entrega;
+select * from pedido;
