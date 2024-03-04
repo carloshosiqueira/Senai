@@ -36,13 +36,19 @@ body {
 .navbar-nav .nav-link:hover {
     color: #007bff;
 }
+
+.nav-link{
+    display: flex;
+    align-items: center;
+}
+
 .form-control {
     border-color: #ffffff;
     color:#ffffff;
 }
 .btn-outline-light {
     border-color: #ffffff;
-    color: #343a40;
+    color: #ffffff;
 }
 .btn-outline-light:hover {
     background-color: #c2bbbb;
@@ -59,8 +65,8 @@ body {
     transform: translateY(-5px);
 }
 .card-img-top {
-    height: 200px;
-    object-fit: cover;
+    height: 300px;
+    object-fit: contain;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
