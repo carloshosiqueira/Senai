@@ -7,6 +7,7 @@ const Veiculo = require("./controller/veiculo");
 const Funcionario = require("./controller/funcionario");
 const Rota = require("./controller/rota");
 const Entrega = require("./controller/entrega");
+const Pedido = require("./controller/pedido");
 
 //Rota de teste
 const teste = (req, res) => {
@@ -48,6 +49,12 @@ router.get("/Entrega", Entrega.read);
 router.put("/Entrega/:idEntrega", Entrega.update);
 router.delete("/Entrega/:idEntrega", Entrega.del);
 
+//Rotas de Saída - Pedido
+router.get("/", teste);
+router.post("/Pedido", Pedido.create);
+router.get("/Pedido", Pedido.read);
+router.put("/Pedido/:idPedido", Pedido.update);
+router.delete("/Pedido/:idPedido", Pedido.del);
 
 
 module.exports = router;
