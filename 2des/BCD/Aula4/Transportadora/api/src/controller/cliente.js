@@ -24,7 +24,7 @@ const create = (req, res) => {
 const read = (req, res) => {
     con.query("SELECT * FROM Cliente ORDER BY idCliente DESC", (err, result) => {
         if (err)
-            res.json(err);
+            res.status(500).send('Erro ao listar clientes');
         else
             res.json(result);
     });

@@ -1,0 +1,34 @@
+:root {
+    --cor-laranja-escuro: #FF4500;
+    --cor-roxo-escuro: #8B008B;
+    --cor-dourado: #FFD700;
+    --cor-azul-turquesa: #00CED1;
+    --cor-rosa-vibrante: #FF69B4;
+  }
+
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+    height: 85vh;
+}
+
+header{
+    height: 15vh;
+}
+
+.navbar-brand{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+form{
+    width: 60%;
+}

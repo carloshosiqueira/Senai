@@ -3,3 +3,26 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+header{
+    height: 15vh;
+}
+
+main{
+    height: 85vh;
+}
+
+.navbar-brand{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-img-top{
+    height: 182px;
+    width: 100%;
+}
+
+.card-text{
+    height: 275px;
+}
