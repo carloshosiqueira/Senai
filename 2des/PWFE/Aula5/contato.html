@@ -10,36 +10,61 @@
     <link rel="icon" type="image/png" href="./img/Logo.png">
 </head>
 <style>
-    .navbar-brand{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    body {
+        background-image: url('../img/palco-fundo.jpg');
+        background-size: cover;
+    }
+
+    h2 {
+        color: white;
+    }
+
+    form {
+        width: 60%;
+    }
+
+    label {
+        color: white;
+        margin: 5px 0 5px 0
+    }
+
+    .btn {
+        margin: 10px 0 0 0;
+    }
 </style>
+
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg" style="background-color: #690c00;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="./img/Logo.png" alt="Logo" width="70" height="60" class="d-inline-block align-text-top me-3">
+                <a class="navbar-brand text-light" href="#">
+                    <img src="./img/Logo.png" alt="Logo" width="70" height="60"
+                        class="d-inline-block align-text-top me-3">
                     Academia Dramática Estelar
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                            <a class="nav-link active text-light" aria-current="page" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="cursos.html">Cursos</a>
+                            <a class="nav-link text-light" href="cursos.html">Cursos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contato.html">Contato</a>
+                            <a class="nav-link text-light" href="contato.html">Contato</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="matricula.html">Matrícula</a>
+                            <a class="nav-link text-light" href="matricula.html">Matrícula</a>
                         </li>
                     </ul>
                 </div>
@@ -47,22 +72,24 @@
         </nav>
     </header>
     <div class="container mt-5">
-        <h2>Entre em Contato</h2>
-        <form>
-            <div class="form-group">
-                <label for="nome">Nome:</label>
-                <input type="text" class="form-control" id="nome" placeholder="Digite seu nome">
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Digite seu email">
-            </div>
-            <div class="form-group">
-                <label for="mensagem">Mensagem:</label>
-                <textarea class="form-control" id="mensagem" rows="3" placeholder="Digite sua mensagem"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
+        <h2 class="text-center">Entre em Contato</h2>
+        <div class="container d-flex justify-content-center align-items-center vh-85">
+            <form>
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Digite seu nome">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Digite seu email">
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea class="form-control" id="mensagem" rows="3" placeholder="Digite sua mensagem"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
     </div>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

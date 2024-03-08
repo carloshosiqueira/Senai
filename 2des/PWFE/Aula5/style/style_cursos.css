@@ -4,8 +4,17 @@
     box-sizing: border-box;
 }
 
+body{
+    background-image: url('../img/palco-fundo.jpg');
+    background-size: cover;
+}
+
 header{
     height: 15vh;
+}
+
+main > h1 {
+    color: #FFD700;
 }
 
 main{
