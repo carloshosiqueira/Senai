@@ -47,7 +47,7 @@ function novaTarefa() {
     //Insere na tabela
     informacoes.innerHTML += `
     <tr>
-        <th scope="row">${informacoes.rows.length + 1}</th>
+        <td scope="row">${informacoes.rows.length + 1}</th>
         <td>${tarefa}</td>
         <td id="timer${informacoes.rows.length + 1}"></td>
         <td>Em andamento</td>

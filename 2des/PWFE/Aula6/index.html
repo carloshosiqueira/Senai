@@ -9,10 +9,10 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg">
+<body style="background-color: rgb(149, 170, 149);">
+    <nav class="navbar navbar-expand-lg background-color" style="background-color: rgb(48, 112, 48);">
         <div class="container-fluid">
-            <a class="navbar-brand " href="#">
+            <a class="navbar-brand text-light" href="#">
                 ProjAula6
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -21,17 +21,17 @@
             </button>
             <div class="justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active " aria-current="page" href="#">Home</a>
+                    <li class="nav-item ">
+                        <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="tarefas.html">Tarefas</a>
+                        <a class="nav-link text-light" href="tarefas.html">Tarefas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalContato">Contato</a>
+                        <a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#modalContato">Contato</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#" id="login" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                        <a class="nav-link text-light" href="#" id="login" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
                     </li>
                 </ul>
             </div>
@@ -39,13 +39,19 @@
     </nav>
 
     <main>
-        <div class="container">
-            <h3>ProjAula6 é o melhor site para te auxiliar no gerenciamento de suas tarefas, você pode adicionar, remover e editar as tarefas para que fiquem do jeito que você goste.</h3>
-            <h3>Clique no botão "Saiba Mais" para ir à pagina de tarefas e faça seu login para carregar o histórico salvo ou para começar um novo.</h3>
-            <a href="tarefas.html"><button>Saiba Mais</button></a>
+        <div class="container mt-4" style="border: 3px solid black; border-radius: 40px; text-align: center; background-color:rgb(163, 196, 107); ">
+            <h3 style="margin-top: 20px;">ProjAula6 é o melhor site para te auxiliar no gerenciamento de suas tarefas, você pode adicionar, remover e editar as tarefas para que fiquem do jeito que você goste.</h3>
+            <h3 style="margin-top: 20px;">Clique no botão "Saiba Mais" para ir à página de tarefas e faça seu login.</h3>
+            <div style="margin-top: 20px; text-align: center;">
+                <a href="tarefas.html" style="display: inline-block; text-decoration: none;">
+                    <button class="btn" style="background-color: antiquewhite; border-radius: 30px;margin-top: 20px; margin-bottom: 15px; padding: 5px;"">Saiba Mais</button>
+                </a>
+            </div>
         </div>
     </main>
+    
 
+   
     <!-- Modal de contato -->
     <div class="modal fade" id="modalContato" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
