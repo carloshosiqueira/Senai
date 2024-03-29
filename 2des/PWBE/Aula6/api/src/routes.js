@@ -7,22 +7,23 @@ const Usuario = require('./controllers/usuarios')
 
 //Rota de teste
 const teste = (req, res) => {
-    res.json("API tarefas respondendo!");
+    res.json("API gerenciamentro de tarefas respondendo!");
 }
 
 router.get('/', teste);
 
+router.post('/tarefas', Tarefa.addTarefa)
 router.get('/tarefas', Tarefa.getTarefa)
 router.get('/tarefas/:id', Tarefa.getTarefa)
 router.put('/tarefas', Tarefa.updateTarefa)
-router.post('/tarefas', Tarefa.addTarefa)
 router.delete('/tarefas/:id', Tarefa.deleteTarefa)
 
-router.get('/Usuarios', Usuario.getUsuario)
-router.get('/Usuarios/:id', Usuario.getUsuario)
-router.put('/Usuarios', Usuario.updateUsuario)
-router.post('/Usuarios', Usuario.addUsuario)
-router.delete('/Usuarios/:id', Usuario.deleteUsuario)
+router.post('usuarios/login', Usuario.login) // Dando erro 404
+router.post('/usuarios', Usuario.addUsuario)
+router.get('/usuarios', Usuario.getUsuario)
+router.get('/usuarios/:id', Usuario.getUsuario)
+router.put('/usuarios', Usuario.updateUsuario)
+router.delete('/usuarios/:id', Usuario.deleteUsuario)
 
 
 module.exports = router
