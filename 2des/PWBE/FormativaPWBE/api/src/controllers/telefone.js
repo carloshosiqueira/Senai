@@ -57,9 +57,9 @@ const updateTelefone = (req, res) => {
 
 // //CRUD - DELETE
 const deleteTelefone = (req, res) => {
-    if (req.params != null && req.params.matricula != null) {
-        const { matricula } = req.params;
-        con.query('DELETE FROM Telefone WHERE matricula = ?', [matricula], (err, result) => {
+    if (req.params != null && req.params.numero != null) {
+        const { numero } = req.params;
+        con.query('DELETE FROM Telefone WHERE matricula = ?', [numero], (err, result) => {
             if (err) {
                 res.status(500).json(err);
             } else {
