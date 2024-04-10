@@ -3,7 +3,7 @@ const con = require('../connect/connection');
 // CRUD - CREATE
 const addTelefone = (req, res) => {
     if (req.body != null && req.body.matricula != null && req.body.numero != null) {
-        const { matricula, numero,} = req.body;
+        const { matricula, numero} = req.body;
         con.query('INSERT INTO Telefone (matricula, numero) VALUES (?, ?)', [matricula, numero], (err, result) => {
             if (err) {
                 res.status(500).json(err);
