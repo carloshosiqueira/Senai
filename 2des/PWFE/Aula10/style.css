@@ -1,0 +1,203 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color:blueviolet
+}
+
+header{
+    height: 10vh;
+    width: 100%;
+    background: #ccc;
+    margin-bottom: 10px;
+}
+
+nav{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+nav > .navItens > a{
+    text-decoration: none;
+    color: black;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo > img {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+}
+
+.navItens{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.player{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.controls button {
+    margin: 10px;
+    padding: 10px 20px;
+    border:none;
+    background-color: #17b970;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.controls button:hover{
+    background-color: #0f9d58;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+}
+
+img{
+    width: 125px;
+    height: 125px;
+}
+
+.playlists{
+    display: flex;
+    width: 100%;
+    border: 2px solid black;
+    justify-content: space-evenly;
+}
+
+.playlists > a{
+    width: 25%;
+    height: 300px;
+    text-decoration: none;
+}
+
+.ddlc, .skillet, .neffex{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border:1px solid violet;
+    border-radius: 20px;
+    background-color: rgb(0, 60, 0);
+    cursor: pointer;
+    transition: transform 0.5s;
+    transform: translateX(0) scale(0.9);
+}
+
+.ddlc:hover, .skillet:hover, .neffex:hover,
+.ddlc:focus, .skillet:focus, .neffex:focus {
+  transform: translateX(10px) scale(1);
+  
+}
+
+.song-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 5px 0 5px 0;
+}
+
+footer{
+    padding: 10px;
+    color:white;
+}
+
+.ddlcMusica, .neffexMusica, .skilletMusica{
+    width: 50%;
+    height: fit-content;
+    padding: 10px;
+    border:1px solid violet;
+    border-radius: 20px;
+    background-color: rgb(0, 60, 0);
+    cursor: pointer;
+}
+
+.song-item > img{
+    width: 75px;
+    height: 75px;
+    margin-right: 10px;
+    padding:10px
+}
+
+.song-item:hover{
+    background-color: rgb(0,100,0);
+}
+
+.overlay-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s ease-in-out;
+    backdrop-filter: blur(5px);
+}
+
+#modalSobre{
+    width: 50%;
+    max-height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ddd;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,.5);
+    padding: 10px;
+    overflow:auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modalCard > p{
+    margin-top: 30px;
+}
+
+.modalCardBtn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.modalCardBtn > button{
+    width: 40%;
+    height: 40px;
+    border-radius: 20px;
+    border:none;
+    cursor: pointer;
+}
+
+.ocultar{
+    display: none;
+}

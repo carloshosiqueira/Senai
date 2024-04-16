@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula10</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./assets/img/logo.png">
+                <h1>Escuta aí</h1>
+            </div>
+            <div class="navItens">
+                <a href="index.html">Player</a>
+                <a href="#" onclick="abrirModalSobre()">Quem somos</a>
+                <a href="#">Peça uma música</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <!-- <div class="player">
+            <div class="cover-container">
+                <img id="coverImage" src="./assets/img/coverDDLC.jpg" alt="Album Cover">
+            </div>
+            <audio id="audioPlayer" controls>
+            <source src="song.mp3" type="audio/mpeg">
+            </audio>
+            <div class="controls">
+            <button id="prevButton">Anterior</button>
+            <button id="playPauseButton">Play/Pause</button>
+            <button id="nextButton">Próximo</button>
+            <button id="randomButton">Aleatório</button>
+            </div>
+        </div> -->
+        <h2>Selecione a playlist</h2>
+        <section class="playlists">
+            <a href="ddlc.html">
+                <div class="ddlc">
+                    <h3>DDLC</h3>
+                    <img src="./assets/img/coverDDLC.png">
+                    <p>Contém 5 músicas</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="skillet">
+                    <h3>SKILLET</h3>
+                    <img src="./assets/img/coverSKILLET.png">
+                    <p>Contém 5 músicas</p>
+                </div>
+            </a>
+            <a href>
+                <div class="neffex">
+                    <h3>NEFFEX</h3>
+                    <img src="./assets/img/coverNEFFEX.png">
+                    <p>Contém 5 músicas</p>
+                </div>
+            </a>
+            <!-- <div class="ddlc">
+                <h3>DDLC</h3>
+                <ul id="playlistDDLC">
+                    <li data-src="./assets/music/ddlc/DearSunshine.mp3" class="song-item">
+                        <img src="./assets/img/coverDDLC.jpg" class="coverImage" alt="Album Cover">
+                        Dear Sunshine
+                    </li>
+                    <li data-src="./assets/music/ddlc/LavenderMist.mp3" class="song-item">
+                        <img src="./assets/img/coverDDLC.jpg" class="coverImage" alt="Album Cover">
+                        Lavender Mist
+                    </li>
+                    <li data-src="./assets/music/ddlc/MySong_YourNote.mp3" class="song-item">
+                        <img src="./assets/img/coverDDLC.jpg" class="coverImage" alt="Album Cover">
+                        My Song, Your note
+                    </li>
+                    <li data-src="./assets/music/ddlc/PeachyPie.mp3" class="song-item">
+                        <img src="./assets/img/coverDDLC.jpg" class="coverImage" alt="Album Cover">
+                        Peachy Pie
+                    </li>
+                    <li data-src="./assets/music/ddlc/PieceByPiece.mp3" class="song-item">
+                        <img src="./assets/img/coverDDLC.jpg" class="coverImage" alt="Album Cover">
+                        Piece by Piece
+                    </li>
+                    </ul>
+            </div>
+            <div class="skillet">
+                <h3>SKILLET</h3>
+                <ul id="playlistSKILLET">
+                    <li data-src="./assets/music/skillet/Awake and Alive.mp3" class="song-item">
+                        <img src="./assets/img/coverSKILLET.jpg" class="coverImage" alt="Album Cover">
+                        Awake and Alive - Nightcore
+                    </li>
+                    <li data-src="./assets/music/skillet/Hero.mp3" class="song-item">
+                        <img src="./assets/img/coverSKILLET.jpg" class="coverImage" alt="Album Cover">
+                        Hero - Nightcore
+                    </li>
+                    <li data-src="./assets/music/skillet/The Resistance.mp3" class="song-item">
+                        <img src="./assets/img/coverSKILLET.jpg" class="coverImage" alt="Album Cover">
+                        The Resistance
+                    </li>
+                    <li data-src="./assets/music/skillet/Monster.mp3" class="song-item">
+                        <img src="./assets/img/coverSKILLET.jpg" class="coverImage" alt="Album Cover">
+                        Monster
+                    </li>
+                    <li data-src="./assets/music/skillet/Comatose.mp3" class="song-item">
+                        <img src="./assets/img/coverSKILLET.jpg" class="coverImage" alt="Album Cover">
+                        Comatose - Slowed + Reverb
+                    </li>
+                    </ul>
+            </div> -->
+        </section>
+    </main>
+    <footer>
+        <div class="descricao">
+            <p>Este site foi realizado somente com o foco para estudos, se deseja a remoção das imagens ou das músicas
+                por favor entre em contato</p>
+        </div>
+    </footer>
+
+
+    <!--Mexer no modal de música e verificar o motivo pelo eles não ficam ocultos ao iniciar o site e nem fecham ao clicar no botão de fechar-->
+
+
+
+    <!--Modal Sobre-->
+    <!-- <div class="overlay-modal" id="modalSobre">
+        <div class="modalCard">
+            <h2>Sobre a gente</h2>
+            <p>
+                Escute Aqui é o seu destino musical definitivo, onde a paixão pela música ganha vida. Conectamos
+                pessoas apaixonadas por melodias e ritmos em uma plataforma vibrante e envolvente. Explore uma vasta
+                coleção de músicas, descubra novos artistas e compartilhe suas faixas favoritas com amigos. Deixe-se
+                levar pelo poder da música em Escute Aqui - onde cada nota conta uma história e cada batida ressoa com
+                emoção. Junte-se a nós e mergulhe em um mundo de sons inesquecíveis.
+            </p>
+            <div class="modalCardBtn">
+                <button type="button"  onclick="modalSobre.classList.add('ocultar')"
+                    class="cancelarNovo">Fechar</button>
+            </div>
+        </div>
+    </div> -->
+    <!--Modal Pedir música-->
+        <!-- <div class="overlay-modal ocultar" id="modalMusica">
+            <div class="modalCard">
+                <h2>Peça sua música</h2>
+                <form id="formMusica">
+                    <input type="text" name="tituloCard" placeholder="Nome da música" required>
+                    <input type="text" name="tituloCard" placeholder="Autor/Banda" required>
+                    <div class="modalCardBtn">
+                        <button type="button" onclick="modalNovo.classList.add('ocultar')"
+                            class="cancelarNovo">Cancelar</button>
+                        <button type="submit" class="criarNovo">Criar</button>
+                    </div>
+                </form>
+            </div>
+        </div> -->
+</body>
+<script src="script.js"></script>
+
+</html>
