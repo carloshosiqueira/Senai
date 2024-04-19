@@ -28,40 +28,75 @@
                 <img id="coverImage" src="./assets/img/coverNEFFEX.png" alt="Album Cover">
             </div>
             <audio id="audioPlayer" controls>
-            <source src="song.mp3" type="audio/mpeg">
+                <source src="song.mp3" type="audio/mpeg">
             </audio>
             <div class="controls">
-            <button id="prevButton">Anterior</button>
-            <button id="playPauseButton">Play/Pause</button>
-            <button id="nextButton">Próximo</button>
-            <button id="randomButton">Aleatório</button>
+                <button id="prevButton">Anterior</button>
+                <button id="playPauseButton">Play/Pause</button>
+                <button id="nextButton">Próximo</button>
+                <button id="randomButton">Aleatório</button>
             </div>
         </div>
-    <div class="neffexMusica">
-        <ul id="playlist">
-            <li data-src="./assets/music/neffex/DearSunshine.mp3" class="song-item">
-                <img src="./assets/img/coverNEFFEX.png" class="coverImage" alt="Album Cover">
-                Dear Sunshine
-            </li>
-            <li data-src="./assets/music/neffex/LavenderMist.mp3" class="song-item">
-                <img src="./assets/img/coverNEFFEX.png" class="coverImage" alt="Album Cover">
-                Lavender Mist
-            </li>
-            <li data-src="./assets/music/neffex/MySong_YourNote.mp3" class="song-item">
-                <img src="./assets/img/coverNEFFEX.png" class="coverImage" alt="Album Cover">
-                My Song, Your note
-            </li>
-            <li data-src="./assets/music/neffex/PeachyPie.mp3" class="song-item">
-                <img src="./assets/img/coverNEFFEX.png" class="coverImage" alt="Album Cover">
-                Peachy Pie
-            </li>
-            <li data-src="./assets/music/neffex/PieceByPiece.mp3" class="song-item">
-                <img src="./assets/img/coverNEFFEX.png" class="coverImage" alt="Album Cover">
-                Piece by Piece
-            </li>
-        </ul>
-    </div>
-    <script src="script.js"></script>
+        <div class="neffexMusica">
+            <ul id="playlist">
+                <li data-src="./assets/music/neffex/Careless.mp3" class="song-item">
+                    <img src="./assets/img/coverNEFFEX.png" class="coverImage" alt="Album Cover">
+                    Careless
+                </li>
+                <li data-src="./assets/music/neffex/Cold.mp3" class="song-item">
+                    <img src="./assets/img/coverNEFFEX.png" class="coverImage" alt="Album Cover">
+                    Cold
+                </li>
+                <li data-src="./assets/music/neffex/Grateful.mp3" class="song-item">
+                    <img src="./assets/img/coverNEFFEX.png" class="coverImage" alt="Album Cover">
+                    Grateful
+                </li>
+                <li data-src="./assets/music/neffex/Hope.mp3" class="song-item">
+                    <img src="./assets/img/coverNEFFEX.png" class="coverImage" alt="Album Cover">
+                    Hope
+                </li>
+                <li data-src="./assets/music/neffex/Rumors.mp3" class="song-item">
+                    <img src="./assets/img/coverNEFFEX.png" class="coverImage" alt="Album Cover">
+                    Rumors
+                </li>
+            </ul>
+        </div>
+        <!--Modal Sobre-->
+        <div class="overlay-modal ocultar" id="modalSobre">
+            <div class="modalCard">
+                <div class="headerModal">
+                    <h2>Sobre a gente</h2>
+                    <span onclick="modalSobre.classList.add('ocultar')" class="cancelarNovo">X</span>
+                </div>
+                <p>
+                    Escute Aqui é o seu destino musical definitivo, onde a paixão pela música ganha vida. Conectamos
+                    pessoas apaixonadas por melodias e ritmos em uma plataforma vibrante e envolvente. Explore uma vasta
+                    coleção de músicas, descubra novos artistas e compartilhe suas faixas favoritas com amigos. Deixe-se
+                    levar pelo poder da música em Escute Aqui - onde cada nota conta uma história e cada batida ressoa
+                    com
+                    emoção. Junte-se a nós e mergulhe em um mundo de sons inesquecíveis.
+                </p>
+            </div>
+        </div>
+        <!--Modal Pedir música-->
+        <div class="overlay-modal ocultar" id="modalMusica">
+            <div class="modalCard">
+                <div class="headerModal">
+                    <h2>Peça sua música</h2>
+                    <span onclick="modalMusica.classList.add('ocultar')">X</span>
+                </div>
+                <form id="formMusica">
+                    <input type="text" name="tituloCard" placeholder="Nome da música" required>
+                    <input type="text" name="tituloCard" placeholder="Autor/Banda" required>
+                    <div class="modalCardBtn">
+                        <button type="button" onclick="modalMusica.classList.add('ocultar')"
+                            class="cancelarNovo">Cancelar</button>
+                        <button type="submit" class="criarNovo">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 </body>
+<script src="script.js"></script>
 
 </html>

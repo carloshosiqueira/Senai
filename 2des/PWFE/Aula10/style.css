@@ -154,21 +154,14 @@ footer{
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0,0,0,.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     transition: all 1s ease-in-out;
-    backdrop-filter: blur(5px);
+    background-color: #0f9d58;
 }
 
 #modalSobre{
     width: 50%;
     max-height: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #ddd;
+    background-color: #ccc;
     border-radius: 5px;
     box-shadow: 1px 1px 10px rgba(0,0,0,.5);
     padding: 10px;
@@ -179,23 +172,68 @@ footer{
     transform: translate(-50%, -50%);
 }
 
+#modalMusica{
+    width: 30%;
+    height: fit-content;
+    max-height: 30%;
+    background-color: #ccc;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
 .modalCard > p{
     margin-top: 30px;
 }
 
+.modalCard{
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#formMusica{
+    display: flex;
+    flex-direction: column;
+}
+
+#formMusica > input{
+    height: 30px;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    margin:5px 0 5px 0;
+}
+
 .modalCardBtn{
-    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .modalCardBtn > button{
-    width: 40%;
-    height: 40px;
-    border-radius: 20px;
-    border:none;
+    border-radius: 10px;
+    border: none;
+    margin:0 5px 0 5px;
+    padding:10px;
     cursor: pointer;
+}
+
+.headerModal{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.headerModal span{
+    cursor: pointer;
+    color:gray;
 }
 
 .ocultar{
