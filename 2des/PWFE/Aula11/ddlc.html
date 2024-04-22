@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TestandoApiLogin</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Aula11</title>
+    <link rel="stylesheet" href="stylemusica.css">
 </head>
 
 <body>
@@ -17,44 +17,50 @@
             </div>
             <div class="navItens">
                 <a href="index.html">Player</a>
-                <a href="#" onclick="modalSobre.classList.remove('ocultar')">Quem somos</a>
-                <a href="#" onclick="modalMusica.classList.remove('ocultar')">Peça uma música</a>
+                <a href="#">Quem somos</a>
+                <a href="#">Peça uma música</a>
             </div>
         </nav>
     </header>
     <main>
-        <h2>Selecione a playlist</h2>
-        <section class="playlists">
-            <a href="ddlc.html">
-                <div class="ddlc">
-                    <h3>DDLC</h3>
-                    <img src="./assets/img/coverDDLC.png">
-                    <p>Contém 5 músicas</p>
-                </div>
-            </a>
-            <a href="skillet.html">
-                <div class="skillet">
-                    <h3>SKILLET</h3>
-                    <img src="./assets/img/coverSKILLET.png">
-                    <p>Contém 5 músicas</p>
-                </div>
-            </a>
-            <a href="neffex.html">
-                <div class="neffex">
-                    <h3>NEFFEX</h3>
-                    <img src="./assets/img/coverNEFFEX.png">
-                    <p>Contém 5 músicas</p>
-                </div>
-            </a>
-        </section>
-    </main>
-    <footer>
-        <div class="descricao">
-            <p>Este site foi realizado somente com o foco para estudos, se deseja a remoção das imagens ou das músicas
-                por favor entre em contato</p>
+        <div class="player">
+            <div class="cover-container">
+                <img id="coverImage" src="./assets/img/coverDDLC.png" alt="Album Cover">
+            </div>
+            <audio id="audioPlayer" controls>
+            <source src="song.mp3" type="audio/mpeg">
+            </audio>
+            <div class="controls">
+            <button id="prevButton">Anterior</button>
+            <button id="playPauseButton">Play/Pause</button>
+            <button id="nextButton">Próximo</button>
+            <button id="randomButton">Aleatório</button>
+            </div>
         </div>
-    </footer>
-
+    <div class="ddlcMusica">
+        <ul id="playlist">
+            <li data-src="./assets/music/ddlc/DearSunshine.mp3" class="song-item">
+                <img src="./assets/img/coverDDLC.png" class="coverImage" alt="Album Cover">
+                Dear Sunshine
+            </li>
+            <li data-src="./assets/music/ddlc/LavenderMist.mp3" class="song-item">
+                <img src="./assets/img/coverDDLC.png" class="coverImage" alt="Album Cover">
+                Lavender Mist
+            </li>
+            <li data-src="./assets/music/ddlc/MySong_YourNote.mp3" class="song-item">
+                <img src="./assets/img/coverDDLC.png" class="coverImage" alt="Album Cover">
+                My Song, Your note
+            </li>
+            <li data-src="./assets/music/ddlc/PeachyPie.mp3" class="song-item">
+                <img src="./assets/img/coverDDLC.png" class="coverImage" alt="Album Cover">
+                Peachy Pie
+            </li>
+            <li data-src="./assets/music/ddlc/PieceByPiece.mp3" class="song-item">
+                <img src="./assets/img/coverDDLC.png" class="coverImage" alt="Album Cover">
+                Piece by Piece
+            </li>
+        </ul>
+    </div>
     <!--Modal Sobre-->
     <div class="overlay-modal ocultar" id="modalSobre">
         <div class="modalCard">

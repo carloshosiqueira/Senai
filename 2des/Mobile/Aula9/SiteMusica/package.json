@@ -19,7 +19,9 @@
     "react-native": "^0.73.7",
     "react-native-paper": "^5.12.3",
     "react-native-safe-area-context": "^4.9.0",
-    "react-native-web": "~0.19.6"
+    "react-native-track-player": "^4.1.1-nightly-6c4a3bd7d47c6ba8c85db4c1d031dc904bb0cd1a",
+    "react-native-web": "~0.19.6",
+    "shaka-player": "^4.7.13"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
