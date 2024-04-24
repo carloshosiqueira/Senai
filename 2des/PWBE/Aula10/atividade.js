@@ -1,77 +1,90 @@
-class Comida{
-    constructor(nome, tipo, peso){
-        this.nome = nome == undefined ? 'Comida sem nome kkkkkk' : nome;
-        this.tipo = tipo == undefined ? '' : tipo;
-        this.peso = peso == undefined ? 'Uma porção, sla' : peso
+class Ingrediente {
+    constructor(descricao) {
+        this.descricao = descricao;
     }
 }
 
-class Doce{
-    constructor(tipo){
-        this.nome = "Sonho";
-        this.peso = "70g"; 
-        this.tipo = "Doce";
+class Comida {
+    constructor(nome, tipo, peso) {
+        this.nome = nome != undefined ? nome : 'Essa abominação não tem nome não';
+        this.tipo = tipo != undefined ? tipo : "Comida";
+        this.peso = peso != undefined ? peso : 0;
     }
 }
 
-class Salgado{
-    constructor(tipo){
-        this.modelo = "Gol";
-        this.marca = "Vw";
-        this.ano = ano == undefined ? new Date().getFullYear() : ano;
+class Salgada {
+    constructor(nome, peso) {
+        this.nome = nome != undefined ? nome : 'Salgado sem nome';
+        this.tipo = "Salgada";
+        this.peso = peso != undefined ? peso : "Tem peso isso aqui não";
+    }
+}
+class Doce {
+    constructor(nome, peso) {
+        this.nome = nome != undefined ? nome : 'Doce sem nome';
+        this.tipo = "Doce" ;
+        this.peso = peso != undefined ? peso : "Tem peso isso aqui não";
     }
 }
 
-class Turbo{
-    constructor(marca){
-        this.marca = marca == undefined ? "Genérica" : marca;
-    }
-}
 
-//Classe builder - complexa
-class comidaBuilder{
-    constructor(nome, tipo, peso){
-        if(modelo && marca && ano){
-            if(modelo == "Argo"){
-                this.carro = new Argo(ano);
-            } else if(modelo == "Gol"){
-                this.carro = new Gol(ano); 
-            } else {
-                this.carro = new Carro(modelo, marca, ano);
+class comidaBuilder {
+    constructor(nome, tipo, peso) {
+        if (nome != undefined && tipo != undefined && peso != undefined) {
+            if (tipo == "Salgada") {
+                this.comida = new Salgada(nome, peso);
             }
-        } else if(modelo && marca) {
-            if(modelo == "Argo"){
-                this.carro = new Argo();
-            } else if(modelo == "Gol"){
-                this.carro = new Gol();
-            } else {
-                this.carro = new Carro(modelo, marca);
+            else if (tipo == "Doce") {
+                this.comida = new Doce(nome, peso);
             }
-        } else {
-            this.carro = new Carro()
+            else {
+                this.comida = new Comida(nome, tipo, peso);
+            }
+        } else if (nome != undefined && tipo != undefined) {
+            if (tipo == "Salgada") {
+                this.comida = new Salgada(nome);
+            }
+            else if (tipo == "Doce") {
+                this.comida = new Doce(nome);
+            } else {
+                this.comida = new Comida();
+            }
         }
     }
-    setTurbo(turbo){
-        this.carro.turbo = new Turbo(turbo);
+
+    addIngrediente(ingrediente) {
+        if (this.comida.ingredientes == undefined) {
+            this.comida.ingredientes = [];
+        }
+        this.comida.ingredientes.push(ingrediente);
+        return this;
     }
 
-    build() {
-        return this.carro;
+    buiid() {
+        return this.comida;
     }
 }
 
-//Criando um carro com o Builder
-const carro1 = new carroBuilder('Argo', "Fiat", 2020);
-const carro2 = new carroBuilder('Gol', "Vw");
-carro2.setTurbo('Garrett');
-const carro3 = new carroBuilder('Onix', "Chevrolet");
-const carro4 = new carroBuilder();
-
-const carros = [
-    carro1.build(),
-    carro2.build(),
-    carro3.build(),
-    carro4.build()
+const comidas = [
+    new comidaBuilder(),
+    new comidaBuilder("Arroz", "Salgada", 100),
+    new comidaBuilder("Feijão"),
+    new comidaBuilder("Brigadeiro", "Doce"),
+    new comidaBuilder("Bolo", "Doce", 200),
+    new comidaBuilder("Pudim", "Doce", 150),
+    new comidaBuilder("Lasanha", "Salgada", 300),
+    new comidaBuilder("Pizza", "Salgada", 100),
+    new comidaBuilder("Macarrão", "Salgada", 200),
+    new comidaBuilder("Salada", "Salgada", 100),
+    new comidaBuilder("Sorvete", "Doce"),
+    new comidaBuilder()
 ]
 
-console.log(carros)
+comidas[1].addIngrediente(new Ingrediente("Sal"));
+comidas[1].addIngrediente(new Ingrediente("Alho"));
+comidas[3].addIngrediente(new Ingrediente("Leite Compensado"));
+comidas[3].addIngrediente(new Ingrediente("Chocolate em pó do padre"));
+
+console.log(comidas);
+console.table(comidas);
+console.log(JSON.stringify(comidas, null,2))
