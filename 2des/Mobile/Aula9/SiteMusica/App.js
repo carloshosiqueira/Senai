@@ -8,7 +8,7 @@ import Ddlc from './screens/ddlc'
 import Neffex from './screens/neffex'
 import Skillet from './screens/skillet'
 import Sobre from './screens/sobre'
-import Musica from './screens/pedirmusica'
+import PedidoMusica from './screens/pedirmusica'
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -78,12 +78,12 @@ export default function App() {
             />
 
           <Tab.Screen
-            name="Musica"
-            component={Musica}
+            name="Pedir Musica"
+            component={PedidoMusica}
             option={{
               tabBarLabel: 'Pedir Musica',
               tabBarIcon:({ color }) => {
-                <Ionicons name="Pedir Musica" color={color} size={26}/>
+                <Ionicons name="Pedir PedidoMusicaForm" color={color} size={26}/>
               },
             }}
             />
