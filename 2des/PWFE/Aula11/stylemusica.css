@@ -150,12 +150,10 @@ footer{
 
 .overlay-modal{
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100vw;
     height: 100vh;
     transition: all 1s ease-in-out;
-    background-color: #0f9d58;
+
 }
 
 #modalSobre{
@@ -165,8 +163,6 @@ footer{
     border-radius: 5px;
     box-shadow: 1px 1px 10px rgba(0,0,0,.5);
     padding: 10px;
-    overflow:auto;
-    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
