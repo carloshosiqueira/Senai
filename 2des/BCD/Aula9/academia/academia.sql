@@ -22,5 +22,21 @@ create table aluno(
     peso decimal (5,2)
 );
 
+create table ficha (
+    id_aluno integer not null,
+    id_exercicio integer not null,
+    dia_semana text not null,
+    serie text not null
+);
+
 
 alter table telefone add foreign key (id_aluno) references aluno(id_aluno);
+alter table ficha add foreign key (id_aluno) references aluno(id_aluno);
+alter table ficha add foreign key (id_exercicio) references exercicio(id_exercicio);
+
+-- LOAD DATA INFILE 'C:/Users/des/Desktop/Senai/2des/BCD/Aula9/academia/aluno.csv'
+-- INTO TABLE aluno
+-- FIELDS TERMINATED BY ';'
+-- ENCLOSED BY '"'
+-- LINES TERMINATED BY '\n'
+-- IGNORE 1 ROWS;

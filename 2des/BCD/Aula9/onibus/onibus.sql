@@ -2,11 +2,10 @@ DROP DATABASE IF EXISTS onibus;
 CREATE DATABASE onibus CHARSET=UTF8 COLLATE utf8_general_ci;
 USE onibus;
 
---Comentado pois mesmo existindo o arquivo csv não existe no der?
--- create table dirige(
---     cpf varchar(14) not null unique,
---     ID_linha varchar(7)
--- );
+create table dirige(
+    cpf varchar(14) not null,
+    ID_linha varchar(7)
+);
 
 create table telefone(
     cpf varchar(14) not null,
@@ -28,7 +27,15 @@ create table motorista(
     Nome_motorista varchar(100) not null
 );
 
--- alter table dirige add foreign key (cpf) references motorista(cpf);
--- alter table dirige add foreign key (ID_linha) references linha(ID_linha);
+alter table dirige add foreign key (cpf) references motorista(cpf);
+alter table dirige add foreign key (ID_linha) references linha(ID_linha);
 alter table telefone add foreign key (cpf) references motorista(cpf);
 alter table horario add foreign key (ID_linha) references linha(ID_linha);
+
+-- LOAD DATA INFILE 'C:/Users/des/Desktop/Senai/2des/BCD/Aula9/onibus/telefone.csv'
+-- INTO TABLE telefone
+-- FIELDS TERMINATED BY ';'
+-- ENCLOSED BY '"'
+-- LINES TERMINATED BY '\n'
+-- IGNORE 1 ROWS;
+
