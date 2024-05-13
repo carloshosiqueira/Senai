@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     paddingHorizontal: 20,
     marginTop: 20,
-    width: "90%"
+    width: "90vw"
   },
 });
 

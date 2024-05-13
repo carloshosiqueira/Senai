@@ -30,7 +30,7 @@ export default function App() {
         sound.unloadAsync();
       }
     };
-  }, []); // Executa apenas na montagem do componente
+  }, []);
 
   return (
     <NavigationContainer>
@@ -46,7 +46,7 @@ export default function App() {
           options={{
             tabBarLabel: 'Darth Vaider',
             tabBarIcon: ({ color }) => (
-              <Ionicons name="" color={color} size={26} />
+              <Ionicons name="image-outline" color={color} size={26} />
             ),
           }}
         />
@@ -56,7 +56,7 @@ export default function App() {
           options={{
             tabBarLabel: '1° Trilogia',
             tabBarIcon: ({ color }) => (
-              <Ionicons name="" color={color} size={26} />
+              <Ionicons name="information-outline" color={color} size={26} />
             ),
           }}
         />
@@ -66,7 +66,7 @@ export default function App() {
           options={{
             tabBarLabel: '2° Trilogia',
             tabBarIcon: ({ color }) => (
-              <Ionicons name="" color={color} size={26} />
+              <Ionicons name="information-outline" color={color} size={26} />
             ),
           }}
         />
@@ -76,7 +76,7 @@ export default function App() {
           options={{
             tabBarLabel: '3° Trilogia',
             tabBarIcon: ({ color }) => (
-              <Ionicons name="" color={color} size={26} />
+              <Ionicons name="information-outline" color={color} size={26} />
             ),
           }}
         />
@@ -86,7 +86,7 @@ export default function App() {
           options={{
             tabBarLabel: '4 maio',
             tabBarIcon: ({ color }) => (
-              <Ionicons name="" color={color} size={26} />
+              <Ionicons name="calendar-number-outline" color={color} size={26} />
             ),
           }}
         />

@@ -10,8 +10,8 @@ const Trilogia3 = () => {
           style={styles.image}
         />
         <Text style={styles.synopsis}>
-          Em Star Wars: Episódio I, quando a maquiavélica Federação Comercial planeja invadir o pacífico planeta Naboo, o guerreiro Jedi Qui-Gon Jinn (Liam Neeson) e seu aprendiz Obi-Wan Kenobi (Ewan McGregor) embarcam em uma aventura para tentar salvar o planeta. Viajam com eles a jovem Rainha Amidala (Natalie Portman), que é visada pela Federação pois querem forçá-la a assinar um tratado político. Eles têm de viajar para os distantes planetas Tatooine e Coruscant em uma desesperada tentativa de salvar o mundo de Darth Sidious (Ian McDiarmid), o demoníaco líder da Federação que sempre surge em imagens tridimensionais (a ameaça fantasma). Durante a viagem, Qui-Gon Jinn conhece um garoto de nove anos que deseja treiná-lo para ser tornar um Jedi, pois o menino tem todas as qualidades para isto. Mas o tempo revelará que nem sempre as coisas são o que aparentam.
-        </Text>
+        O filme começa três anos após o início das Guerras Clônicas. Os Cavaleiros Jedi estão espalhados por toda a galáxia, liderando uma guerra maciça contra os Separatistas. O Conselho Jedi incumbe o Mestre Jedi Obi-Wan Kenobi de eliminar o notório General Grievous, líder do Exército Separatista. Enquanto isto, o Cavaleiro Jedi Anakin Skywalker se aproxima de Palpatine, o Supremo Chanceler da República Galáctica e, secretamente, um Lorde Sith. Sua amizade aprofundada ameaça a Ordem Jedi, a República, e o próprio Anakin.
+          </Text>
       </View>
     </ScrollView>
   );
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     paddingHorizontal: 20,
     marginTop: 20,
-    width: "90%"
+    width: "90vw"
   },
 });
 

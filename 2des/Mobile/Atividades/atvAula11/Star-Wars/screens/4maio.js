@@ -1,23 +1,25 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet } from 'react-native';
+
+const image = {uri: '../assets/star wars.jpg'};
 
 const Chamada = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Chamada para o dia 4 de maio</Text>
-    </View>
+    <ImageBackground source={image} resizeMode="center" style={styles.image}>
+    </ImageBackground>
+  </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: "rgba(0,0,0,1)",
   },
-  text: {
-    fontSize: 20,
+  image: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });
 
