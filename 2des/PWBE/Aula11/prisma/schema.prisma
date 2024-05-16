@@ -18,7 +18,7 @@ model Clientes{
 model Telefones{
   id Int @id @default(autoincrement())
   id_cliente Int
-  telefone String @db.VarChar(20) @uniquers
+  telefone String @db.VarChar(20) @unique
   
   cliente Clientes @relation(fields: [id_cliente], references: [id] )
 }

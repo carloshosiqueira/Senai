@@ -10,6 +10,8 @@ const Cliente = require('./controllers/clientes')
 const Telefone = require('./controllers/telefone')
 
 router.get('/clientes', Cliente.read)
+router.get('/clientes/:id', Cliente.readById)
+router.post('/clientes/nome', Cliente.readByName)
 router.post('/clientes', Cliente.create);
 router.put('/clientes/:id', Cliente.update);
 router.delete('/clientes/:id', Cliente.del);

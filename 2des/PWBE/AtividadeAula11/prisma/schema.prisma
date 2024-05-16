@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model destinos {
+  id Int @id @default(autoincrement())
+  nome String @db.VarChar(50) @unique
+  valor Float 
+  data  DateTime @default(now()) //yyyy-mm-dd
+  hoteis hoteis[]
+  ponto_turistico pontos_turisticos[]
+}
+
+model pontos_turisticos {
+  id Int @id @default(autoincrement())
+  nome String @db.VarChar(50) @unique
+  endereco String @db.VarChar(100)
+  telefone String @db.VarChar(20)
+  valor Float
+  nome_destino String @db.VarChar(50)
+  nome_hotel String @db.VarChar(50)
+  hotel hoteis[]
+  destino destinos @relation(fields: [nome_destino], references: [nome])
+}
+
+model hoteis{
+  id Int @id @default(autoincrement())
+  nome String @db.VarChar(50) @unique
+  valor Float
+  avaliacao Int
+  email String? @unique
+  site String? @db.VarChar(100) @unique
+
+  nome_destino String @db.VarChar(50)
+  nome_turistico String @db.VarChar(50)
+
+  destino destinos @relation(fields: [nome_destino], references: [nome])
+  turistico pontos_turisticos @relation(fields: [nome_turistico], references: [nome])
+}
