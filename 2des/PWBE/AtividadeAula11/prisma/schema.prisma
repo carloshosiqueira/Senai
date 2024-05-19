@@ -13,38 +13,35 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model destinos {
+model Destino {
   id Int @id @default(autoincrement())
   nome String @db.VarChar(50) @unique
   valor Float 
-  data  DateTime @default(now()) //yyyy-mm-dd
-  hoteis hoteis[]
-  ponto_turistico pontos_turisticos[]
+  data  DateTime @default(now()) // yyyy-mm-dd
+  hoteis Hoteis[]
+  pontosTuristicos PontosTuristicos[]
 }
 
-model pontos_turisticos {
+model PontosTuristicos {
   id Int @id @default(autoincrement())
   nome String @db.VarChar(50) @unique
   endereco String @db.VarChar(100)
   telefone String @db.VarChar(20)
   valor Float
-  nome_destino String @db.VarChar(50)
-  nome_hotel String @db.VarChar(50)
-  hotel hoteis[]
-  destino destinos @relation(fields: [nome_destino], references: [nome])
+  destinoId Int
+  destino Destino @relation(fields: [destinoId], references: [id])
+  hoteis Hoteis[]
 }
 
-model hoteis{
+model Hoteis {
   id Int @id @default(autoincrement())
   nome String @db.VarChar(50) @unique
   valor Float
   avaliacao Int
   email String? @unique
   site String? @db.VarChar(100) @unique
-
-  nome_destino String @db.VarChar(50)
-  nome_turistico String @db.VarChar(50)
-
-  destino destinos @relation(fields: [nome_destino], references: [nome])
-  turistico pontos_turisticos @relation(fields: [nome_turistico], references: [nome])
+  destinoId Int
+  destino Destino @relation(fields: [destinoId], references: [id])
+  pontosTuristicosId Int
+  pontosTuristicos PontosTuristicos @relation(fields: [pontosTuristicosId], references: [id])
 }

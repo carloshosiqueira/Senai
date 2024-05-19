@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 const create = async (req, res) => {
     const data = req.body
 
-    const turistico = await prisma.pontos_turisticos.create({
+    const turistico = await prisma.PontosTuristicos.create({
         data
     });
 
@@ -13,13 +13,13 @@ const create = async (req, res) => {
 }
 
 const read = async (req, res) => {
-    const turisticos = await prisma.pontos_turisticos.findMany()
+    const turisticos = await prisma.PontosTuristicos.findMany()
 
     res.status(200).json(turisticos).end();
 }
 
-const readByName = async (req, res) => {
-    const turisticos = await prisma.pontos_turisticos.findUnique({
+const readByNome = async (req, res) => {
+    const turisticos = await prisma.PontosTuristicos.findUnique({
         where: {
             nome: req.body.nome
         },
@@ -32,7 +32,7 @@ const readByName = async (req, res) => {
                     avaliacao: true
                 }
             },
-            destinos :{
+            destino :{
                 select: {
                     nome: true,
                     valor: true
@@ -45,7 +45,7 @@ const readByName = async (req, res) => {
 }
 
 const del = async (req, res) => {
-    const turistico = await prisma.pontos_turisticos.delete({
+    const turistico = await prisma.PontosTuristicos.delete({
         where: {
             id: Number(req.params.id)
         }
@@ -58,7 +58,7 @@ const update = async (req, res) => {
     const id = Number(req.params.id);
     const data = req.body;
 
-    const turistico = await prisma.pontos_turisticos.update({
+    const turistico = await prisma.PontosTuristicos.update({
         where:{
             id
         },
@@ -71,7 +71,7 @@ const update = async (req, res) => {
 module.exports = {
     create,
     read,
-    readByName,
+    readByNome,
     del,
     update
 }
