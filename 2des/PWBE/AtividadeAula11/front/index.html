@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mostrar Opções</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
@@ -11,32 +12,43 @@
     
         <div class="opcoes">
             <select name="opcoes" id="opcoes">
-                <option value="Cristo-redentor">Cristo Redentor</option>
-                <option value="Pão-de-acucar"> Pão de Açucar</option>
-                <option value="Chapada-imperial">Chapada Imperial</option>
-                <option value="Alter-do-chao">Alter do chao</option>
-                <option value="nenhum" selected>-</option>
+                <!-- As opções serão carregadas dinamicamente -->
             </select>
         </div>
 
+        <h2>Informações do Destino</h2>
         <table>
             <thead>
-                <th>Estado</th>
-                <th>Hotel</th>
-                <th>Valor Hotel</th>
-                <th>Valor Viagem</th>
-                <th>Total</th>
+                <tr>
+                    <th>Estado</th>
+                    <th>Valor Viagem</th>
+                </tr>
             </thead>
-            <tbody id="dados">
-                <td>Rio de Janeiro</td>
-                <td>Lá nas esquinas</td>
-                <td>150</td>
-                <td>30</td>
-                <td>180</td>
+            <tbody id="destinoDados">
+                <!-- Os dados serão carregados dinamicamente -->
+            </tbody>
+        </table>
+
+        <h2>Escolha o Hotel</h2>
+        <div class="hoteis">
+            <select name="hoteis" id="hoteis">
+                <!-- As opções de hotéis serão carregadas dinamicamente -->
+            </select>
+        </div>
+
+        <h2>Informações do Hotel</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Hotel</th>
+                    <th>Valor Hotel</th>
+                </tr>
+            </thead>
+            <tbody id="hotelDados">
+                <!-- Os dados serão carregados dinamicamente -->
             </tbody>
         </table>
     </div>
-
-
 </body>
+<script src="script.js"></script>
 </html>

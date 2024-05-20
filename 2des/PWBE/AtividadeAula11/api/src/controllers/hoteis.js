@@ -1,10 +1,10 @@
+// controllers/hoteis.js
 const { PrismaClient } = require('@prisma/client')
 
 const prisma = new PrismaClient()
 
 const create = async (req, res) => {
     const data = req.body
-    console.log(data)
     const hotel = await prisma.Hoteis.create({
         data
     });
@@ -13,12 +13,11 @@ const create = async (req, res) => {
 
 const read = async (req, res) => {
     const hoteis = await prisma.Hoteis.findMany()
-
     res.status(200).json(hoteis).end();
 }
 
 const readByNome = async (req, res) => {
-    const hoteis = await prisma.Hoteis.findUnique({
+    const hotel = await prisma.Hoteis.findUnique({
         where: {
             nome: req.body.nome,
         }, 
@@ -31,8 +30,7 @@ const readByNome = async (req, res) => {
            },
         }
     });
-
-    res.status(200).json(hoteis).end()
+    res.status(200).json(hotel).end()
 }
 
 const del = async (req, res) => {

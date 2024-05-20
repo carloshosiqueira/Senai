@@ -1,39 +1,36 @@
-const { PrismaClient } = require('@prisma/client')
-
-const prisma = new PrismaClient()
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
 const create = async (req, res) => {
-    const data = req.body
-
+    const data = req.body;
     const destino = await prisma.Destino.create({
         data
     });
 
     res.status(201).json(destino).end();
-}
+};
 
 const read = async (req, res) => {
-    const destinos = await prisma.Destino.findMany()
-
+    const destinos = await prisma.Destino.findMany();
     res.status(200).json(destinos).end();
-}
+};
 
 const readByNome = async (req, res) => {
-    const destinos = await prisma.destino.findUnique({
+    const { nome } = req.body;
+    const destino = await prisma.Destino.findUnique({
         where: {
-            nome: req.body.nome
+            nome: nome
         },
-      
         include: {
-            pontosTuristicos:{
-                select:{
+            pontosTuristicos: {
+                select: {
                     nome: true,
                     endereco: true,
                     valor: true
                 }
             },
-            hoteis:{
-                select:{
+            hoteis: {
+                select: {
                     nome: true,
                     valor: true
                 }
@@ -41,8 +38,12 @@ const readByNome = async (req, res) => {
         }
     });
 
-    res.status(200).json(destinos).end();
-}
+    if (destino) {
+        res.status(200).json(destino).end();
+    } else {
+        res.status(404).json({ error: "Destino não encontrado" }).end();
+    }
+};
 
 const del = async (req, res) => {
     const destino = await prisma.Destino.delete({
@@ -52,26 +53,26 @@ const del = async (req, res) => {
     });
 
     res.status(204).json(destino).end();
-}
+};
 
 const update = async (req, res) => {
     const id = Number(req.params.id);
     const data = req.body;
 
     const destino = await prisma.Destino.update({
-        where:{
+        where: {
             id
         },
         data
     });
 
-    res.status(202).json(destino).end()
-}
+    res.status(202).json(destino).end();
+};
 
 module.exports = {
     create,
     read,
     readByNome,
     del,
-    update  
-}
+    update
+};

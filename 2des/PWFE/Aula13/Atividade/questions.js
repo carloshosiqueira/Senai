@@ -1,15 +1,15 @@
 export default [
     {
-        question: "Quantos segundos depois de pronta, a pessoa tem para realizar o saque no voleibol?",
+        question: "Quantos segundos depois de pronto, a pessoa tem para realizar o saque no voleibol?",
         answers: [
-            {option: "8", correct:true},
-            {option: "10", correct:false},
-            {option: "15", correct:false},
+            {option: "8 segundos", correct:true},
+            {option: "10 segundos", correct:false},
+            {option: "15 segundos", correct:false},
         ],
     },
 
     {
-        question: "Qual a consequencia do cartão vermelho no voleibol?",
+        question: "Qual a consequência do cartão vermelho no voleibol?",
         answers: [
             {option: "Um ponto para o time adversário", correct:true},
             {option: "Um ponto para o time adversário e expulsão do jogador", correct:false},
@@ -18,7 +18,7 @@ export default [
     },
     
     {
-        question: "Quando o libero realizar a ação de toque na linha de ataque no segundo, o time não poderá atacar está bola",
+        question: "Quando o libero realizar um levantamento usando toque na linha de ataque no segundo toque, o time não poderá atacar está bola",
         answers: [
             {option: "Verdadeiro", correct:true},
             {option: "Falso", correct:false},
@@ -29,8 +29,8 @@ export default [
     {
         question: "O bloqueio é considerado como toque",
         answers: [
-            {option: "Verdadeiro", correct:true},
-            {option: "Falso", correct:false},
+            {option: "Verdadeiro", correct:false},
+            {option: "Falso", correct:true},
         ],
         
     },
@@ -39,6 +39,7 @@ export default [
         answers: [
             {option: "Para facilitar aos árbitros a verem as substituições mais facilmente, uma vez que ele entra e sai várias vezes de quadra", correct:true},
             {option: "Pois ele é um jogador especializado em defesa, porém pode realizar as mesmas ações que o resto dos jogadores", correct:false},
+            {option: "Pois oss liberos normalmente são os capitões dos times", correct:false},
         ],
         
     },
@@ -64,14 +65,15 @@ export default [
         answers: [
             {option: "Invasão, uma vez que os jogadores do fundo não podem atacar", correct:false},
             {option: "Invasão, uma vez que os jogadores do fundo não podem atacar na área de ataque da quadra", correct:true},
+            {option: "Nada, nenhuma infração foi cometida", correct:false},
         ],
         
     },
     {
         question: "O levantador é o único que pode levantar a bola para o time",
         answers: [
-            {option: "Verdadeiro", correct:true},
-            {option: "Falso", correct:false},
+            {option: "Verdadeiro", correct:false},
+            {option: "Falso", correct:true},
         ],
         
     },
@@ -88,6 +90,7 @@ export default [
         answers: [
             {option: "O ponto segue normalmente", correct:true},
             {option: "Se a bola cair dentro da quadra, o ponto deverá ser realizado de novo, caso caia fora, o ponto deverá ser dado ao outro time", correct:false},
+            {option: "Mesmo se a bola passar, o ponto deverá ser concedido ao outro time", correct:false},
         ],
         
     },
