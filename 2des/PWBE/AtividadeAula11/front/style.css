@@ -13,7 +13,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
+h1, h2, h3 {
     color: #333;
 }
 
@@ -21,7 +21,7 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
-select {
+select, input, textarea {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
@@ -55,3 +55,104 @@ tbody tr:nth-child(even) {
 tbody tr:hover {
     background-color: #f1f1f1;
 }
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #218838;
+}
+
+/* Estilo para os modais */
+.modal {
+    display: none; /* Oculta o modal por padrão */
+    position: fixed; /* Posição fixa */
+    z-index: 1; /* Coloca o modal sobre todos os outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Adiciona rolagem se necessário */
+    background-color: rgba(0,0,0,0.5); /* Fundo escuro semi-transparente */
+  }
+  
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fefefe; /* Cor de fundo do modal */
+    margin: 15% auto; /* Centraliza o modal na tela */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Largura do modal */
+    max-width: 800px;
+  }
+
+  .headerModal{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  button {
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: #4CAF50; /* Cor de fundo do botão */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  button:hover {
+    background-color: #45a049; /* Cor de fundo do botão ao passar o mouse */
+  }
+  
+  /* Estilo para fundo escuro quando um modal está aberto */
+  .modal-backdrop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4); /* Fundo escuro semi-transparente */
+    z-index: 1;
+  }
+  
