@@ -1,0 +1,41 @@
+doctype html
+html(lang="pt-br")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Escola ACME
+        link(rel='stylesheet', href='style.css')
+        link(rel='shortcut icon', href='icone.png')
+    body
+        header
+            h1 Escola ACME
+        main
+            nav
+                button(onclick="window.location.href='/'") Turmas
+                button(onclick="window.location.href='/aluno'") Alunos
+                button(onclick="window.location.href='/professor'") Professores
+            div(class="container")
+                each turma in turmas
+                    div(class="card")
+                        p(class="titulo")
+                            b Turma:
+                            i #{turma.abreviacao}
+                        p(class="dados") #{turma.nome}
+                        p(class="dados")
+                            b Id da turma:
+                            i #{turma.id}
+                        button Detalhes
+        footer
+            button(onclick="modalCreate.classList.remove('oculto')") Nova Turma
+            h2 By Prof. Wellington
+        div(class="modal oculto", id="modalCreate")
+            div(class="form")
+                div 
+                    h2 Cadastro de turmas
+                    button(onclick="modalCreate.classList.add('oculto)") X
+                form(method="post", action="./turma")
+                    label Nome:
+                    input(type="text", name="nome", plaholder="Digite o nome da turma", required)
+                    labl Abreviação: 
+                    input(type="text", name="abreviacao", placeholder="Sigla", required)
+                    input(type="submit", value="Cadastrar nova turma")

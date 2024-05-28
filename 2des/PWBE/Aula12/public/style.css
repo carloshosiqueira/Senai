@@ -1,0 +1,202 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: medium;
+}
+
+:root{
+    --primaria: #3d3d34;
+    --secundaria: #5d5c49;
+    --media: #dcdbaf;
+    --ultima: #f4f4dd;
+}
+
+body{
+    height: 100vh;
+    background-color: var(--ultima);
+}
+
+header{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: solid 1px var(--media);
+    box-shadow: 2px 2px 2px var(--secundaria);
+}
+
+footer{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: solid 1px var(--media);
+    box-shadow: 2px 2px 2px var(--secundaria);
+}
+
+footer button{
+    width: fit-content;
+}
+
+main{
+    height: 80vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    border-bottom: solid 1px var(--media);
+}
+
+nav{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    background-color: var(--media);
+}
+
+button{
+    padding: 10px;
+    margin: 10px;
+    width: 90%;
+    font-size: small;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--ultima);
+    box-shadow: 2px 2px 2px var(--secundaria);
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: var(--secundaria);
+    color: var(--ultima);
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    max-height: 80vh;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.card{
+    width: 180px;
+    height: 250px;
+    padding: 10px;
+    margin: 10px;
+    background-color: var(--ultima  );
+    border-radius: 5px;
+    border: solid 1px var(--media);
+    box-shadow: 2px 2px 2px var(--media);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card p{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+h1{
+    color: var(--primaria);
+    font-size: 35px;
+    text-shadow: 2px 2px 2px var(--media);
+}
+
+h2{
+    color: var(--primaria);
+    font-size: 22px;
+    text-shadow: 2px 2px 2px var(--media);
+}
+
+table{
+    width: 100%;
+    margin: 20px;
+}
+
+th{
+    padding: 10px;
+}
+
+tr:nth-child(odd) {
+    background: var(--media);
+}
+
+td{
+    text-align: center;
+}
+
+.mdoal{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form{
+    position: relative;
+    top: 100px;
+    width: 50vw;
+    height: 50vh;
+    background-color: var(--media);
+    box-shadow: 1px 1px 5px var(--primaria);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.form div {
+    display: flex;
+    flex: row;
+    justify-content: space-between;
+}
+
+.form div button {
+    width: fit-content;
+
+}
+
+form{
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+input{
+    margin: 20px;
+    padding: 10px;
+    border-radius: 25px;
+    border:none;
+    box-shadow: 1px 1px 3px var(--primaria);
+}
+
+.oculto{
+    display: none;
+}
+
+@media(max-width:700px) {
+    main{
+        display: flex;
+    }
+    nav{
+        display: none;
+    }
+    .card{
+        width: 100%;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}

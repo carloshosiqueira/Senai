@@ -1,0 +1,34 @@
+doctype html
+html(lang="pt-br")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Escola ACME
+        link(rel='stylesheet', href='style.css')
+        link(rel='shortcut icon', href='icone.png')
+    body
+        header
+            h1 Escola ACME
+        main
+            nav
+                button(onclick="window.location.href='/'") Turmas
+                button(onclick="window.location.href='/aluno'") Alunos
+                button(onclick="window.location.href='/professor'") Professores
+            div(class="container")
+                table
+                    thead
+                        tr
+                            th RA
+                            th Nome Completo
+                            th Nascimento
+                            th Turma
+                    tbody
+                        each aluno in alunos
+                            tr
+                                td= aluno.ra
+                                td= aluno.nome
+                                td
+                                    input(type='date', value=new Date(aluno.nascimento).toISOString().substring(0, 10), disabled=true)
+                                td= aluno.idTurma
+
+        footer
