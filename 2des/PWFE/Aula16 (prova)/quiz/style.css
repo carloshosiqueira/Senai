@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333; /* Cinza escuro */
+    color: #fff; /* Branco */
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+}
+
+header {
+    position: fixed; /* Define a posição fixa */
+    top: 0; /* Alinha o header ao topo */
+    width: 100%; /* Define a largura total */
+    z-index: 1000; /* Garante que o header fique acima de outros elementos */
+    background-color: #222;
+    padding: 10px 0;
+}
+
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #d4af37;
+    font-size: 18px;
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.content {
+    margin-bottom: 30px;
+}
+
+.content .spnQtd {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.content .question {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 20px 0;
+}
+
+.content .answers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.content .answers .answer {
+    background-color: #4a98f7; /* Azul */
+    color: #fff; /* Branco */
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.content .answers .answer:hover {
+    background-color: #3578c4; /* Azul mais escuro */
+}
+
+.finish {
+    display: none;
+}
+
+.finish span {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.finish button {
+    background-color: #4a98f7; /* Azul */
+    color: #fff; /* Branco */
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.finish button:hover {
+    background-color: #3578c4; /* Azul mais escuro */
+}
