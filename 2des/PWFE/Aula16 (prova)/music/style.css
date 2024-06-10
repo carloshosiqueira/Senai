@@ -9,6 +9,12 @@ header {
     padding: 10px 0;
 }
 
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 nav ul {
     list-style-type: none;
     margin: 0;
@@ -24,7 +30,12 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: #d4af37;
-    font-size: 18px;
+    font-size: 24px;
+}
+
+nav img{
+    width: 75px;
+    height: 75px;
 }
 
 main {
