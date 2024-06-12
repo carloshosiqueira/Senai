@@ -6,6 +6,15 @@ const iniciar = async (req, res) => {
     res.render('aluno', { alunos: alunos });
 }
 
+const create = async (req, res) => {
+    const data = req.body;
+    data.nascimento = new Date(data.nascimento);
+    data.idTurma = parseInt(data.idTurma);
+    const aluno = await prisma.aluno.create({data});
+    res.redirect('/aluno');
+}
+
 module.exports = {
-    iniciar
+    iniciar,
+    create
 }

@@ -136,7 +136,7 @@ td{
     text-align: center;
 }
 
-.mdoal{
+.modal{
     position: absolute;
     top:0px;
     left: 0px;
@@ -168,6 +168,12 @@ td{
 .form div button {
     width: fit-content;
 
+}
+
+form label{
+    display: flex;
+    align-items: center;
+    justify-content: left;
 }
 
 form{

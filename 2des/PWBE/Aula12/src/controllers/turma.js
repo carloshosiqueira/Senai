@@ -11,7 +11,7 @@ const create = async (req, res) => {
     const turma = await prisma.turma.create({
         data
     });
-    res.redirect('/')
+    res.redirect('/');
 }
 
 module.exports = {
