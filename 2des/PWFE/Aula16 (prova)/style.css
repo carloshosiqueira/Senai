@@ -12,7 +12,7 @@ header {
 
 }
 
-nav{
+nav {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -30,10 +30,30 @@ nav ul li {
 }
 
 nav ul li a {
+    position: relative;
     text-decoration: none;
     color: #d4af37;
     font-size: 24px;
 }
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px; /* Espessura do sublinhado */
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #d4af37;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+    left: 0;
+    background: #d4af37; /* Cor do sublinhado */
+}
+
 
 nav img{
     width: 75px;
