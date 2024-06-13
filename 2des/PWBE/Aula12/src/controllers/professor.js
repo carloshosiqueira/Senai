@@ -25,8 +25,15 @@ const create = async (req, res) => {
     res.redirect('/professor');
 }
 
+// const del = async (req, res) => {
+//     const id = parseInt(req.body.id);
+//     await prisma.professor.delete({ where: { id } });
+//     res.redirect('/professor');
+// }
+
 
 module.exports = {
     iniciar,
-    create
+    create,
+    // del
 }

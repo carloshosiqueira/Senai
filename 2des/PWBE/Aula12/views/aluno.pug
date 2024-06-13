@@ -1,51 +1,71 @@
 doctype html
 html(lang="pt-br")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Escola ACME
-        link(rel='stylesheet', href='style.css')
-        link(rel='shortcut icon', href='icone.png')
-    body
-        header
-            h1 Escola ACME
-        main
-            nav
-                button(onclick="window.location.href='/'") Turmas
-                button(onclick="window.location.href='/aluno'") Alunos
-                button(onclick="window.location.href='/professor'") Professores
-            div(class="container")
-                table
-                    thead
-                        tr
-                            th RA
-                            th Nome Completo
-                            th Nascimento
-                            th Turma
-                    tbody
-                        each aluno in alunos
-                            tr
-                                td= aluno.ra
-                                td= aluno.nome
-                                td
-                                    input(type='date', value=new Date(aluno.nascimento).toISOString().substring(0, 10), disabled=true)
-                                td= aluno.idTurma
-
-        footer
-            button(onclick="modalAluno.classList.remove('oculto')") Novo(a) Aluno(a)
-            h2 Por mim
-        div(class="modal oculto", id="modalAluno")
-            div(class="form")
-                div 
-                    h2 Cadastro de aluno
-                    button(onclick="modalAluno.classList.add('oculto')") X
-                form(method="post", action="./aluno")
-                    label RA: 
-                    input(type="text", name="ra", placeholder="RA do aluno" required)
-                    label Nome:
-                    input(type="text", name="nome", placeholder="Digite o nome do(a) aluno(a)", required)
-                    label Nascimento: 
-                    input(type="date", name="nascimento", placeholder="DD/MM/YYYY", required)
-                    label Turma: 
-                    input(type="number", name="idTurma", placeholder="ID da turma", required)
-                    input(type="submit", value="Cadastrar novo(a) aluno(a)")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Escola ACME
+    link(rel='stylesheet', href='style.css')
+    link(rel='shortcut icon', href='icone.png')
+  body
+    header
+      h1 Escola ACME
+    main
+      nav
+        button(onclick="window.location.href='/'") Turmas
+        button(onclick="window.location.href='/aluno'") Alunos
+        button(onclick="window.location.href='/professor'") Professores
+      div(class="container")
+        table
+          thead
+            tr
+              th RA
+              th Nome Completo
+              th Nascimento
+              th Turma
+              th Ações
+          tbody
+            each aluno in alunos
+              tr
+                td= aluno.ra
+                td= aluno.nome
+                td
+                  input(type='date', value=new Date(aluno.nascimento).toISOString().substring(0, 10), disabled=true)
+                td= aluno.idTurma
+                td
+                  button(onclick="modalAlunoEdit.classList.remove('oculto')") Alterar
+    footer
+      button(onclick="modalAluno.classList.remove('oculto')") Novo(a) Aluno(a)
+      h2 Por mim
+    div(class="modal oculto", id="modalAluno")
+      div(class="form")
+        div
+          h2 Cadastro de aluno
+          button(onclick="modalAluno.classList.add('oculto')") X
+        form(method="post", action="./aluno")
+          label RA: 
+          input(type="text", name="ra", placeholder="RA do aluno", required)
+          label Nome:
+          input(type="text", name="nome", placeholder="Digite o nome do(a) aluno(a)", required)
+          label Nascimento: 
+          input(type="date", name="nascimento", placeholder="DD/MM/YYYY", required)
+          label Turma: 
+          input(type="number", name="idTurma", placeholder="ID da turma", required)
+          input(type="submit", value="Cadastrar novo(a) aluno(a)")
+    div(class="modal oculto", id="modalAlunoEdit")
+        div
+            h1 Só pra ter alguma coisa aqui, mas não ta funcionando não
+            h2 Agora aperta f5 porque não tem botão pra fechar
+    //-     div(class="form")
+    //-       div
+    //-         h2 Editar aluno
+    //-         button(onclick="modalAlunoEdit.classList.add('oculto')") X
+    //-             form(method="post", action=`/aluno/${aluno.id}`)
+    //-               label RA: 
+    //-               input(type="text", name="ra", value=aluno.ra, required)
+    //-               label Nome:
+    //-               input(type="text", name="nome", value=aluno.nome, required)
+    //-               label Nascimento: 
+    //-               input(type="date", name="nascimento", value=new Date(aluno.nascimento).toISOString().substring(0, 10), required)
+    //-               label Turma: 
+    //-               input(type="number", name="idTurma", value=aluno.idTurma, required)
+    //-               input(type="submit", value="Salvar alterações")

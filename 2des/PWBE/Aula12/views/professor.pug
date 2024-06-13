@@ -22,17 +22,26 @@ html(lang="pt-br")
                             th Nome Completo
                             th Especialidade
                             th Turmas
+                            //- th Ações
                     tbody
-                        each professor in professores
-                            tr
-                                td= professor.id
-                                td= professor.nome
-                                td= professor.especialidade
-                                td= professor.idTurma 
+                      each professor in professores
+                        tr
+                            td= professor.id
+                            td= professor.nome
+                            td= professor.especialidade
+                            td
+                                if professor.turmas && professor.turmas.length > 0
+                                    = professor.turmas[0].id
+                                else
+                                    = "Nenhum"
+                            //- td
+                            //-     form(method="post", action="/professor/delete")
+                            //-         input(type="hidden", name="id", value=professor.id)/
+                            //-         input(type="submit", value="Excluir")/
 
     footer
         button(onclick="modalProfessor.classList.remove('oculto')") Novo(a) professor(a)
-            h2 Por mim
+        h2 Por mim
         div(class="modal oculto", id="modalProfessor")
             div(class="form")
                 div 
