@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mostrar Opções</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body onload="loadDestinos();loadHoteis();loadPt()">
 
     <h2>Informações dos Pontos Turísticos</h2>
@@ -20,10 +18,10 @@
                 <th>Endereço</th>
                 <th>Valor</th>
                 <th>Telefone p/ Reserva</th>
+                <th>Ações</th>
             </tr>
         </thead>
-        <tbody id="ptDados">
-        </tbody>
+        <tbody id="ptDados"></tbody>
     </table>
 
     <h2>Informações do Destino</h2>
@@ -34,10 +32,10 @@
                 <th>ID</th>
                 <th>Estado</th>
                 <th>Valor Viagem</th>
+                <th>Ações</th>
             </tr>
         </thead>
-        <tbody id="destinoDados">
-        </tbody>
+        <tbody id="destinoDados"></tbody>
     </table>
 
     <h2>Informações do Hotel</h2>
@@ -49,10 +47,10 @@
                 <th>Hotel</th>
                 <th>Avaliação</th>
                 <th>Valor Hotel</th>
+                <th>Ações</th>
             </tr>
         </thead>
-        <tbody id="hotelDados">
-        </tbody>
+        <tbody id="hotelDados"></tbody>
     </table>
 
     <!-- Modal de criação de Pontos Turísticos -->
@@ -80,6 +78,7 @@
             </div>
             <input type="text" id="destinoNome" placeholder="Nome do Destino" required>
             <input type="number" id="destinoValor" placeholder="Valor do Destino" required>
+            <input type="date" id="destinoData" required>
             <button onclick="createDestino()">Criar Destino</button>
         </div>
     </div>
@@ -104,5 +103,4 @@
 
     <script src="script.js"></script>
 </body>
-
 </html>

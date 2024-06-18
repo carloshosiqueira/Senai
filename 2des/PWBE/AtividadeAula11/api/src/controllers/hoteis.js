@@ -1,61 +1,80 @@
-// controllers/hoteis.js
-const { PrismaClient } = require('@prisma/client')
-
-const prisma = new PrismaClient()
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
 const create = async (req, res) => {
-    const data = req.body
-    const hotel = await prisma.Hoteis.create({
-        data
-    });
-    res.status(201).json(hotel).end();
-}
+    try {
+        const data = req.body;
+        const hotel = await prisma.hotel.create({
+            data
+        });
+        res.status(201).json(hotel).end();
+    } catch (error) {
+        res.status(400).json({ error: error.message }).end();
+    }
+};
 
 const read = async (req, res) => {
-    const hoteis = await prisma.Hoteis.findMany()
-    res.status(200).json(hoteis).end();
-}
+    try {
+        const hoteis = await prisma.hotel.findMany();
+        res.status(200).json(hoteis).end();
+    } catch (error) {
+        res.status(400).json({ error: error.message }).end();
+    }
+};
 
 const readByNome = async (req, res) => {
-    const hotel = await prisma.Hoteis.findUnique({
-        where: {
-            nome: req.body.nome,
-        }, 
-        include: {
-            destino: {
-                select: {
-                    nome: true,
-                    valor: true
+        const { nome } = req.body;
+        const hoteis = await prisma.hotel.findMany({
+            where: {
+                nome: nome
+            }, 
+            include: {
+                destino: {
+                    select: {
+                        cidade: true,
+                        valor: true
+                    }
                 }
-           },
+            }
+        });
+        if (hoteis.length > 0) {
+            res.status(200).json(hoteis).end();
+        } else {
+            res.status(404).json({ error: "Hotel não encontrado" }).end();
         }
-    });
-    res.status(200).json(hotel).end()
-}
+};
 
 const del = async (req, res) => {
-    const hotel = await prisma.Hoteis.delete({
-        where: {
-            id: Number(req.params.id)
-        }
-    });
+    try {
+        const hotel = await prisma.hotel.delete({
+            where: {
+                id: Number(req.params.id)
+            }
+        });
 
-    res.status(204).json(hotel).end();
-}
+        res.status(204).json(hotel).end();
+    } catch (error) {
+        res.status(400).json({ error: error.message }).end();
+    }
+};
 
 const update = async (req, res) => {
-    const id = Number(req.params.id);
-    const data = req.body;
+    try {
+        const id = Number(req.params.id);
+        const data = req.body;
 
-    const hotel = await prisma.Hoteis.update({
-        where: {
-            id
-        },
-        data
-    });
+        const hotel = await prisma.hotel.update({
+            where: {
+                id
+            },
+            data
+        });
 
-    res.status(202).json(hotel).end()
-}
+        res.status(202).json(hotel).end();
+    } catch (error) {
+        res.status(400).json({ error: error.message }).end();
+    }
+};
 
 module.exports = {
     create,
@@ -63,4 +82,4 @@ module.exports = {
     readByNome,
     del,
     update
-}
+};

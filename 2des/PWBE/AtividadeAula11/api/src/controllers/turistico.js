@@ -1,72 +1,82 @@
-const { PrismaClient } = require('@prisma/client')
-
-const prisma = new PrismaClient()
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
 const create = async (req, res) => {
-    const data = req.body
+    try {
+        const data = req.body;
+        const turistico = await prisma.pontoTuristico.create({
+            data
+        });
 
-    const turistico = await prisma.PontosTuristicos.create({
-        data
-    });
-
-    res.status(201).json(turistico).end();
-}
+        res.status(201).json(turistico).end();
+    } catch (error) {
+        res.status(400).json({ error: error.message }).end();
+    }
+};
 
 const read = async (req, res) => {
-    const turisticos = await prisma.PontosTuristicos.findMany()
-
-    res.status(200).json(turisticos).end();
-}
+    try {
+        const turisticos = await prisma.pontoTuristico.findMany();
+        res.status(200).json(turisticos).end();
+    } catch (error) {
+        res.status(400).json({ error: error.message }).end();
+    }
+};
 
 const readByNome = async (req, res) => {
-    const turisticos = await prisma.PontosTuristicos.findUnique({
-        where: {
-            nome: req.body.nome
-        },
-
-        include: {
-            hoteis:{
-                select: {
-                    nome : true,
-                    valor : true,
-                    avaliacao: true
-                }
+        const { nome } = req.body;
+        const turisticos = await prisma.pontoTuristico.findMany({
+            where: {
+                nome: nome
             },
-            destino :{
-                select: {
-                    nome: true,
-                    valor: true
+            include: {
+                destino: {
+                    select: {
+                        cidade: true,
+                        valor: true
+                    }
                 }
             }
-        }
-    });
+        });
 
-    res.status(200).json(turisticos).end()
-}
+        if (turisticos.length > 0) {
+            res.status(200).json(turisticos).end();
+        } else {
+            res.status(404).json({ error: "Ponto turístico não encontrado" }).end();
+        }
+};
 
 const del = async (req, res) => {
-    const turistico = await prisma.PontosTuristicos.delete({
-        where: {
-            id: Number(req.params.id)
-        }
-    });
+    try {
+        const turistico = await prisma.pontoTuristico.delete({
+            where: {
+                id: Number(req.params.id)
+            }
+        });
 
-    res.status(204).json(turistico).end();
-}
+        res.status(204).json(turistico).end();
+    } catch (error) {
+        res.status(400).json({ error: error.message }).end();
+    }
+};
 
 const update = async (req, res) => {
-    const id = Number(req.params.id);
-    const data = req.body;
+    try {
+        const id = Number(req.params.id);
+        const data = req.body;
 
-    const turistico = await prisma.PontosTuristicos.update({
-        where:{
-            id
-        },
-        data
-    });
+        const turistico = await prisma.pontoTuristico.update({
+            where: {
+                id
+            },
+            data
+        });
 
-    res.status(202).json(turistico).end()
-}
+        res.status(202).json(turistico).end();
+    } catch (error) {
+        res.status(400).json({ error: error.message }).end();
+    }
+};
 
 module.exports = {
     create,
@@ -74,4 +84,4 @@ module.exports = {
     readByNome,
     del,
     update
-}
+};

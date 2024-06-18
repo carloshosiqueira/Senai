@@ -3,7 +3,7 @@ const destinoDados = document.getElementById("destinoDados");
 const hotelDados = document.getElementById("hotelDados");
 const ptDados = document.getElementById("ptDados");
 
-const uriPt = "http://localhost:3000/turistico";
+const uriPt = "http://localhost:3000/turisticos";
 const uriD = "http://localhost:3000/destinos";
 const uriH = "http://localhost:3000/hoteis";
 
@@ -13,25 +13,25 @@ let hoteis;
 
 // Carregar os pontos turísticos
 async function loadPt() {
-    let f = await fetch(uriPt)
+    let f = await fetch(uriPt);
     pt = await f.json();
-    preencherPt()
+    preencherPt();
 }
 
 async function loadDestinos() {
-    let f = await fetch(uriD)
+    let f = await fetch(uriD);
     destinos = await f.json();
-    preencherDestinos()
+    preencherDestinos();
 }
 
 async function loadHoteis() {
-    let f = await fetch(uriH)
+    let f = await fetch(uriH);
     hoteis = await f.json();
-    preencherHoteis()
+    preencherHoteis();
 }
 
 function preencherPt() {
-    ptDados.innerHTML = ""
+    ptDados.innerHTML = "";
 
     pt.forEach(pt => {
         ptDados.innerHTML += `
@@ -41,37 +41,49 @@ function preencherPt() {
             <td>${pt.endereco}</td>
             <td>${pt.valor.toFixed(2)}</td>
             <td>${pt.telefone}</td>
+            <td>
+                <button onclick="openUpdateModalPt(${pt.id}, '${pt.nome}', ${pt.valor})">Editar</button>
+                <button onclick="deletePt(${pt.id})">Excluir</button>
+            </td>
         </tr>
-        `
+        `;
     });
 }
 
 function preencherHoteis() {
-    hotelDados.innerHTML = ""
+    hotelDados.innerHTML = "";
 
-    hoteis.forEach(hoteis => {
+    hoteis.forEach(hotel => {
         hotelDados.innerHTML += `
         <tr>
-            <td>${hoteis.id}</td>
-            <td>${hoteis.nome}</td>
-            <td>${hoteis.avaliacao}</td>
-            <td>${hoteis.valor.toFixed(2)}</td>
+            <td>${hotel.id}</td>
+            <td>${hotel.nome}</td>
+            <td>${hotel.avaliacao}</td>
+            <td>${hotel.valor.toFixed(2)}</td>
+            <td>
+                <button onclick="openUpdateModalHotel(${hotel.id}, '${hotel.nome}', ${hotel.avaliacao}, ${hotel.valor})">Editar</button>
+                <button onclick="deleteHotel(${hotel.id})">Excluir</button>
+            </td>
         </tr>
-        `
+        `;
     });
 }
+
 function preencherDestinos() {
+    destinoDados.innerHTML = "";
 
-    destinoDados.innerHTML = ""
-
-    destinos.forEach(destinos => {
+    destinos.forEach(destino => {
         destinoDados.innerHTML += `
         <tr>
-            <td>${destinos.id}</td>
-            <td>${destinos.nome}</td>
-            <td>${destinos.valor.toFixed(2)}</td>
+            <td>${destino.id}</td>
+            <td>${destino.nome}</td>
+            <td>${destino.valor.toFixed(2)}</td>
+            <td>
+                <button onclick="openUpdateModalDestino(${destino.id}, '${destino.nome}', ${destino.valor})">Editar</button>
+                <button onclick="deleteDestino(${destino.id})">Excluir</button>
+            </td>
         </tr>
-        `
+        `;
     });
 }
 
@@ -81,148 +93,161 @@ function preencherDestinos() {
 function openModal(modalId) {
     const modal = document.getElementById(modalId);
     modal.style.display = "block";
-  }
-  
-  // Fechar modal
-  function closeModal(modalId) {
+}
+
+// Fechar modal
+function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     modal.style.display = "none";
-  }
-  
-  // Criar novo Ponto Turístico
-  async function createPt() {
+}
+
+// Criar novo Ponto Turístico
+async function createPt() {
     const nome = document.getElementById("ptNome").value;
     const endereco = document.getElementById("ptEndereco").value;
     const telefone = document.getElementById("ptTelefone").value;
     const valor = parseFloat(document.getElementById("ptValor").value);
     const destinoId = Number(document.getElementById("ptDestino").value);
-    
+
     const newPt = { nome, valor, endereco, telefone, destinoId };
-  
+
     await fetch(uriPt, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newPt),
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newPt),
     });
-  
+
     closeModal("modalPt");
     loadPt();
-  }
-  
-  // Criar novo Destino
-  async function createDestino() {
+}
+
+// Criar novo Destino
+async function createDestino() {
     const nome = document.getElementById("destinoNome").value;
     const valor = parseFloat(document.getElementById("destinoValor").value);
-  
-    const newDestino = { nome, valor };
-  
+    const data  = new Date(document.getElementById("destinoData").value);
+
+    const newDestino = { nome, valor, data };
+
     await fetch(uriD, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newDestino),
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newDestino),
     });
-  
+
     closeModal("modalDestino");
     loadDestinos();
-  }
-  
-  // Criar novo Hotel
-  async function createHotel() {
+}
+
+// Criar novo Hotel
+async function createHotel() {
     const nome = document.getElementById("hotelNome").value;
-    const valor = parseFloat(document.getElementById("hotelValor").value);
     const avaliacao = parseFloat(document.getElementById("hotelAvaliacao").value);
-    const email= (document.getElementById("email").value);
-    const site = (document.getElementById("site").value);
-    const destinoId = parseInt(document.getElementById("destinoId").value);
-    const pontosTuristicos = parseFloat(document.getElementById("ptId").value);
-  
-    const newHotel = { nome,valor, avaliacao, destinoId, pontosTuristicos };
-    console.log(newHotel);
+    const email = document.getElementById("email").value;
+    const site = document.getElementById("site").value;
+    const valor = parseFloat(document.getElementById("hotelValor").value);
+    const destinoId = Number(document.getElementById("destinoId").value);
+    const ptId = Number(document.getElementById("ptId").value);
+
+    const newHotel = { nome, avaliacao, email, site, valor, destinoId, ptId };
+
     await fetch(uriH, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newHotel),
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newHotel),
     });
-  
+
     closeModal("modalHotel");
     loadHoteis();
-  }
-  
-  // Atualizar Ponto Turístico
-  async function updatePt(id, newName, newValue) {
-    const updatedPt = { nome: newName, valor: newValue };
-  
+}
+
+// Atualizar Ponto Turístico
+async function updatePt(id) {
+    const nome = document.getElementById("updatePtNome").value;
+    const valor = parseFloat(document.getElementById("updatePtValor").value);
+
+    const updatedPt = { nome, valor };
+
     await fetch(`${uriPt}/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedPt),
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedPt),
     });
-  
+
+    closeModal("updateModalPt");
     loadPt();
-  }
-  
-  // Atualizar Destino
-  async function updateDestino(id, newName, newValue) {
-    const updatedDestino = { nome: newName, valor: newValue };
-  
+}
+
+// Atualizar Destino
+async function updateDestino(id) {
+    const nome = document.getElementById("updateDestinoNome").value;
+    const valor = parseFloat(document.getElementById("updateDestinoValor").value);
+
+    const updatedDestino = { nome, valor };
+
     await fetch(`${uriD}/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedDestino),
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedDestino),
     });
-  
+
+    closeModal("updateModalDestino");
     loadDestinos();
-  }
-  
-  // Atualizar Hotel
-  async function updateHotel(id, newName, newAvaliacao, newValue) {
-    const updatedHotel = { nome: newName, avaliacao: newAvaliacao, valor: newValue };
-  
+}
+
+// Atualizar Hotel
+async function updateHotel(id) {
+    const nome = document.getElementById("updateHotelNome").value;
+    const avaliacao = parseFloat(document.getElementById("updateHotelAvaliacao").value);
+    const valor = parseFloat(document.getElementById("updateHotelValor").value);
+
+    const updatedHotel = { nome, avaliacao, valor };
+
     await fetch(`${uriH}/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedHotel),
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedHotel),
     });
-  
+
+    closeModal("updateModalHotel");
     loadHoteis();
-  }
-  
-  // Remover Ponto Turístico
-  async function deletePt(id) {
+}
+
+// Excluir Ponto Turístico
+async function deletePt(id) {
     await fetch(`${uriPt}/${id}`, {
-      method: "DELETE",
+        method: "DELETE",
     });
-  
+
     loadPt();
-  }
-  
-  // Remover Destino
-  async function deleteDestino(id) {
+}
+
+// Excluir Destino
+async function deleteDestino(id) {
     await fetch(`${uriD}/${id}`, {
-      method: "DELETE",
+        method: "DELETE",
     });
-  
+
     loadDestinos();
-  }
-  
-  // Remover Hotel
-  async function deleteHotel(id) {
+}
+
+// Excluir Hotel
+async function deleteHotel(id) {
     await fetch(`${uriH}/${id}`, {
-      method: "DELETE",
+        method: "DELETE",
     });
-  
+
     loadHoteis();
-  }
-  
+}

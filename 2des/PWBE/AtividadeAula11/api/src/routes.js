@@ -15,11 +15,11 @@ router.post('/destinos', Destinos.create);
 router.delete('/destinos/:id', Destinos.del);
 router.put('/destinos/:id', Destinos.update);
 
-router.get('/turistico', Turistico.read);
-router.post('/turistico/nome', Turistico.readByNome);
-router.post('/turistico', Turistico.create);
-router.delete('/turistico/:id', Turistico.del);
-router.put('/turistico/:id', Turistico.update);
+router.get('/turisticos', Turistico.read);
+router.post('/turisticos/nome', Turistico.readByNome);
+router.post('/turisticos', Turistico.create);
+router.delete('/turisticos/:id', Turistico.del);
+router.put('/turisticos/:id', Turistico.update);
 
 router.get('/hoteis', Hoteis.read);
 router.post('/hoteis/nome', Hoteis.readByNome);
