@@ -25,23 +25,6 @@ th, td {
   text-align: left;
 }
 
-th {
-  background-color: #f2f2f2;
-}
-
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
 .modal {
   display: none;
   position: fixed;
@@ -83,6 +66,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: row-reverse;
   margin-bottom: 20px;
 }
 
@@ -100,35 +84,56 @@ input[type="date"]
   box-sizing: border-box;
 }
 
-button {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
+/* Botão de adicionar novas coisas */
+.add{
+  padding:10px;
+  border-radius: 10px;
+  border:none;
+  background: silver;
+  cursor: pointer;
+  transition: 0.5s linear;
+}
+
+.add:hover{
+  background: lightgreen;
+}
+
+/* Ações na tabela */
+.acoes{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.editar, .excluir{
+  padding: 5px;
+  margin: 0 5px;
+  width: 100px;
+  border-radius: 5px;
+  border:none;
+  background: silver;
+  transition: 0.5s ease;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #45a049;
+.editar:hover{
+  background: lightgoldenrodyellow;
 }
 
-button.close-modal {
-  background-color: #f44336;
+.excluir:hover{
+  background-color: lightcoral;
+}
+/* Botao modais */
+
+.modal-content button{
+  border-radius: 5px;
+  border:none;
+  padding:10px;
+  background:rgb(144, 238, 144);
+  cursor: pointer;
+  transition: 0.5s ease;
 }
 
-button.close-modal:hover {
-  background-color: #da190b;
-}
-
-.actions {
-  display: flex;
-  justify-content: space-around;
-}
-
-.actions button {
-  width: auto;
-  padding: 5px 10px;
+.modal-content button:hover{
+  background: rgb(120, 220, 120);
 }

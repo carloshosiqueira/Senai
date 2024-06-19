@@ -39,11 +39,11 @@ function preencherPt() {
             <td>${pt.id}</td>
             <td>${pt.nome}</td>
             <td>${pt.endereco}</td>
-            <td>${pt.valor.toFixed(2)}</td>
+            <td>R$ ${pt.valor.toFixed(2)}</td>
             <td>${pt.telefone}</td>
-            <td>
-                <button onclick="openUpdateModalPt(${pt.id}, '${pt.nome}', ${pt.valor})">Editar</button>
-                <button onclick="deletePt(${pt.id})">Excluir</button>
+            <td class="acoes">
+                <button class="editar" onclick="editPt(this)">Editar</button>
+                <button class="excluir" onclick="deletePt(${pt.id})">Excluir</button>
             </td>
         </tr>
         `;
@@ -58,11 +58,14 @@ function preencherHoteis() {
         <tr>
             <td>${hotel.id}</td>
             <td>${hotel.nome}</td>
+            <td>R$ ${hotel.valor.toFixed(2)}</td>
             <td>${hotel.avaliacao}</td>
-            <td>${hotel.valor.toFixed(2)}</td>
-            <td>
-                <button onclick="openUpdateModalHotel(${hotel.id}, '${hotel.nome}', ${hotel.avaliacao}, ${hotel.valor})">Editar</button>
-                <button onclick="deleteHotel(${hotel.id})">Excluir</button>
+            <td>${hotel.email}</td>
+            <td>${hotel.site}</td>
+            <td>${hotel.destinoId}</td>
+            <td class="acoes">
+                <button class="editar" onclick="editHotel(this)">Editar</button>
+                <button class="excluir" onclick="deleteHotel(${hotel.id})">Excluir</button>
             </td>
         </tr>
         `;
@@ -76,11 +79,12 @@ function preencherDestinos() {
         destinoDados.innerHTML += `
         <tr>
             <td>${destino.id}</td>
-            <td>${destino.nome}</td>
-            <td>${destino.valor.toFixed(2)}</td>
-            <td>
-                <button onclick="openUpdateModalDestino(${destino.id}, '${destino.nome}', ${destino.valor})">Editar</button>
-                <button onclick="deleteDestino(${destino.id})">Excluir</button>
+            <td>${destino.cidade}</td>
+            <td>R$ ${destino.valor.toFixed(2)}</td>
+            <td>${destino.data.split("T")[0]}
+            <td class="acoes">
+                <button class="editar" onclick="edit(this)">Editar</button>
+                <button class="excluir" onclick="deleteDestino(${destino.id})">Excluir</button>
             </td>
         </tr>
         `;
@@ -125,11 +129,11 @@ async function createPt() {
 
 // Criar novo Destino
 async function createDestino() {
-    const nome = document.getElementById("destinoNome").value;
+    const cidade = document.getElementById("destinoNome").value;
     const valor = parseFloat(document.getElementById("destinoValor").value);
     const data  = new Date(document.getElementById("destinoData").value);
 
-    const newDestino = { nome, valor, data };
+    const newDestino = { cidade, valor, data };
 
     await fetch(uriD, {
         method: "POST",
@@ -140,21 +144,19 @@ async function createDestino() {
     });
 
     closeModal("modalDestino");
-    loadDestinos();
+    loadDestinos(); 
 }
 
 // Criar novo Hotel
 async function createHotel() {
     const nome = document.getElementById("hotelNome").value;
-    const avaliacao = parseFloat(document.getElementById("hotelAvaliacao").value);
+    const avaliacao = parseInt(document.getElementById("hotelAvaliacao").value);
     const email = document.getElementById("email").value;
     const site = document.getElementById("site").value;
     const valor = parseFloat(document.getElementById("hotelValor").value);
     const destinoId = Number(document.getElementById("destinoId").value);
-    const ptId = Number(document.getElementById("ptId").value);
 
-    const newHotel = { nome, avaliacao, email, site, valor, destinoId, ptId };
-
+    const newHotel = { nome, valor, avaliacao, email, site, destinoId};
     await fetch(uriH, {
         method: "POST",
         headers: {
@@ -164,64 +166,6 @@ async function createHotel() {
     });
 
     closeModal("modalHotel");
-    loadHoteis();
-}
-
-// Atualizar Ponto Turístico
-async function updatePt(id) {
-    const nome = document.getElementById("updatePtNome").value;
-    const valor = parseFloat(document.getElementById("updatePtValor").value);
-
-    const updatedPt = { nome, valor };
-
-    await fetch(`${uriPt}/${id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedPt),
-    });
-
-    closeModal("updateModalPt");
-    loadPt();
-}
-
-// Atualizar Destino
-async function updateDestino(id) {
-    const nome = document.getElementById("updateDestinoNome").value;
-    const valor = parseFloat(document.getElementById("updateDestinoValor").value);
-
-    const updatedDestino = { nome, valor };
-
-    await fetch(`${uriD}/${id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedDestino),
-    });
-
-    closeModal("updateModalDestino");
-    loadDestinos();
-}
-
-// Atualizar Hotel
-async function updateHotel(id) {
-    const nome = document.getElementById("updateHotelNome").value;
-    const avaliacao = parseFloat(document.getElementById("updateHotelAvaliacao").value);
-    const valor = parseFloat(document.getElementById("updateHotelValor").value);
-
-    const updatedHotel = { nome, avaliacao, valor };
-
-    await fetch(`${uriH}/${id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedHotel),
-    });
-
-    closeModal("updateModalHotel");
     loadHoteis();
 }
 
@@ -250,4 +194,126 @@ async function deleteHotel(id) {
     });
 
     loadHoteis();
+}
+
+//Atualizar destinos
+async function updateDestino(btn) {
+    let linha = btn.parentNode.parentNode;
+
+    let celulas = linha.cells;
+    let id = parseInt(celulas[0].innerHTML);
+    let data = {
+        cidade: celulas[1].innerHTML,
+        valor: parseFloat(celulas[2].innerHTML),
+        data: new Date(celulas[3].innerHTML)
+    };
+    let f = await fetch(`${uriD}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    if (f.status == 202) {
+        celulas[1].removeAttribute("contenteditable");
+        celulas[2].removeAttribute("contenteditable");
+        celulas[3].removeAttribute("contenteditable");
+        btn.innerHTML = "Editar";
+        btn.setAttribute('onclick', "edit(this)");
+        loadDestinos();
+    }
+}
+
+function edit(btn) {
+    let linha = btn.parentNode.parentNode;
+    let celulas = linha.cells;
+    for (let i = 1; i < celulas.length - 1; i++) {
+        celulas[i].setAttribute("contenteditable", 'true')
+    }
+    btn.innerHTML = "Confirmar";
+    btn.setAttribute('onclick', 'updateDestino(this)');
+}
+
+//Atualizar Pontos turísticos
+async function updatePt(btn) {
+    let linha = btn.parentNode.parentNode;
+
+    let celulas = linha.cells;
+    let id = parseInt(celulas[0].innerHTML);
+    let data = {
+        nome: celulas[1].innerHTML,
+        endereco: celulas[2].innerHTML,
+        valor: parseFloat(celulas[3].innerHTML),
+        telefone: celulas[4].innerHTML
+    };
+    let f = await fetch(`${uriPt}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    if (f.status == 202) {
+        celulas[1].removeAttribute("contenteditable");
+        celulas[2].removeAttribute("contenteditable");
+        celulas[3].removeAttribute("contenteditable");
+        celulas[4].removeAttribute("contenteditable");
+        btn.innerHTML = "Editar";
+        btn.setAttribute('onclick', "editPt(this)");
+        loadPt();
+    }
+}
+
+function editPt(btn) {
+    let linha = btn.parentNode.parentNode;
+    let celulas = linha.cells;
+    for (let i = 1; i < celulas.length - 1; i++) {
+        celulas[i].setAttribute("contenteditable", 'true')
+    }
+    btn.innerHTML = "Confirmar";
+    btn.setAttribute('onclick', 'updatePt(this)');
+}
+
+//Atualizar destinos
+async function updateHotel(btn) {
+    let linha = btn.parentNode.parentNode;
+
+    let celulas = linha.cells;
+    let id = parseInt(celulas[0].innerHTML);
+    let data = {
+        nome: celulas[1].innerHTML,
+        valor: parseFloat(celulas[2].innerHTML),
+        avaliacao: parseInt(celulas[3].innerHTML),
+        email: celulas[4].innerHTML,
+        site: celulas[5].innerHTML,
+        destinoId: parseInt(celulas[6].innerHTML)
+    };
+    let f = await fetch(`${uriH}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    if (f.status == 202) {
+        celulas[1].removeAttribute("contenteditable");
+        celulas[2].removeAttribute("contenteditable");
+        celulas[3].removeAttribute("contenteditable");
+        celulas[4].removeAttribute("contenteditable");
+        celulas[5].removeAttribute("contenteditable");
+        celulas[6].removeAttribute("contenteditable");
+        btn.innerHTML = "Editar";
+        btn.setAttribute('onclick', "editHotel(this)");
+        loadDestinos();
+    }
+}
+
+function editHotel(btn) {
+    let linha = btn.parentNode.parentNode;
+    let celulas = linha.cells;
+    for (let i = 1; i < celulas.length - 1; i++) {
+        celulas[i].setAttribute("contenteditable", 'true')
+    }
+    btn.innerHTML = "Confirmar";
+    btn.setAttribute('onclick', 'updateHotel(this)');
 }
