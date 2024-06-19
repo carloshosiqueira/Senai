@@ -39,7 +39,7 @@ function preencherPt() {
             <td>${pt.id}</td>
             <td>${pt.nome}</td>
             <td>${pt.endereco}</td>
-            <td>R$ ${pt.valor.toFixed(2)}</td>
+            <td>${pt.valor.toFixed(2)}</td>
             <td>${pt.telefone}</td>
             <td class="acoes">
                 <button class="editar" onclick="editPt(this)">Editar</button>
@@ -58,7 +58,7 @@ function preencherHoteis() {
         <tr>
             <td>${hotel.id}</td>
             <td>${hotel.nome}</td>
-            <td>R$ ${hotel.valor.toFixed(2)}</td>
+            <td>${hotel.valor.toFixed(2)}</td>
             <td>${hotel.avaliacao}</td>
             <td>${hotel.email}</td>
             <td>${hotel.site}</td>
@@ -80,7 +80,7 @@ function preencherDestinos() {
         <tr>
             <td>${destino.id}</td>
             <td>${destino.cidade}</td>
-            <td>R$ ${destino.valor.toFixed(2)}</td>
+            <td>${destino.valor.toFixed(2)}</td>
             <td>${destino.data.split("T")[0]}
             <td class="acoes">
                 <button class="editar" onclick="edit(this)">Editar</button>
