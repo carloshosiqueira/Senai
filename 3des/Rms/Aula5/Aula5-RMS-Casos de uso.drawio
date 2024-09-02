@@ -1,0 +1,129 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 OPR/112.0.0.0" version="24.7.8">
+  <diagram name="Página-1" id="2lK6G3VHY1DyKQgSDZ-6">
+    <mxGraphModel dx="1393" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="L1ivaG15v3FqGNyGypL8-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-1" target="L1ivaG15v3FqGNyGypL8-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="130" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-26" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-1" target="L1ivaG15v3FqGNyGypL8-27">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="295" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-28" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-1" target="L1ivaG15v3FqGNyGypL8-29">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="55" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-1" value="Recepcionista" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="110" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-3" value="Agenda consulta para os médicos disponiveis" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="105" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-4" target="L1ivaG15v3FqGNyGypL8-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-24" value="Include" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-4" target="L1ivaG15v3FqGNyGypL8-25">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="510" y="255" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-30" value="Include" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;dashed=1;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-4" target="L1ivaG15v3FqGNyGypL8-31">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="410" y="55" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-4" value="Confirma dados do paciente&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="105" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-8" target="L1ivaG15v3FqGNyGypL8-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-8" value="Médico" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="552" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-11" target="L1ivaG15v3FqGNyGypL8-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-11" value="Confere os horários das consultas" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="547" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-12" target="L1ivaG15v3FqGNyGypL8-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-12" value="Consulta o histórico médico do paciente" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="547" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-17" value="Include" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-13" target="L1ivaG15v3FqGNyGypL8-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-18" value="Include" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-13" target="L1ivaG15v3FqGNyGypL8-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-13" value="Atende o paciente" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="547" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-14" value="Anota o diagnóstico no histórico do paciente" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="640" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-15" value="Prescreve a medicação necessária" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="460" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-25" value="Atualiza dados do paciente" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="235" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-27" value="Cancela consultas" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="260" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-29" value="Remarca consultas" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="20" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-31" value="Cadastra novo paciente" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="10" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-37" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-32" target="L1ivaG15v3FqGNyGypL8-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-38" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-32" target="L1ivaG15v3FqGNyGypL8-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-42" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-32" target="L1ivaG15v3FqGNyGypL8-43">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230" y="1050" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-32" value="Paciente" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="845" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-39" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-33" target="L1ivaG15v3FqGNyGypL8-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-40" value="Include" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;dashed=1;" edge="1" parent="1" source="L1ivaG15v3FqGNyGypL8-33" target="L1ivaG15v3FqGNyGypL8-41">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="360" y="1000" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-33" value="Confere os horários de suas consultas" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="840" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-34" value="Agenda consultas" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="740" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-36" value="Remarca consultas" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="840" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-41" value="Cancela consultas" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="960" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="L1ivaG15v3FqGNyGypL8-43" value="Atualiza dados" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="1015" width="140" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
