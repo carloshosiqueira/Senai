@@ -60,7 +60,7 @@ Um bom roteiro de testes é crucial para o sucesso de um projeto, pois minimiza 
 
 ### Observações
 - Ao cancelar a ação na hora de editar o nome, ao editar a data, ela não edita
-- Ao cancelar a ação na hora de editar a data, ele edita para o dia 31/12/1969
+- Ao cancelar a ação na hora de editar a data, ele edita para o dia 
 - O prompt permite ao usuario de colocar uma data inválida
 - Ao realizar a edição pela primeira vez tudo funciona, porém ao editar da segunda vez e posteriores, o nome que carrega no prompt continua sendo
 o nome com o qual foi adicionado e não o nome com o qual foi editado
